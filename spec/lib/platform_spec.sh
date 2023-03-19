@@ -2,7 +2,7 @@
 
 Describe "Test that platform.sh"
 
-    Include "./shell/lib/platform.sh"
+    Include "./lib/platform.sh"
 
     Describe "_is_jenkins()"
 

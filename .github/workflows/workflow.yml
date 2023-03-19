@@ -1,0 +1,24 @@
+name: Example workflow for Codecov
+on: [push]
+jobs:
+  run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    env:
+      OS: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@master
+    - name: Generate coverage report
+      run: |
+        make coverage
+    - uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # required for private repos
+        directory: "coverage/wild [specfiles]"
+        files: ./cobertura.xml,./codecov.json,./coverage.json
+        flags: unittests # optional
+        name: codecov-umbrella # optional
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
