@@ -25,9 +25,8 @@ jobs:
     - uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # required for private repos
-        directory: "coverage/wild [specfiles]"
-        files: ./cobertura.xml,./codecov.json,./coverage.json
+        directory: coverage
         flags: unittests # optional
-        name: codecov-umbrella # optional
-        fail_ci_if_error: true # optional (default = false)
+        name: codecov-wild # optional
+        fail_ci_if_error: false # optional (default = false)
         verbose: true # optional (default = false)
