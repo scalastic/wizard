@@ -1,0 +1,64 @@
+{
+    "sequence": [
+        {
+            "id": "init",
+            "condition": "",
+            "pre-hook": "",
+            "step": "",
+            "post-hook": "",
+            "resume": "true",
+            "log": "true",
+            "log_level": "debug"
+        },
+        {
+            "id": "build",
+            "condition": "",
+            "pre-hook": "",
+            "step": "",
+            "post-hook": "",
+            "resume": "true",
+            "log": "true",
+            "log_level": "debug"
+        },
+        {
+            "id": "quality",
+            "condition": "",
+            "pre-hook": "",
+            "step": "",
+            "post-hook": "",
+            "resume": "true",
+            "log": "true",
+            "log_level": "debug"
+        },
+        {
+            "id": "security",
+            "condition": "",
+            "pre-hook": "",
+            "step": "",
+            "post-hook": "",
+            "resume": "true",
+            "log": "true",
+            "log_level": "debug"
+        },
+        {
+            "id": "publish",
+            "condition": "",
+            "pre-hook": "",
+            "step": "",
+            "post-hook": "",
+            "resume": "true",
+            "log": "true",
+            "log_level": "debug"
+        },
+        {
+            "id": "resume",
+            "condition": "",
+            "pre-hook": "",
+            "step": "",
+            "post-hook": "",
+            "resume": "true",
+            "log": "true",
+            "log_level": "debug"
+        }
+    ]
+}

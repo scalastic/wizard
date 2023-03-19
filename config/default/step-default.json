@@ -1,0 +1,10 @@
+{
+    "step": [
+        "condition",
+        "pre-hook",
+        "step",
+        "post-hook",
+        "resume",
+        "log"
+    ]
+}
