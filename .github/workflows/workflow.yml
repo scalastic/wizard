@@ -10,6 +10,11 @@ jobs:
       OS: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@master
+    - name: Install shellspec
+      run: |
+        echo "${HOME}/.local/bin" >> "$GITHUB_PATH"
+        curl -fsSL https://git.io/shellspec | sh -s master -y
+        echo "--color" > $HOME/.shellspec
     - name: Generate coverage report
       run: |
         make coverage
