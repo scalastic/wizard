@@ -10,6 +10,7 @@ Developers can test the operation of the CI/CD chain on their local station and 
 **Wild** fills the missing link of the DevOps approach and its *shift-left* principal herein. With **Wild** the shifts are so close to the developer that they no longer exist. This is where **Wild** can be described as ***shift-less*** framework.
 
 ----
+
 ## Table of Contents
 
 - [Supported platforms](#supported-platforms)
@@ -18,13 +19,13 @@ Developers can test the operation of the CI/CD chain on their local station and 
 - [Installation](#installation)
 - [Tutorial](#tutorial)
 - [Wild CLI](#wild-cli)
-    - [Command options](#command-options)
+  - [Command options](#command-options)
 - [Project directory](#project-directory)
-    - [Typical directory structure](#typical-directory-structure)
-    - [Options file](#options-file)
+  - [Typical directory structure](#typical-directory-structure)
+  - [Options file](#options-file)
 - [For developers](#for-developers)
-    - [Related projects](#related-projects)
-    - [Contributions](#contributions)
+  - [Related projects](#related-projects)
+  - [Contributions](#contributions)
 
 ## Supported platforms
 
