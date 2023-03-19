@@ -1,4 +1,7 @@
-# Wild
+
+![Wild](./docs/wild.png)
+
+# Wide Integration Locally with Delivery
 
 Wild stands for **Wide Integration Locally with Delivery**. Due to its ***Wild*** nature, it fills the gap between the developer and the CI/CD platform by allowing to run locally and on the build server the exact same integration and deployment scripts.
 
