@@ -1,6 +1,8 @@
 
 ![Wild](./docs/wild.png)
 
+[![codecov](https://codecov.io/gh/scalastic/wild/branch/main/graph/badge.svg?token=KO9TRVNQWE)](https://codecov.io/gh/scalastic/wild)
+
 # Wide Integration Locally with Delivery
 
 Wild stands for **Wide Integration Locally with Delivery**. Due to its ***Wild*** nature, it fills the gap between the developer and the CI/CD platform by allowing to run the exact same integration and deployment scripts locally and on the build server.

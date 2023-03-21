@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-export WID_CWD="$PWD"
-export PLATFORM
+export WID_CWD="${PWD}"
 
 # shellcheck disable=SC1091
-source shell/lib/sequence.sh
+source lib/platform.sh
+source lib/sequence.sh
 
 # TO EXTRACT
-#"${WID_CWD}"/tool/docker/build-all-images.sh
+#"${WID_CWD}"/docker/build-all-images.sh
 
-# 
+load_sequence

@@ -3,16 +3,27 @@ FROM alpine:3.17
 LABEL Author="wid.sh"
 
 # make sure the package repository is up to date
-RUN apk update \
- && apk upgrade \
- && apk add bash \
- && apk add jq \
- && rm -rf /var/cache/*/* \
- && echo "" > /root/.ash_history
-
-# change default shell from ash to bash
-RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
+RUN set -ex \
+    # Create a non-root user
+    && addgroup --system --gid 1001 appgroup \
+    && adduser --system --uid 1001 -G appgroup --no-create-home appuser \
+    # Upgrade the package index and install security upgrades
+    && apk update \
+    && apk upgrade \
+    # Install bash and jq
+    && apk add bash \
+    && apk add jq \
+    # Clean up 
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/cache/*/* \ 
+    && echo "" > /root/.ash_history \
+    && mkdir /app \
+    && chown -R appuser:appgroup /app \
+    # change default shell from ash to bash
+    && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 
 ENV LC_ALL=en_US.UTF-8
 
-WORKDIR /root
+# Set the user to run the application
+USER appuser
+WORKDIR /app

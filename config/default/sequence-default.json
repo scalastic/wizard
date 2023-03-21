@@ -2,10 +2,10 @@
     "sequence": [
         {
             "id": "init",
-            "condition": "",
-            "pre-hook": "",
-            "step": "",
-            "post-hook": "",
+            "condition": "true",
+            "pre_step": "pre_init.sh",
+            "step": "init.sh",
+            "post_step": "post_init.sh",
             "resume": "true",
             "log": "true",
             "log_level": "debug"
@@ -13,9 +13,9 @@
         {
             "id": "build",
             "condition": "",
-            "pre-hook": "",
+            "pre_step": "",
             "step": "",
-            "post-hook": "",
+            "post_step": "",
             "resume": "true",
             "log": "true",
             "log_level": "debug"
@@ -23,9 +23,9 @@
         {
             "id": "quality",
             "condition": "",
-            "pre-hook": "",
+            "pre_step": "",
             "step": "",
-            "post-hook": "",
+            "post_step": "",
             "resume": "true",
             "log": "true",
             "log_level": "debug"
@@ -33,9 +33,9 @@
         {
             "id": "security",
             "condition": "",
-            "pre-hook": "",
+            "pre_step": "",
             "step": "",
-            "post-hook": "",
+            "post_step": "",
             "resume": "true",
             "log": "true",
             "log_level": "debug"
@@ -43,9 +43,9 @@
         {
             "id": "publish",
             "condition": "",
-            "pre-hook": "",
+            "pre_step": "",
             "step": "",
-            "post-hook": "",
+            "post_step": "",
             "resume": "true",
             "log": "true",
             "log_level": "debug"
@@ -53,9 +53,9 @@
         {
             "id": "resume",
             "condition": "",
-            "pre-hook": "",
+            "pre_step": "",
             "step": "",
-            "post-hook": "",
+            "post_step": "",
             "resume": "true",
             "log": "true",
             "log_level": "debug"
