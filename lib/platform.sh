@@ -20,7 +20,7 @@ _is_gitlab() {
 }
 
 _is_local() {
-    if [[ "$(_is_jenkins)" = "false" ]] && [[ "$(_is_gitlab)" = "false" ]]; then
+    if [ "$(_is_jenkins)" = "false" ] && [ "$(_is_gitlab)" = "false" ]; then
       echo true; return
     fi
     echo false

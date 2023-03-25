@@ -34,6 +34,11 @@ if [ -n "${PARAM_DOCKER}" ] && [  "${PARAM_DOCKER}" -eq "1" ]; then
     #  /bin/bash
 fi
 
+# Set tooling
+# shellcheck disable=SC1091
+source lib/tooling.sh
+set_jq_tool
+
 # shellcheck disable=SC1091
 source lib/platform.sh
 # shellcheck disable=SC1091

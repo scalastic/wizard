@@ -1,9 +1,0 @@
-{ 
-    "condition": "",
-    "pre-hook": "",
-    "step": "./shell/build/build.sh",
-    "post-hook": "",
-    "resume": "true",
-    "log": "true",
-    "log_level": "debug"
-}
