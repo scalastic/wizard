@@ -1,6 +1,7 @@
 
 ![Wild](./docs/wild.png)
 
+[![Test and Code Coverage](https://github.com/scalastic/wild/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/scalastic/wild/actions/workflows/workflow.yml)
 [![codecov](https://codecov.io/gh/scalastic/wild/branch/main/graph/badge.svg?token=KO9TRVNQWE)](https://codecov.io/gh/scalastic/wild)
 
 # Wide Integration Locally with Delivery
