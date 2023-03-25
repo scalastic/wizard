@@ -25,13 +25,13 @@ export WID_CWD="${PWD}"
 if [ -n "${PARAM_DOCKER}" ] && [  "${PARAM_DOCKER}" -eq "1" ]; then
     echo "Starting containers..."
     # Build images
-    #"${WID_CWD}"/docker/build-all-images.sh
+    "${WID_CWD}"/docker/build-all-images.sh
     # Start containers
-    docker container run \
-      --mount type=bind,source="$WID_CWD/config",target="/app/config"\
-      -td --name basic-wild \
-      scalastic/wild:latest \
-      /bin/bash
+    #docker container run \
+    #  --mount type=bind,source="$WID_CWD/config",target="/app/config"\
+    #  -td --name basic-wild \
+    #  scalastic/wild:latest \
+    #  /bin/bash
 fi
 
 # shellcheck disable=SC1091

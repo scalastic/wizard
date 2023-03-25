@@ -13,7 +13,8 @@ load_sequence() {
     echo "Loading sequence definition from ${DEFAULT_SEQUENCE_DEFINITION_PATH}"
 
     # shellcheck disable=SC2207
-    SEQUENCES_ID=( $(jq -rc '.sequence[].id' "${DEFAULT_SEQUENCE_DEFINITION_PATH}") )
+    #SEQUENCES_ID=( $(jq -rc '.sequence[].id' "${DEFAULT_SEQUENCE_DEFINITION_PATH}") )
+    SEQUENCES_ID=( $(docker run -i scalastic/wild:latest < "${DEFAULT_SEQUENCE_DEFINITION_PATH}" -rc '.sequence[].id') )
 
     # shellcheck disable=SC2145
     echo "SEQUENCES is ${SEQUENCES_ID[@]}"
@@ -25,28 +26,29 @@ load_sequence() {
     for item in "${SEQUENCES_ID[@]}"; do
         echo "STEP is $item"
 
-        #STEP_DEFINITION_PATH=$(get_step_definition "$item")
-
         echo "Load step definition from ${DEFAULT_SEQUENCE_DEFINITION_PATH}"
-
         # shellcheck disable=SC2207
-        STEP_DEFINITION=$(jq -rc --arg item "$item" '.sequence[] | select(.id == $item)' "${DEFAULT_SEQUENCE_DEFINITION_PATH}")
-        # shellcheck disable=SC2145
+        STEP_DEFINITION=$(docker run -i scalastic/wild:latest < "${DEFAULT_SEQUENCE_DEFINITION_PATH}" -rc --arg item "$item" '.sequence[] | select(.id == $item)')
         echo "Step definition is ${STEP_DEFINITION}"
 
-        # shellcheck disable=SC2207 disable=SC2086
-        STEP_KEYS=( $( jq -rc 'keys_unsorted | @sh' <<< ${STEP_DEFINITION} | tr -d \') )
+        # shellcheck disable=SC2207
+        STEP_KEYS=( $(docker run -i scalastic/wild:latest <<< "$STEP_DEFINITION" -rc 'keys_unsorted | @sh' | tr -d \') )
         # shellcheck disable=SC2145
         echo "Keys definition is ${STEP_KEYS[@]}"
 
         # shellcheck disable=SC2091 disable=SC2086
-        initializer=$(jq 'to_entries[] | "\(.key)=\(.value)"' <<< $STEP_DEFINITION | tr -d \")
+        initializer=$(docker run -i scalastic/wild:latest <<< $STEP_DEFINITION 'to_entries[] | "\(.key)=\(.value)"' | tr -d \")
         eval "$initializer"
 
+        # Read env values defining step config
         for key in "${STEP_KEYS[@]}"; do
             echo -n "$key = "
             eval echo \$"$key"
         done
     done
+
+    # Clean used and stopped containers
+    # shellcheck disable=SC2046
+    docker rm $(docker ps -a -q --filter "ancestor=scalastic/wild") > /dev/null
 
 }
