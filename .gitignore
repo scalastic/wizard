@@ -3,4 +3,6 @@
 /.shellspec-quick.log
 /report/
 /coverage/
+/run/
+/tmp/
 .DS_Store
