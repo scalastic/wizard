@@ -2,12 +2,16 @@
     "name": "wide-integration-and-delivery",
     "version": "2023.3.1-dev",
     "description": "A universal and independent CI/CD solution",
-    "homepage": "https://wid.sh",
-    "scripts": ["wid"],
+    "homepage": "https://wild.sh",
+    "scripts": ["wild"],
     "license": "MIT",
     "files": [
-      "lib/file01.sh",
-      "lib/file02.sh"
+      "config/default/sequence-default.json",
+      "src/wild.sh",
+      "lib/platform.sh",
+      "lib/sequence.sh",
+      "lib/tooling.sh",
+      "lib/ext/getoptions.sh"
     ],
     "install": "make install"
   }

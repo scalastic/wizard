@@ -30,6 +30,6 @@ install: build
 uninstall:
 	rm -f $(BINDIR)/wild
 
-bin/wild: src/build.sh src/wild lib/*.sh
-	src/build.sh < src/wild.sh > bin/wild
+bin/wild:
+	cat src/build.sh  > bin/wild
 	chmod +x bin/wild
