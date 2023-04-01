@@ -10,7 +10,7 @@ mkdir -p "$GITLAB_HOME"
 # When using Docker Destop for mac, make sure "file sharing implementation" is not set to "VirtioFS" 
 # because it gets bugged on rigth management when gitlab installs.
 sudo docker run --detach \
-  --add-host=gitlab.example.com:192.168.0.10 \
+  --add-host=gitlab.scalastic.io:192.168.0.10 \
   --publish 1443:443 --publish 1080:80 --publish 1022:22 \
   --name gitlab \
   --restart always \

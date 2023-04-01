@@ -5,4 +5,5 @@
 /coverage/
 /run/
 /tmp/
+/openssl/
 .DS_Store
