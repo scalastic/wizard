@@ -15,10 +15,22 @@ kubectl config set-context --current --namespace="$NAMESPACE"
 # Create dedicated wildcard certificate
 echo "Generating certificates..."
 [ ! -f "${CA_PATH}/${COMPANY_NAME}-ca-tls.key" ] && ./helm/create-ca-tls.sh "${COMPANY_NAME}"
-./helm/create-cert-server.sh "${SERVER_NAME}"
+./helm/create-wildcard-cert-server.sh "${SERVER_NAME}"
 
 echo "Creating secret tls..."
-kubectl -n "$NAMESPACE" create secret tls "${SERVER_NAME}-${COMPANY_NAME}-wildcard-tls" --cert="./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.crt" --key="./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.key"
+
+set +e
+kubectl get secret "${SERVER_NAME}-${COMPANY_NAME}-wildcard-tls" 2>/dev/null
+secretExists="$?"
+set -e
+
+if [ "$secretExists" -eq "0" ]; then
+  kubectl -n "$NAMESPACE" delete secret "${SERVER_NAME}-${COMPANY_NAME}-wildcard-tls"
+fi
+
+kubectl -n "$NAMESPACE" create secret tls "${SERVER_NAME}-${COMPANY_NAME}-wildcard-tls" \
+  --cert="./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.crt" \
+  --key="./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.key"
 
 # Install GitLab
 echo "Installing GitLab..."
@@ -33,6 +45,7 @@ helm -n "$NAMESPACE" upgrade --install --create-namespace gitlab gitlab/gitlab \
   --set certmanager.install=false \
   --set global.ingress.configureCertmanager=false \
   --set global.ingress.tls.secretName="${SERVER_NAME}-${COMPANY_NAME}-wildcard-tls" \
-  --set gitlab-runner.install=true
+  --set gitlab-runner.install=true \
+  2>&1
 
 kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' | base64 --decode ; echo

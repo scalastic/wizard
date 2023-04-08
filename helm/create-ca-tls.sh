@@ -5,6 +5,8 @@ set -euo pipefail
 COMPANY_NAME=${1:-scalastic}
 CERT_CA_PATH="${CERT_CA_PATH:=openssl/ca}"
 
+echo "Creating CA certificate..."
+
 mkdir -p "${CERT_CA_PATH}"
 
 openssl req -x509 \

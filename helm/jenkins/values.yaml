@@ -1,0 +1,13 @@
+controller:
+  serviceType: ClusterIP
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostName: jenkins.scalastic.local
+    tls:
+      - secretName: jenkins-scalastic-tls
+        hosts: 
+          - jenkins.scalastic.local
+agent:
+  jenkinsTunnel: "jenkinsci-agent:50000"
+  directConnection: true

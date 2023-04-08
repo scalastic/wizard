@@ -12,10 +12,10 @@ echo "Creating ${SERVER_NAME} certificate..."
 mkdir -p "$CERT_PATH"
 
 # Create the Server Private Key
-openssl genrsa -out "./${CERT_PATH}/${SERVER_NAME}-tls.key" 4096
+openssl genrsa -out "./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.key" 4096
 
 # Create Certificate Signing Request Configuration
-cat > "./${CERT_PATH}/${SERVER_NAME}-csr.conf" <<EOF
+cat > "./${CERT_PATH}/${SERVER_NAME}-wildcard-csr.conf" <<EOF
 [ req ]
 default_bits = 4096
 prompt = no
@@ -29,19 +29,21 @@ ST = France
 L = Paris
 O = "${COMPANY_NAME^}"
 OU = "${SERVER_NAME^} ${COMPANY_NAME^} Local"
-CN = "${SERVER_NAME}.${COMPANY_NAME}.local"
+CN = "${COMPANY_NAME}.local"
 
 [ req_ext ]
 subjectAltName = @alt_names
 
 [ alt_names ]
-DNS.1 = "${SERVER_NAME}.${COMPANY_NAME}.local"
-IP.1 = 127.0.0.1
+DNS.1 = "${COMPANY_NAME}.local"
+DNS.2 = "*.${COMPANY_NAME}.local"
+IP.1 = 192.168.0.10
+IP.2 = 192.168.0.10
 
 EOF
 
 # Generate Certificate Signing Request (CSR) Using Server Private Key
-openssl req -new -key "./${CERT_PATH}/${SERVER_NAME}-tls.key" -out "./${CERT_PATH}/${SERVER_NAME}-tls.csr" -config "./${CERT_PATH}/${SERVER_NAME}-csr.conf"
+openssl req -new -key "./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.key" -out "./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.csr" -config "./${CERT_PATH}/${SERVER_NAME}-wildcard-csr.conf"
 
 # Create a cert.conf
 cat > ./${CERT_PATH}/cert.conf <<EOF
@@ -57,22 +59,21 @@ ST = France
 L = Paris
 O = "${COMPANY_NAME^}"
 OU = "${SERVER_NAME^} ${COMPANY_NAME^} Local"
-CN = "${SERVER_NAME}.${COMPANY_NAME}.local"
-
-[ req_ext ]
-subjectAltName = @alt_names
+CN = "${COMPANY_NAME}.local"
 
 [ alt_names ]
-DNS.1 = "${SERVER_NAME}.${COMPANY_NAME}.local"
-IP.1 = 127.0.0.1
+DNS.1 = "${COMPANY_NAME}.local"
+DNS.2 = "*.${COMPANY_NAME}.local"
+IP.1 = 192.168.0.10
+IP.2 = 192.168.0.10
 
 EOF
 
 # Generate SSL certificate With self signed CA
 openssl x509 -req \
-    -in "./${CERT_PATH}/${SERVER_NAME}-tls.csr" \
+    -in "./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.csr" \
     -CA "./${CERT_CA_PATH}/${COMPANY_NAME}-ca-tls.crt" -CAkey "./${CERT_CA_PATH}/${COMPANY_NAME}-ca-tls.key" \
-    -CAcreateserial -out "./${CERT_PATH}/${SERVER_NAME}-tls.crt" \
+    -CAcreateserial -out "./${CERT_PATH}/${SERVER_NAME}-wildcard-tls.crt" \
     -days 120 \
     -sha512 -extfile ./${CERT_PATH}/cert.conf
 

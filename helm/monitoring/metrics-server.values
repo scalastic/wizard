@@ -1,0 +1,44 @@
+serviceAccount:
+  name: metrics-server-sa
+
+apiService:
+  insecureSkipTLSVerify: true
+
+rbac:
+  create: true
+
+metrics:
+  enabled: true
+
+defaultArgs:
+  - --cert-dir=/tmp
+  - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+  - --kubelet-use-node-status-port
+  - --metric-resolution=15s
+
+service:
+  type: ClusterIP
+  port: 443
+  annotations: {}
+  labels:
+  #  Add these labels to have metrics-server show up in `kubectl cluster-info`
+    kubernetes.io/cluster-service: "true"
+    kubernetes.io/name: "Metrics-server"
+
+livenessProbe:
+  httpGet:
+    path: /livez
+    port: https
+    scheme: HTTPS
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: https
+    scheme: HTTPS
+  initialDelaySeconds: 90
+  periodSeconds: 10
+  failureThreshold: 3
