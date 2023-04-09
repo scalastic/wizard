@@ -92,6 +92,7 @@ Describe "Test that sequence.sh"
             AfterRun "rm ${FAKE_DEFINITION_PATH}"
 
             When run sequence::_load_sequences_id "${FAKE_DEFINITION_PATH}"
+            Dump
 
             The status should be success
             The output should eq "fake_id_1 fake_id_2"
