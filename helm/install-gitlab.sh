@@ -41,11 +41,17 @@ helm -n "$NAMESPACE" upgrade --install --create-namespace gitlab gitlab/gitlab \
   --set global.edition=ce \
   --set global.hosts.domain=scalastic.local \
   --set global.hosts.externalIP=192.168.0.10 \
-  --set postgresql.image.tag=13.6.0 \
+  --set nginx-ingress.enabled=false \
+  --set global.ingress.class="nginx" \
   --set certmanager.install=false \
   --set global.ingress.configureCertmanager=false \
   --set global.ingress.tls.secretName="${SERVER_NAME}-${COMPANY_NAME}-wildcard-tls" \
+  --set postgresql.image.tag=13.6.0 \
   --set gitlab-runner.install=true \
+  --set gitlab.webservice.minReplicas=1 --set gitlab.webservice.maxReplicas=1 \
+  --set gitlab.sidekiq.minReplicas=1 --set gitlab.sidekiq.maxReplicas=1 \
+  --set gitlab.gitlab-shell.minReplicas=1 --set gitlab.gitlab-shell.maxReplicas=1 \
+  --set registry.hpa.minReplicas=1 --set registry.hpa.maxReplicas=1 \
   2>&1
 
 kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' | base64 --decode ; echo

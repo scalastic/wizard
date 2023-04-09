@@ -3,17 +3,25 @@
 set -euo pipefail
 
 set_jq_tool() {
+    debug "Set jq tool"
+
     if [ -x "$(command -v jq)" ]; then
-        echo 'Using jq command'
-        JQ="$(command -v jq)"
-        IS_DOCKERIZED_JQ=false
+        # shellcheck disable=SC2155
+        export JQ="$(command -v jq)"
+        export IS_DOCKERIZED_JQ=false
+        info "Using jq command $JQ"
+
     elif [ -x "$(command -v docker)" ]; then
-        echo 'Using docker command'
-        # shellcheck disable=SC2034
-        JQ="$(command -v docker) run -i scalastic/wild:latest"
-        # shellcheck disable=SC2034
-        IS_DOCKERIZED_JQ=true
-    else 
-        echo "Error: missing minimal required commands for jq"
+
+        # shellcheck disable=SC2155
+        export JQ="$(command -v docker) run -i scalastic/wild:latest"
+        export IS_DOCKERIZED_JQ=true
+        info "Using dockerized jq command $JQ"
+
+    else
+
+        fatal "Missing minimal required commands for jq"
+        exit 1
+
     fi
 }

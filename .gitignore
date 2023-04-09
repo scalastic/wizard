@@ -6,4 +6,5 @@
 /run/
 /tmp/
 /openssl/
+/log/
 .DS_Store
