@@ -33,15 +33,7 @@ LOG_LEVEL_ERROR_COLOR="\e[0;31m"
 LOG_LEVEL_FATAL_COLOR="\e[0;35m"
 
 # shellcheck disable=SC2034
-LOG_LEVEL_DEBUG_COLOR_OFF="\e[0m"
-# shellcheck disable=SC2034
-LOG_LEVEL_INFO_COLOR_OFF="\e[0m"
-# shellcheck disable=SC2034
-LOG_LEVEL_WARN_COLOR_OFF="\e[0m"
-# shellcheck disable=SC2034
-LOG_LEVEL_ERROR_COLOR_OFF="\e[0m"
-# shellcheck disable=SC2034
-LOG_LEVEL_FATAL_COLOR_OFF="\e[0m"
+LOG_COLOR_OFF="\e[0m"
 
 #######################################
 # Log a message.
@@ -78,7 +70,7 @@ log() {
 #   Writes the debug message to stdout
 #######################################
 debug() {
-    log "$LOG_LEVEL_DEBUG" "$1" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_LEVEL_DEBUG_COLOR_OFF"
+    log "$LOG_LEVEL_DEBUG" "[${FUNCNAME[1]}] $1" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
 }
 
 #######################################
@@ -93,7 +85,7 @@ debug() {
 #   Writes the info message to stdout
 #######################################
 info() {
-    log "$LOG_LEVEL_INFO" "$1" "$LOG_LEVEL_INFO_COLOR" "$LOG_LEVEL_INFO_COLOR_OFF"
+    log "$LOG_LEVEL_INFO" "$1" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
 }
 
 #######################################
@@ -108,7 +100,7 @@ info() {
 #   Writes the warning message to stdout
 #######################################
 warn() {
-    log "$LOG_LEVEL_WARN" "$1" "$LOG_LEVEL_WARN_COLOR" "$LOG_LEVEL_WARN_COLOR_OFF"
+    log "$LOG_LEVEL_WARN" "$1" "$LOG_LEVEL_WARN_COLOR" "$LOG_COLOR_OFF"
 }
 
 #######################################
@@ -123,7 +115,7 @@ warn() {
 #   Writes the error message to stdout
 #######################################
 error() {
-    log "$LOG_LEVEL_ERROR" "$1" "$LOG_LEVEL_ERROR_COLOR" "$LOG_LEVEL_ERROR_COLOR_OFF" >&2
+    log "$LOG_LEVEL_ERROR" "$1" "$LOG_LEVEL_ERROR_COLOR" "$LOG_COLOR_OFF" >&2
 }
 
 #######################################
@@ -138,5 +130,5 @@ error() {
 #   Writes the fatal message to stdout
 #######################################
 fatal() {
-    log "$LOG_LEVEL_FATAL" "$1" "$LOG_LEVEL_FATAL_COLOR" "$LOG_LEVEL_FATAL_COLOR_OFF" >&2
+    log "$LOG_LEVEL_FATAL" "$1" "$LOG_LEVEL_FATAL_COLOR" "$LOG_COLOR_OFF" >&2
 }

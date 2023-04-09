@@ -22,7 +22,7 @@ sequence::_check_prerequisites() {
         error "Missing WILD_CWD environment variable"
         status=1
     fi
-    
+
     if [ -z "${JQ:-}" ]; then
         error "Missing jq command"
         status=1
@@ -83,15 +83,98 @@ sequence::_check_sequence_definition_path() {
 #######################################
 sequence::_load_sequences_id() {
     local sequence_definition_path="${1:-}"
-    
+
     # shellcheck disable=SC2207
-    local sequences_id=($("$JQ" < "${WILD_CWD}/${sequence_definition_path}" -rc '.sequence[].id'))
+    local sequences_id=($("$JQ" <"${WILD_CWD}/${sequence_definition_path}" -rc '.sequence[].id'))
 
     # shellcheck disable=SC2145
-    debug "Sequences id are ${sequences_id[@]}"
+    debug "Sequences id are: ${sequences_id[@]}"
     debug "Sequences have ${#sequences_id[@]} ids"
 
     echo "${sequences_id[@]}"
+}
+
+#######################################
+# Load step definition from an item and the sequence definition file.
+# Globals:
+#   JQ (read-only)
+#   sequence_definition_path (read-only)
+# Arguments:
+#   item_id: id of the item to load
+#   sequence_definition_path: path to the sequence definition file
+# Outputs:
+#   Writes debug messages to stdout
+# Returns:
+#   step_definition as JSON array
+#######################################
+sequence::_load_step_definition() {
+    local item_id="${1:-}"
+    local sequence_definition_path="${2:-}"
+
+    local step_definition
+    # shellcheck disable=SC2207
+    step_definition=($("$JQ" <"${WILD_CWD}/${sequence_definition_path}" -rc ".sequence[] | select(.id == \"${item_id}\")"))
+
+    # shellcheck disable=SC2145
+    debug "Step definition is: ${step_definition[@]}"
+
+    echo "${step_definition[@]}"
+}
+
+#######################################
+# Load step values as environment variables from a step definition as JSON.
+# Globals:
+#   JQ (read-only)
+# Arguments:
+#   step_definition: step definition to load
+# Outputs:
+#   Writes debug messages to stdout
+# Returns:
+#   step_values
+#######################################
+sequence::_load_step_values() {
+
+    local step_definition=("${1}")
+    local initializer
+    # shellcheck disable=SC2128 disable=SC2086
+    initializer=$("$JQ" <<<$step_definition 'to_entries[] | "\(.key)=\(.value)"' | tr -d \")
+
+    debug "Step values are: $initializer"
+
+    eval "$initializer"
+}
+
+#######################################
+# Iterate over sequence.
+# Globals:
+#   sequence_definition_path (read-only)
+# Arguments:
+#   sequence_definition_path: path to the sequence definition file
+#   sequences_id: array of sequences id
+# Outputs:
+#   Writes debug messages to stdout
+#   Writes info messages to stdout
+# Returns:
+#   None
+#######################################
+sequence::_iterate_over_sequence() {
+    local sequence_definition_path="${1}"
+    shift
+    local sequences_id=("$@")
+
+    for item in "${sequences_id[@]}"; do
+        info "Loop over step $item"
+
+        local step_definition
+        # shellcheck disable=SC2207
+        step_definition=($(sequence::_load_step_definition "$item" "$sequence_definition_path"))
+
+        # shellcheck disable=SC2128 disable=SC2145
+        debug "Step definition is ${step_definition[@]}"
+
+        sequence::_load_step_values "${step_definition[@]}"
+    done
+
 }
 
 #######################################
@@ -111,32 +194,39 @@ sequence::load() {
     sequence_definition_path=$(sequence::_check_sequence_definition_path "$sequence_definition_path")
     sequence::_check_prerequisites
 
-    local sequences_id
-    sequences_id=$(sequence::_load_sequences_id "$sequence_definition_path")
+    local sequences_id=()
+    # shellcheck disable=SC2207
+    sequences_id+=($(sequence::_load_sequences_id "$sequence_definition_path"))
 
-    for item in "${sequences_id[@]}"; do
-        warn "Step is $item"
+    # shellcheck disable=SC2145
+    debug "Caller Sequences id are: ${sequences_id[@]}"
+    debug "Length Sequences id are: ${#sequences_id[@]}"
 
-        # shellcheck disable=SC2207 disable=SC2016
-        local step_definition=($("$JQ" <"${sequence_definition_path}" -rc --arg item "$item" '.sequence[] | select(.id == $item)'))
-        # shellcheck disable=SC2128
-        info "Step definition is ${step_definition}"
+    sequence::_iterate_over_sequence "$sequence_definition_path" "${sequences_id[@]}"
 
-        # shellcheck disable=SC2207 disable=SC2128
-        local step_keys=($("$JQ" <<<"$step_definition" -rc 'keys_unsorted | @sh' | tr -d \'))
-        # shellcheck disable=SC2145
-        debug "Keys definition is ${step_keys[@]}"
-
-        local initializer
-        # shellcheck disable=SC2128 disable=SC2086
-        initializer=$("$JQ" <<<$step_definition 'to_entries[] | "\(.key)=\(.value)"' | tr -d \")
-        eval "$initializer"
-
-        # Read env values defining step config
-        for key in "${step_keys[@]}"; do
-            info "$key = $(eval echo \$"$key")"
-        done
-    done
+    #   for item in "${sequences_id[@]}"; do
+    #       warn "Step is $item"
+    #
+    #        # shellcheck disable=SC2207 disable=SC2016
+    #        local step_definition=($("$JQ" <"${sequence_definition_path}" -rc --arg item "$item" '.sequence[] | select(.id == $item)'))
+    #        # shellcheck disable=SC2128
+    #        info "Step definition is ${step_definition}"
+    #
+    #        # shellcheck disable=SC2207 disable=SC2128
+    #        local step_keys=($("$JQ" <<<"$step_definition" -rc 'keys_unsorted | @sh' | tr -d \'))
+    #        # shellcheck disable=SC2145
+    #        debug "Keys definition is ${step_keys[@]}"
+    #
+    #        local initializer
+    #        # shellcheck disable=SC2128 disable=SC2086
+    #        initializer=$("$JQ" <<<$step_definition 'to_entries[] | "\(.key)=\(.value)"' | tr -d \")
+    #        eval "$initializer"
+    #
+    #        # Read env values defining step config
+    #        for key in "${step_keys[@]}"; do
+    #            info "$key = $(eval echo \$"$key")"
+    #        done
+    #    done
 
     if [ "$IS_DOCKERIZED_JQ" = "true" ]; then
         # Clean used and stopped containers
