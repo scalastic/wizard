@@ -6,5 +6,5 @@
 /run/
 /tmp/
 /openssl/
-/log/
+/log/stdout.log
 .DS_Store
