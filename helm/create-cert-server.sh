@@ -15,7 +15,7 @@ mkdir -p "$CERT_PATH"
 openssl genrsa -out "./${CERT_PATH}/${SERVER_NAME}-tls.key" 4096
 
 # Create Certificate Signing Request Configuration
-cat > "./${CERT_PATH}/${SERVER_NAME}-csr.conf" <<EOF
+cat >"./${CERT_PATH}/${SERVER_NAME}-csr.conf" <<EOF
 [ req ]
 default_bits = 4096
 prompt = no
@@ -44,7 +44,7 @@ EOF
 openssl req -new -key "./${CERT_PATH}/${SERVER_NAME}-tls.key" -out "./${CERT_PATH}/${SERVER_NAME}-tls.csr" -config "./${CERT_PATH}/${SERVER_NAME}-csr.conf"
 
 # Create a cert.conf
-cat > ./${CERT_PATH}/cert.conf <<EOF
+cat >./${CERT_PATH}/cert.conf <<EOF
 
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE

@@ -54,4 +54,5 @@ helm -n "$NAMESPACE" upgrade --install --create-namespace gitlab gitlab/gitlab \
   --set registry.hpa.minReplicas=1 --set registry.hpa.maxReplicas=1 \
   2>&1
 
-kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' | base64 --decode ; echo
+kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' | base64 --decode
+echo

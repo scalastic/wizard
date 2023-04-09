@@ -5,8 +5,8 @@ LABEL Author="wid.sh"
 
 RUN apk add --no-cache curl ca-certificates
 
-RUN curl -sSfL -o /jq "https://github.com/stedolan/jq/releases/download/${JQ_VERSION}" \
-    && chmod +x /jq
+RUN curl -sSfL -o /jq "https://github.com/stedolan/jq/releases/download/${JQ_VERSION}" &&
+    chmod +x /jq
 
 FROM scratch
 ENV PATH=/

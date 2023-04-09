@@ -9,11 +9,11 @@ VERSION="0.0.1"
 source "${WILD_CWD}/lib/ext/getoptions.sh"
 
 parser_definition() {
-  setup REST help:usage     -- "Usage: wild.sh [options]... [arguments]..." ''
-  msg                       -- 'Options:'
-  flag PARAM_DOCKER     -d  -- "executes on docker images"
-  disp :usage           -h  --help
-  disp VERSION              --version
+  setup REST help:usage -- "Usage: wild.sh [options]... [arguments]..." ''
+  msg -- 'Options:'
+  flag PARAM_DOCKER -d -- "executes on docker images"
+  disp :usage -h --help
+  disp VERSION --version
 }
 
 eval "$(getoptions parser_definition) exit 1"
