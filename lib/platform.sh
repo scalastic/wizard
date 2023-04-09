@@ -2,15 +2,14 @@
 
 set -euo pipefail
 
-
 PLATFORM_JENKINS="JENKINS"
 PLATFORM_GITLAB="GITLAB"
 PLATFORM_LOCAL="LOCAL"
 
-
 _is_jenkins() {
-    if [[ -v JENKINS_URL && -v BUILD_ID && -v WORKSPACE ]]; then 
-        echo true; return
+    if [[ -v JENKINS_URL && -v BUILD_ID && -v WORKSPACE ]]; then
+        echo true
+        return
     fi
     echo false
 }
@@ -21,7 +20,8 @@ _is_gitlab() {
 
 _is_local() {
     if [ "$(_is_jenkins)" = "false" ] && [ "$(_is_gitlab)" = "false" ]; then
-      echo true; return
+        echo true
+        return
     fi
     echo false
 }

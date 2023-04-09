@@ -51,7 +51,7 @@
             "log_level": "debug"
         },
         {
-            "id": "resume",
+            "id": "summary",
             "condition": "",
             "pre_step": "",
             "step": "",

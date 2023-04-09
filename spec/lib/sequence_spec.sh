@@ -175,28 +175,28 @@ Describe "Test that sequence.sh"
 
     Describe "sequence::load"
     
-            Include "./lib/tooling.sh"
-    
-            It "returns a status success when all steps are executed"
-    
-                FAKE_DEFINITION_PATH="config/fake_definition.json"
-    
-                BeforeCall "set_jq_tool"
-                BeforeCall "echo '{\"sequence\": [ \
-                    {\"id\": \"fake_id_1\", \"fake_step\": \"fake_value_1\"}, \
-                    {\"id\": \"fake_id_2\", \"fake_step\": \"fake_value_2\"} \
-                    ]}' > ${FAKE_DEFINITION_PATH}"
-                AfterCall "rm ${FAKE_DEFINITION_PATH}"
-    
-                # shellcheck disable=SC2154
-                When call sequence::load "${FAKE_DEFINITION_PATH}"
-    
-                The status should be success
-                The stderr should include "Loop over step fake_id_1"
-                The stderr should include "Loop over step fake_id_2"
-                The variable fake_step should eq "fake_value_2"
-            End
-    
+        Include "./lib/tooling.sh"
+
+        It "returns a status success when all steps are executed"
+
+            FAKE_DEFINITION_PATH="config/fake_definition.json"
+
+            BeforeCall "set_jq_tool"
+            BeforeCall "echo '{\"sequence\": [ \
+                {\"id\": \"fake_id_1\", \"fake_step\": \"fake_value_1\"}, \
+                {\"id\": \"fake_id_2\", \"fake_step\": \"fake_value_2\"} \
+                ]}' > ${FAKE_DEFINITION_PATH}"
+            AfterCall "rm ${FAKE_DEFINITION_PATH}"
+
+            # shellcheck disable=SC2154
+            When call sequence::load "${FAKE_DEFINITION_PATH}"
+
+            The status should be success
+            The stderr should include "Loop over step fake_id_1"
+            The stderr should include "Loop over step fake_id_2"
+            The variable fake_step should eq "fake_value_2"
         End
+
+    End
 
 End

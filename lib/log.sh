@@ -46,7 +46,7 @@ LOG_COLOR_OFF="\e[0m"
 #   color: color to use for the message
 #   color_off: color to use to turn off the color
 # Outputs:
-#   Redirects and writes the message to stderr and file log/stdout.log 
+#   Redirects and writes the message to stderr and file log/stdout.log
 #######################################
 log() {
     local level=$1
@@ -54,7 +54,7 @@ log() {
     local color=$3
     local color_off=$4
     if [ "$LOG_LEVEL" -le "$level" ]; then
-        echo -e "${color}[${LOG_LEVELS[$level]}] $message${color_off}" >&2 | tee -a log/stdout.log > /dev/null
+        echo -e "${color}[${LOG_LEVELS[$level]}] $message${color_off}" >&2 | tee -a log/stdout.log >/dev/null
     fi
 }
 

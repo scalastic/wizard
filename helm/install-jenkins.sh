@@ -38,12 +38,11 @@ helm upgrade --install ingress-nginx ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   --set controller.admissionWebhooks.enabled=false
 
-
 # Install Jenkins
 helm repo add jenkins https://charts.jenkins.io
 helm repo update
 helm upgrade --install jenkins --namespace jenkins \
-    -f helm/jenkins/values.yaml \
-    jenkinsci/jenkins 2>&1
+  -f helm/jenkins/values.yaml \
+  jenkinsci/jenkins 2>&1
 
 #kubectl apply -f helm/jenkins/ingress.yaml >&1
