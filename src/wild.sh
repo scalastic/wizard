@@ -3,6 +3,7 @@
 set -euo pipefail
 
 export WILD_CWD="${PWD}"
+# shellcheck disable=SC2034
 VERSION="0.0.1"
 
 # shellcheck disable=SC1091
@@ -42,4 +43,5 @@ source lib/platform.sh
 # shellcheck disable=SC1091
 source lib/sequence.sh
 
+# shellcheck disable=SC2119
 sequence::load

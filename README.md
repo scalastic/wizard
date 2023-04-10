@@ -1,6 +1,8 @@
 
 ![Wild](./docs/wild.png)
 
+[![License](https://img.shields.io/github/license/scalastic/wild.svg?style=flat-square)](https://github.com/scalastic/wild/blob/master/LICENSE)
+[![bash](https://img.shields.io/badge/bash-4.4%2B-brightgreen)](https://www.gnu.org/software/bash/)
 [![Test and Code Coverage](https://github.com/scalastic/wild/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/scalastic/wild/actions/workflows/workflow.yml)
 [![codecov](https://codecov.io/gh/scalastic/wild/branch/main/graph/badge.svg?token=KO9TRVNQWE)](https://codecov.io/gh/scalastic/wild)
 
@@ -87,9 +89,11 @@ Developers can test the operation of the CI/CD chain on their local station and 
 
 - [getoptions](https://github.com/ko1nksm/getoptions) - An elegant option parser for shell scripts (full support for all POSIX shells).
 
-- [portable-echo](https://github.com/ko1nksm/portable-echo.sh) - Portable echo shell function for POSIX compliant shells. It works exactly the same in all shells.
-
 - [ShellSpec](https://github.com/shellspec/shellspec) - A full-featured BDD unit testing framework for dash, bash, ksh, zsh and all POSIX shells that provides first-class features such as code coverage, mocking, parameterized test, parallel execution and more.
+
+- [ShellCheck](https://github.com/koalaman/shellcheck) - A static analysis tool for shell scripts.
+
+- [ShellMetrics](https://github.com/shellspec/shellmetrics) - ShellMetrics is Cyclomatic Complexity Analyzer for shell script.
 
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) - A specification for adding human and machine readable meaning to commit messages.
 

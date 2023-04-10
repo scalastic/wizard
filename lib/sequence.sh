@@ -188,6 +188,7 @@ sequence::_iterate_over_sequence() {
 # Returns:
 #   None
 #######################################
+# shellcheck disable=SC2120
 sequence::load() {
     local sequence_definition_path="${1:-}"
 

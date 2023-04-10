@@ -63,7 +63,7 @@ log() {
 # Globals:
 #   LOG_LEVEL_DEBUG (read-only)
 #   LOG_LEVEL_DEBUG_COLOR (read-only)
-#   LOG_LEVEL_DEBUG_COLOR_OFF (read-only)
+#   LOG_COLOR_OFF (read-only)
 # Arguments:
 #   message: message to log
 # Outputs:
@@ -84,7 +84,7 @@ debug() {
 # Globals:
 #   LOG_LEVEL_INFO (read-only)
 #   LOG_LEVEL_INFO_COLOR (read-only)
-#   LOG_LEVEL_INFO_COLOR_OFF (read-only)
+#   LOG_COLOR_OFF (read-only)
 # Arguments:
 #   message: message to log
 # Outputs:
@@ -99,7 +99,7 @@ info() {
 # Globals:
 #   LOG_LEVEL_WARN (read-only)
 #   LOG_LEVEL_WARN_COLOR (read-only)
-#   LOG_LEVEL_WARN_COLOR_OFF (read-only)
+#   LOG_COLOR_OFF (read-only)
 # Arguments:
 #   message: message to log
 # Outputs:
@@ -114,7 +114,7 @@ warn() {
 # Globals:
 #   LOG_LEVEL_ERROR (read-only)
 #   LOG_LEVEL_ERROR_COLOR (read-only)
-#   LOG_LEVEL_ERROR_COLOR_OFF (read-only)
+#   LOG_COLOR_OFF (read-only)
 # Arguments:
 #   message: message to log
 # Outputs:
@@ -129,7 +129,7 @@ error() {
 # Globals:
 #   LOG_LEVEL_FATAL (read-only)
 #   LOG_LEVEL_FATAL_COLOR (read-only)
-#   LOG_LEVEL_FATAL_COLOR_OFF (read-only)
+#   LOG_COLOR_OFF (read-only)
 # Arguments:
 #   message: message to log
 # Outputs:
