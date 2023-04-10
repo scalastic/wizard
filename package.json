@@ -1,19 +1,16 @@
 {
-  "name": "wide-integration-and-delivery",
-  "version": "2023.3.1-dev",
-  "description": "A universal and independent CI/CD solution",
-  "homepage": "https://wild.sh",
-  "scripts": [
-    "wild"
-  ],
+  "name": "Wild",
+  "version": "0.0.1",
+  "description": "Wild fills the missing link of the DevOps approach and its shift-left principal herein. With Wild the shifts are so close to the developer that they no longer exist.",
+  "homepage": "https://scalastic.io/en/",
+  "scripts": ["bin/wild"],
   "license": "MIT",
   "files": [
-    "config/default/sequence-default.json",
-    "src/wild.sh",
+    "lib/log.sh",
     "lib/platform.sh",
     "lib/sequence.sh",
     "lib/tooling.sh",
-    "lib/ext/getoptions.sh"
+    "src/wild.sh"
   ],
   "install": "make install"
 }
