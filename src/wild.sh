@@ -35,7 +35,7 @@ fi
 source lib/log.sh
 # shellcheck disable=SC1091
 source lib/tooling.sh
-set_jq_tool
+tooling::set_jq_tool
 
 # shellcheck disable=SC1091
 source lib/platform.sh

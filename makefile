@@ -18,7 +18,7 @@ test:
 	shellspec -s bash
 
 dev:
-	shellspec -s bash spec/**/sequence_spec.sh
+	shellspec -s bash spec/**/tooling_spec.sh
 
 coverage:
 	shellspec -s bash --kcov

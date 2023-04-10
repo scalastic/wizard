@@ -70,7 +70,13 @@ log() {
 #   Writes the debug message to stdout
 #######################################
 debug() {
-    log "$LOG_LEVEL_DEBUG" "[${FUNCNAME[1]}] $1" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
+    local function_name
+
+    [ -v FUNCNAME ] && [ "${#FUNCNAME[@]}" -gt 1 ] && \
+        function_name="${FUNCNAME[1]}" || \
+        function_name="unknown function"
+
+    log "$LOG_LEVEL_DEBUG" "[${function_name}] $1" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
 }
 
 #######################################
