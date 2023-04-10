@@ -207,22 +207,22 @@ sequence::load() {
 
     #   for item in "${sequences_id[@]}"; do
     #       warn "Step is $item"
-    #
+    # test
     #        # shellcheck disable=SC2207 disable=SC2016
     #        local step_definition=($("$JQ" <"${sequence_definition_path}" -rc --arg item "$item" '.sequence[] | select(.id == $item)'))
     #        # shellcheck disable=SC2128
     #        info "Step definition is ${step_definition}"
-    #
+    # test
     #        # shellcheck disable=SC2207 disable=SC2128
     #        local step_keys=($("$JQ" <<<"$step_definition" -rc 'keys_unsorted | @sh' | tr -d \'))
     #        # shellcheck disable=SC2145
     #        debug "Keys definition is ${step_keys[@]}"
-    #
+    # test
     #        local initializer
     #        # shellcheck disable=SC2128 disable=SC2086
     #        initializer=$("$JQ" <<<$step_definition 'to_entries[] | "\(.key)=\(.value)"' | tr -d \")
     #        eval "$initializer"
-    #
+    # test
     #        # Read env values defining step config
     #        for key in "${step_keys[@]}"; do
     #            info "$key = $(eval echo \$"$key")"

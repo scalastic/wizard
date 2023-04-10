@@ -89,6 +89,8 @@ Developers can test the operation of the CI/CD chain on their local station and 
 
 - [getoptions](https://github.com/ko1nksm/getoptions) - An elegant option parser for shell scripts (full support for all POSIX shells).
 
+- [Inline](https://github.com/carlocorradini/inline) - Inline script sources.
+
 - [ShellSpec](https://github.com/shellspec/shellspec) - A full-featured BDD unit testing framework for dash, bash, ksh, zsh and all POSIX shells that provides first-class features such as code coverage, mocking, parameterized test, parallel execution and more.
 
 - [ShellCheck](https://github.com/koalaman/shellcheck) - A static analysis tool for shell scripts.

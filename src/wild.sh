@@ -33,15 +33,15 @@ fi
 
 # Import librairies
 # shellcheck disable=SC1091
-source lib/log.sh
+source "${WILD_CWD}/lib/log.sh"
 # shellcheck disable=SC1091
-source lib/tooling.sh
+source "${WILD_CWD}/lib/tooling.sh"
 tooling::set_jq_tool
 
 # shellcheck disable=SC1091
-source lib/platform.sh
+source "${WILD_CWD}/lib/platform.sh"
 # shellcheck disable=SC1091
-source lib/sequence.sh
+source "${WILD_CWD}/lib/sequence.sh"
 
 # shellcheck disable=SC2119
 sequence::load

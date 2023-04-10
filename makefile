@@ -3,9 +3,12 @@ BINDIR := $(PREFIX)/bin
 LIBDIR := $(PREFIX)/lib
 SHELL=bash
 
-.PHONY: all check metrics test coverage dev
+.PHONY: all build check metrics test coverage dev
 
 all: check coverage metrics
+
+build:
+	contrib/build.sh
 
 check:
 	shellcheck -a -s bash src/*.sh lib/*.sh spec/lib/*.sh
