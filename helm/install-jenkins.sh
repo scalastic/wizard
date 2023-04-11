@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
+#
+# Installs Jenkins from Helm chart with a self signed certificate for TLS with a self signed CA
+#
+# Usage:
+#   ./install-jenkins.sh
+#
+# Requires:
+#   - kubectl
+#   - helm
+#   - openssl
+#
+# References:
+#   - https://artifacthub.io/packages/helm/jenkinsci/jenkins
+#   - https://github.com/jenkinsci/helm-charts
 
 set -euo pipefail
 

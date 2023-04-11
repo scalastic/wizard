@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#
+# Creates a package.json file for Wild
 
 export LANG=C
 

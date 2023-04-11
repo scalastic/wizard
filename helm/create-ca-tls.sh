@@ -1,4 +1,25 @@
 #!/usr/bin/env bash
+#
+# Creates a CA certificate for TLS
+#
+# Usage:
+#   ./create-ca-tls.sh [COMPANY_NAME]
+#
+# Example:
+#   ./create-ca-tls.sh scalastic
+#
+# Arguments:
+#   COMPANY_NAME: Name of the company (default: scalastic)
+#
+# Environment variables:
+#   CERT_CA_PATH: Path to the CA certificate (default: openssl/ca)
+#
+# Requires:
+#   - openssl
+#
+# References:
+#   - https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs
+#   - https://devopscube.com/create-self-signed-certificates-openssl/
 
 set -euo pipefail
 
