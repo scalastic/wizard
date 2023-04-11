@@ -1,4 +1,6 @@
 # shellcheck disable=SC2148
+#
+# Description: Unit tests for platform.sh
 
 Describe "Test that platform.sh"
 

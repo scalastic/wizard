@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#
+# Creates a release
 
 set  -eu
 

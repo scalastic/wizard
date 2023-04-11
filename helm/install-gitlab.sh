@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
+#
+# Installs GitLab from Helm chart with a wildcard self signed certificate for TLS with a self signed CA
+#
+# Usage:
+#   ./install-gitlab.sh
+#
+# Requires:
+#   - kubectl
+#   - helm
+#   - openssl
+#
+# References:
+#   - https://docs.gitlab.com/charts/installation/
+#   - https://docs.gitlab.com/charts/installation/advanced.html#install-gitlab-with-a-wildcard-self-signed-certificate-for-tls-with-a-self-signed-ca
 
 set -euo pipefail
 

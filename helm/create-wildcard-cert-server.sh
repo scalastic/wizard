@@ -1,4 +1,28 @@
 #!/usr/bin/env bash
+#
+# Creates a wildcard server certificate for TLS with a self signed CA
+#
+# Usage:
+#   ./create-wildcard-cert-server.sh [SERVER_NAME] [COMPANY_NAME]
+#
+# Example:
+#   ./create-wildcard-cert-server.sh server scalastic
+#
+# Arguments:
+#   SERVER_NAME: Name of the server (default: server)
+#   COMPANY_NAME: Name of the company (default: scalastic)
+#
+# Environment variables:
+#   CERT_CA_PATH: Path to the CA certificate (default: openssl/ca)
+#   CERT_PATH: Path to the certificate (default: openssl)
+#
+# Requires:
+#   - openssl
+#
+# References:
+#   - https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs
+#   - https://devopscube.com/create-self-signed-certificates-openssl/
+
 
 set -euo pipefail
 

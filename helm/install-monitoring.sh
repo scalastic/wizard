@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
+#
+# Installs Prometheus Stack from Helm chart
+#
+# Usage:
+#   ./install-monitoring.sh
+#
+# Requires:
+#   - kubectl
+#   - helm
+#
+# References:
+#   - https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+
 
 set -euo pipefail
 

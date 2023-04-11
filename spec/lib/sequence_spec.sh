@@ -1,4 +1,6 @@
 # shellcheck disable=SC2148
+#
+# Description: Unit tests for sequence.sh
 
 Describe "Test that sequence.sh"
 
