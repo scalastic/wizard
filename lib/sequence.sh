@@ -14,27 +14,27 @@ set -euo pipefail
 #   Writes the fatal message to stdout if prerequisites are not met and exit 255
 #######################################
 sequence::_check_prerequisites() {
-    debug "Check prerequisites for sequence"
+    log::debug "Check prerequisites for sequence"
 
     local status=0
 
     if [ -z "${WILD_CWD:-}" ]; then
-        error "Missing WILD_CWD environment variable"
+        log::error "Missing WILD_CWD environment variable"
         status=1
     fi
 
     if [ -z "${JQ:-}" ]; then
-        error "Missing jq command"
+        log::error "Missing jq command"
         status=1
     fi
 
     if [ "$status" -ne 0 ]; then
-        fatal "Prerequisites for sequence are not met"
+        log::fatal "Prerequisites for sequence are not met"
         exit 255
     fi
 
-    debug "WILD_CWD is ${WILD_CWD}"
-    debug "jq command is ${JQ}"
+    log::debug "WILD_CWD is ${WILD_CWD}"
+    log::debug "jq command is ${JQ}"
 }
 
 #######################################
@@ -53,21 +53,21 @@ sequence::_check_prerequisites() {
 sequence::_check_sequence_definition_path() {
     local path
 
-    debug "Check sequence definition path"
+    log::debug "Check sequence definition path"
 
     if [ -z "${1:-}" ]; then
-        info "No sequence definition path provided, using default one"
+        log::info "No sequence definition path provided, using default one"
         path="config/sequence-default.json"
     else
         path="$1"
     fi
 
     if [ ! -f "${WILD_CWD}/${path}" ]; then
-        fatal "Sequence definition file in ${path} does not exist"
+        log::fatal "Sequence definition file in ${path} does not exist"
         exit 255
     fi
 
-    info "Load sequence definition from ${path}"
+    log::info "Load sequence definition from ${path}"
     echo "$path"
 }
 
@@ -88,8 +88,8 @@ sequence::_load_sequences_id() {
     local sequences_id=($("$JQ" <"${WILD_CWD}/${sequence_definition_path}" -rc '.sequence[].id'))
 
     # shellcheck disable=SC2145
-    debug "Sequences id are: ${sequences_id[@]}"
-    debug "Sequences have ${#sequences_id[@]} ids"
+    log::debug "Sequences id are: ${sequences_id[@]}"
+    log::debug "Sequences have ${#sequences_id[@]} ids"
 
     echo "${sequences_id[@]}"
 }
@@ -116,7 +116,7 @@ sequence::_load_step_definition() {
     step_definition=($("$JQ" <"${WILD_CWD}/${sequence_definition_path}" -rc ".sequence[] | select(.id == \"${item_id}\")"))
 
     # shellcheck disable=SC2145
-    debug "Step definition is: ${step_definition[@]}"
+    log::debug "Step definition is: ${step_definition[@]}"
 
     echo "${step_definition[@]}"
 }
@@ -139,7 +139,7 @@ sequence::_load_step_values() {
     # shellcheck disable=SC2128 disable=SC2086
     initializer=$("$JQ" <<<$step_definition 'to_entries[] | "\(.key)=\(.value)"' | tr -d \")
 
-    debug "Step values are: $initializer"
+    log::debug "Step values are: $initializer"
 
     eval "$initializer"
 }
@@ -163,14 +163,14 @@ sequence::_iterate_over_sequence() {
     local sequences_id=("$@")
 
     for item in "${sequences_id[@]}"; do
-        info "Loop over step $item"
+        log::info "Loop over step $item"
 
         local step_definition
         # shellcheck disable=SC2207
         step_definition=($(sequence::_load_step_definition "$item" "$sequence_definition_path"))
 
         # shellcheck disable=SC2128 disable=SC2145
-        debug "Step definition is ${step_definition[@]}"
+        log::debug "Step definition is ${step_definition[@]}"
 
         sequence::_load_step_values "${step_definition[@]}"
     done
@@ -200,34 +200,10 @@ sequence::load() {
     sequences_id+=($(sequence::_load_sequences_id "$sequence_definition_path"))
 
     # shellcheck disable=SC2145
-    debug "Caller Sequences id are: ${sequences_id[@]}"
-    debug "Length Sequences id are: ${#sequences_id[@]}"
+    log::debug "Caller Sequences id are: ${sequences_id[@]}"
+    log::debug "Length Sequences id are: ${#sequences_id[@]}"
 
     sequence::_iterate_over_sequence "$sequence_definition_path" "${sequences_id[@]}"
-
-    #   for item in "${sequences_id[@]}"; do
-    #       warn "Step is $item"
-    # test
-    #        # shellcheck disable=SC2207 disable=SC2016
-    #        local step_definition=($("$JQ" <"${sequence_definition_path}" -rc --arg item "$item" '.sequence[] | select(.id == $item)'))
-    #        # shellcheck disable=SC2128
-    #        info "Step definition is ${step_definition}"
-    # test
-    #        # shellcheck disable=SC2207 disable=SC2128
-    #        local step_keys=($("$JQ" <<<"$step_definition" -rc 'keys_unsorted | @sh' | tr -d \'))
-    #        # shellcheck disable=SC2145
-    #        debug "Keys definition is ${step_keys[@]}"
-    # test
-    #        local initializer
-    #        # shellcheck disable=SC2128 disable=SC2086
-    #        initializer=$("$JQ" <<<$step_definition 'to_entries[] | "\(.key)=\(.value)"' | tr -d \")
-    #        eval "$initializer"
-    # test
-    #        # Read env values defining step config
-    #        for key in "${step_keys[@]}"; do
-    #            info "$key = $(eval echo \$"$key")"
-    #        done
-    #    done
 
     if [ "$IS_DOCKERIZED_JQ" = "true" ]; then
         # Clean used and stopped containers

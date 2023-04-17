@@ -16,6 +16,9 @@ check:
 coverage:
 	shellspec -s bash --kcov
 
+doc:
+	contrib/make_doc.sh
+
 metrics:
 	contrib/metrics.sh
 

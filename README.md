@@ -11,7 +11,7 @@
 
 # Wide Integration Locally with Delivery
 
-`Wild` is a framework that allows to run the same integration and deployment scripts locally and on the build server. It is designed to be used by developers and CI/CD platforms.
+`Wild` is a framework that allows you to run the same integration scripts locally and on the server. It is designed to be used by developers and CI/CD platforms.
 
 `Wild` stands for **Wide Integration Locally with Delivery**. Due to its ***Wild*** nature, it fills the gap between the developer and the CI/CD platform by allowing to run the exact same integration and deployment scripts locally and on the server.
 
