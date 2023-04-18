@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
-#
-# Project definition functions for bash scripts
+#@lib
+#@desc Project definition functions for bash scripts
 
 set -euo pipefail
 
 #######################################
-# Get the project configuration path.
+#desc Get the project configuration path.
+#@example project::get_configuration_path
 # Globals:
-#   None
+#@const   None
 # Arguments:
-#   path: path to the project configuration file
-# Returns:
-#   The path to the project configuration file
+#@arg   path: path to the project configuration file
+# Outputs:
+#@stdout path to the project configuration file (default: config/project.sh)
 #######################################
 project::get_configuration_path() {
     local path
@@ -34,20 +35,22 @@ project::get_configuration_path() {
 }
 
 #######################################
-# Print the project configuration.
+#@desc Print the project configuration.
+#@example project::print_configuration
 # Globals:
-#   name: project name (read-only)
-#   version: project version (read-only)
-#   description: project description (read-only)
-#   project: project configuration (read-only)
-#   project_language: project language configuration (read-only)
-#   project_build: project build configuration (read-only)
-#   project_architecture: project architecture configuration (read-only)
-#   project_architecture_layers: project architecture layers configuration (read-only)
+#@const   name: project name (read-only)
+#@const   version: project version (read-only)
+#@const   description: project description (read-only)
+#@const   project: project configuration (read-only)
+#@const   project_language: project language configuration (read-only)
+#@const   project_build: project build configuration (read-only)
+#@const   project_architecture: project architecture configuration (read-only)
+#@const   project_architecture_layers: project architecture layers configuration (read-only)
 # Arguments:
-#   None
-# Returns:
-#   1 if the project configuration is not defined yet
+#@arg   None
+# Outputs:
+#@stdout   the project configuration
+#@stderr   1 if the project configuration is not defined yet
 #######################################
 project::print_configuration() {
 
@@ -74,15 +77,14 @@ project::print_configuration() {
 }
 
 #######################################
-# Visibity:
-#   Private
-# Print the project architecture layers.
+#@desc Print the project architecture layers.
+#@example _architecture_print_layers
 # Globals:
-#   project_architecture_layers: project architecture layers configuration (read-only)
+#@const   project_architecture_layers: project architecture layers configuration (read-only)
 # Arguments:
-#   None
-# Returns:
-#   None
+#@arg   None
+# Outputs:
+#stdout   None
 #######################################
 _architecture_print_layers() {
     local result=""

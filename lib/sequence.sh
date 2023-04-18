@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
-#
-# Sequence definition functions for bash scripts
+#@lib
+#@desc Sequence definition functions for bash scripts
 
 set -euo pipefail
 
 #######################################
-# Check prerequisites for sequence.
+#@desc Check prerequisites for sequence.
+#@example sequence::_check_prerequisites
 # Globals:
-#   JQ (read-only)
+#@const   JQ (read-only)
 # Arguments:
-#   None
+#@arg   None
 # Outputs:
-#   Writes the fatal message to stdout if prerequisites are not met and exit 255
+#@stdout   Writes the fatal message to stdout if prerequisites are not met and exit 255
 #######################################
 sequence::_check_prerequisites() {
     log::debug "Check prerequisites for sequence"
@@ -38,17 +39,17 @@ sequence::_check_prerequisites() {
 }
 
 #######################################
-# Check if the sequence definition file exists.
+#@desc Check if the sequence definition file exists.
+#@example sequence::_check_sequence_definition_path
 # Globals:
-#   None
+#@const   None
 # Arguments:
-#   sequence_definition_path: path to the sequence definition file
+#@arg   sequence_definition_path: path to the sequence definition file
 # Outputs:
-#   Writes the fatal message to stdout if the sequence definition file does not exist and exit 255
-#   Writes the info message to stdout if the sequence definition file exists
-#   Writes the sequence definition path to stdout
+#@stderr   Writes the fatal message to stdout if the sequence definition file does not exist and exit 255
+#@stdout   Writes the info message to stdout if the sequence definition file exists
 # Returns:
-#   sequence_definition_path
+#@return   sequence_definition_path: path to the sequence definition file
 #######################################
 sequence::_check_sequence_definition_path() {
     local path
@@ -72,14 +73,15 @@ sequence::_check_sequence_definition_path() {
 }
 
 #######################################
-# Load sequences id from a file.
+#@desc Load sequences id from a file.
+#@example sequence::_load_sequences_id \\"config/sequence-default.json\\"
 # Globals:
-#   JQ (read-only)
-#   sequence_definition_path (read-only)
+#@const   JQ (read-only)
+#@const   sequence_definition_path (read-only)
 # Outputs:
-#   Writes debug messages to stdout
+#@stdout   Writes debug messages to stdout
 # Returns:
-#   sequences_id
+#@return   id of the sequences as array
 #######################################
 sequence::_load_sequences_id() {
     local sequence_definition_path="${1:-}"
@@ -95,17 +97,18 @@ sequence::_load_sequences_id() {
 }
 
 #######################################
-# Load step definition from an item and the sequence definition file.
+#@desc Load step definition from an item and the sequence definition file.
+#@example sequence::_load_step_definition \\"step1\\" \\"config/sequence-default.json\\"
 # Globals:
-#   JQ (read-only)
-#   sequence_definition_path (read-only)
+#@const   JQ (read-only)
+#@const   sequence_definition_path (read-only)
 # Arguments:
-#   item_id: id of the item to load
-#   sequence_definition_path: path to the sequence definition file
+#@arg   item_id: id of the item to load
+#@arg   sequence_definition_path: path to the sequence definition file
 # Outputs:
-#   Writes debug messages to stdout
+#@stdout   Writes debug messages to stdout
 # Returns:
-#   step_definition as JSON array
+#@return   Step definition as array
 #######################################
 sequence::_load_step_definition() {
     local item_id="${1:-}"
@@ -122,15 +125,16 @@ sequence::_load_step_definition() {
 }
 
 #######################################
-# Load step values as environment variables from a step definition as JSON.
+#@desc Load step values as environment variables from a step definition as JSON.
+#@example sequence::_load_step_values \\"[\"id\":\"step1\",\"name\":\"Step 1\",\"description\":\"Step 1 description\",\"type\":\"command\",\"command\":\"echo 'Step 1'\"]\\"
 # Globals:
-#   JQ (read-only)
+#@const   JQ (read-only)
 # Arguments:
-#   step_definition: step definition to load
+#@arg   step_definition: step definition to load
 # Outputs:
-#   Writes debug messages to stdout
+#@stdout   Writes debug messages to stdout
 # Returns:
-#   step_values
+#@return   The step values
 #######################################
 sequence::_load_step_values() {
 
@@ -145,17 +149,17 @@ sequence::_load_step_values() {
 }
 
 #######################################
-# Iterate over sequence.
+#@desc Iterate over sequence.
+#@example sequence::_iterate_over_sequence \\"config/sequence-default.json\\" \\"step1 step2 step3\\"
 # Globals:
-#   sequence_definition_path (read-only)
+#@const   sequence_definition_path (read-only)
 # Arguments:
-#   sequence_definition_path: path to the sequence definition file
-#   sequences_id: array of sequences id
+#@arg   sequence_definition_path: path to the sequence definition file
+#@arg   sequences_id: array of sequences id
 # Outputs:
-#   Writes debug messages to stdout
-#   Writes info messages to stdout
+#@stdout   None
 # Returns:
-#   None
+#@return   None
 #######################################
 sequence::_iterate_over_sequence() {
     local sequence_definition_path="${1}"
@@ -178,15 +182,16 @@ sequence::_iterate_over_sequence() {
 }
 
 #######################################
-# Load sequence definition from a file.
+#@desc Load sequence definition from a file.
+#@example sequence::load \\"config/sequence-default.json\\"
 # Globals:
-#   JQ (read-only)
+#@const   JQ (read-only)
 # Arguments:
-#   sequence_definition_path: path to the sequence definition file
+#@arg   sequence_definition_path: path to the sequence definition file
 # Outputs:
-#   Writes the sequence definition details to stdout
+#@stdout   Writes the sequence definition details to stdout
 # Returns:
-#   None
+#@return   None
 #######################################
 # shellcheck disable=SC2120
 sequence::load() {
