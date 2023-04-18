@@ -9,4 +9,4 @@
 ### `get_platform`
 
 ---------------------------------------
-*Generated from lib/platform.sh (17.04.2023 23:46:04)*
+*Generated from [lib/platform.sh](../../lib/platform.sh) (18.04.2023 02:12:58)*

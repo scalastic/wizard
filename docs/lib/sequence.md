@@ -1,3 +1,5 @@
+## Functions
+
 ### `sequence::_check_prerequisites`
 
 ### `sequence::_check_sequence_definition_path`
@@ -13,4 +15,4 @@
 ### `sequence::load`
 
 ---------------------------------------
-*Generated from lib/sequence.sh (17.04.2023 23:46:05)*
+*Generated from [lib/sequence.sh](../../lib/sequence.sh) (18.04.2023 02:13:00)*

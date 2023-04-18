@@ -1,3 +1,5 @@
+## Functions
+
 ### `_log`
 
 ### `_banner`
@@ -15,4 +17,4 @@
 ### `log::banner`
 
 ---------------------------------------
-*Generated from lib/log.sh (17.04.2023 23:46:05)*
+*Generated from [lib/log.sh](../../lib/log.sh) (18.04.2023 02:12:59)*

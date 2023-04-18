@@ -91,6 +91,15 @@ doc::main() {
 
     for file in "$@"; do
 
+        is_comment=false
+        is_library=false
+        is_first_constant=true
+        is_constant=false
+        is_first_function=true
+        is_function=false
+        is_first_argument=true
+        is_first_return=true
+
         mardown_file="docs/${file%.*}.md"
         mardown_file_dir=$(dirname "$mardown_file")
         mkdir -p "$mardown_file_dir"
@@ -228,7 +237,8 @@ doc::main() {
         done < "$file" > "$mardown_file"
 
         echo '---------------------------------------' >> "$mardown_file"
-        echo "*Generated from $file ($(date +"%d.%m.%Y %H:%M:%S"))*" >> "$mardown_file"
+        relpath=$(realpath --relative-to="$mardown_file_dir" "$file")
+        echo "*Generated from [$file](${relpath}) ($(date +"%d.%m.%Y %H:%M:%S"))*" >> "$mardown_file"
     done
     #exit 0
 }

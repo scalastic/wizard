@@ -24,6 +24,8 @@ This script is used to test documentation generation for bash scripts used in Wi
 
 * *Constant that stores log level color off definition.*
 
+## Functions
+
 ### `_log`
 
 * *Log a message.*
@@ -56,4 +58,4 @@ This script is used to test documentation generation for bash scripts used in Wi
 
 
 ---------------------------------------
-*Generated from lib/doc_test.sh (17.04.2023 23:46:05)*
+*Generated from [lib/doc_test.sh](../../lib/doc_test.sh) (18.04.2023 02:12:59)*
