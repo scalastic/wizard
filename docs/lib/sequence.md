@@ -139,4 +139,4 @@ sequence::load "config/sequence-default.json"
   * `stdout`: Writes the sequence definition details to stdout
 
 ---------------------------------------
-*Generated from [lib/sequence.sh](../../lib/sequence.sh) (23.04.2023 11:52:10)*
+*Generated from [lib/sequence.sh](../../lib/sequence.sh) (23.04.2023 16:48:37)*

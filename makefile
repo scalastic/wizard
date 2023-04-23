@@ -5,13 +5,13 @@ SHELL=bash
 
 .PHONY: all build check metrics test coverage dev
 
-all: check coverage metrics
+all: package check metrics coverage doc
 
 build:
 	contrib/build.sh
 
 check:
-	shellcheck -a -s bash src/*.sh lib/*.sh lib/ext/doc.sh spec/lib/*.sh
+	shellcheck -a -s bash src/*.sh lib/*.sh lib/ext/gendoc.sh spec/lib/*.sh
 
 coverage:
 	shellspec -s bash --kcov

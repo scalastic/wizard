@@ -21,7 +21,7 @@ declare -r LOG_LEVEL_ERROR=3
 declare -r LOG_LEVEL_FATAL=4
 
 #@desc Constant that stores current log level.
-declare -r LOG_LEVEL=${LOG_LEVEL:-$LOG_LEVEL_INFO}
+declare LOG_LEVEL=${LOG_LEVEL:-$LOG_LEVEL_INFO}
 
 #@desc Array constant that stores all log level definitions.
 declare -r LOG_LEVELS=(DEBUG INFO WARN ERROR FATAL)

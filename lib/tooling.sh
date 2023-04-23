@@ -10,7 +10,7 @@ set -euo pipefail
 tooling::_check_command() {
     log::debug "Check command $1"
 
-    [ -x "$(command -v "$1")" ] && echo true || echo false
+    if [ -x "$(command -v "$1")" ]; then { true; } else { false; } fi
 }
 
 ##desc      Get the path of a command
@@ -31,13 +31,13 @@ tooling::_get_command() {
 tooling::set_jq() {
     log::debug "Set jq tool"
 
-    if [ "$(tooling::_check_command jq)" = "true" ]; then
+    if tooling::_check_command jq; then
         # shellcheck disable=SC2155
         export JQ="$(tooling::_get_command jq)"
         export IS_DOCKERIZED_JQ=false
         log::info "Using jq command $JQ"
 
-    elif [ "$(tooling::_check_command docker)" = "true" ]; then
+    elif tooling::_check_command docker; then
         # shellcheck disable=SC2155
         export JQ="$(tooling::_get_command docker) run -i scalastic/wild:latest"
         export IS_DOCKERIZED_JQ=true

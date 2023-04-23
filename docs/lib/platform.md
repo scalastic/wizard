@@ -50,7 +50,7 @@ project::_is_local
 
   * `return`: false otherwise
 
-### `project::_is_local`
+### `platform::_is_local`
 
 * Test if the script is running locally.
 
@@ -81,4 +81,4 @@ platform::get_platform
   * `stdout`: The platform where the script is running
 
 ---------------------------------------
-*Generated from [lib/platform.sh](../../lib/platform.sh) (23.04.2023 11:52:07)*
+*Generated from [lib/platform.sh](../../lib/platform.sh) (23.04.2023 16:48:37)*

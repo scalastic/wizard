@@ -209,4 +209,4 @@ log::banner "This is a banner message"
   * `stdout`: Writes the banner message to stdout
 
 ---------------------------------------
-*Generated from [lib/log.sh](../../lib/log.sh) (23.04.2023 11:52:09)*
+*Generated from [lib/log.sh](../../lib/log.sh) (23.04.2023 16:48:37)*

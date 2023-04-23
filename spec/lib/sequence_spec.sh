@@ -89,7 +89,7 @@ Describe "Test that sequence.sh"
 
             FAKE_DEFINITION_PATH="config/fake_definition.json"
 
-            BeforeRun "tooling::set_jq_tool"
+            BeforeRun "tooling::set_jq"
             BeforeRun "echo '{\"sequence\": [{\"id\": \"fake_id_1\"}, {\"id\": \"fake_id_2\"}]}' > ${FAKE_DEFINITION_PATH}"
             AfterRun "rm ${FAKE_DEFINITION_PATH}"
 
@@ -110,7 +110,7 @@ Describe "Test that sequence.sh"
 
             FAKE_DEFINITION_PATH="config/fake_definition.json"
 
-            BeforeRun "tooling::set_jq_tool"
+            BeforeRun "tooling::set_jq"
             BeforeRun "echo '{\"sequence\": [ \
                 {\"id\": \"fake_id_1\", \"fake_step\": \"fake_value_1\"}, \
                 {\"id\": \"fake_id_2\", \"fake_step\": \"fake_value_2\"} \
@@ -134,7 +134,7 @@ Describe "Test that sequence.sh"
 
             FAKE_DEFINITION_PATH="config/fake_definition.json"
 
-            BeforeCall "tooling::set_jq_tool"
+            BeforeCall "tooling::set_jq"
             step_definition="""{\"id\":\"fake_id_1\",\"fake_step\":\"fake_value_1\"}"""
 
             # shellcheck disable=SC2154
@@ -155,7 +155,7 @@ Describe "Test that sequence.sh"
 
             FAKE_DEFINITION_PATH="config/fake_definition.json"
 
-            BeforeCall "tooling::set_jq_tool"
+            BeforeCall "tooling::set_jq"
             BeforeCall "echo '{\"sequence\": [ \
                 {\"id\": \"fake_id_1\", \"fake_step\": \"fake_value_1\"}, \
                 {\"id\": \"fake_id_2\", \"fake_step\": \"fake_value_2\"} \
@@ -183,7 +183,7 @@ Describe "Test that sequence.sh"
 
             FAKE_DEFINITION_PATH="config/fake_definition.json"
 
-            BeforeCall "tooling::set_jq_tool"
+            BeforeCall "tooling::set_jq"
             BeforeCall "echo '{\"sequence\": [ \
                 {\"id\": \"fake_id_1\", \"fake_step\": \"fake_value_1\"}, \
                 {\"id\": \"fake_id_2\", \"fake_step\": \"fake_value_2\"} \

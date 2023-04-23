@@ -9,9 +9,6 @@ source lib/log.sh
 #@desc Constant that marks the start of a comment line.
 declare -r MARKER_COMMENT_START='#'
 
-#@desc Constant that marks the start of an annotation.
-declare -r MARKER_ANNOTATION_START="${MARKER_COMMENT_START}@"
-
 #@desc Constant that marks a variable definition.
 declare -r MARKER_VARIABLE_DEFINITION='='
 
@@ -172,7 +169,7 @@ doc::main() {
         exit 1
     fi
 
-    log::info "Starting the documentation generation..."
+    log::debug "Starting the documentation generation..."
 
     for file in "$@"; do
 
@@ -185,7 +182,7 @@ doc::main() {
             exit 2
         fi
 
-        log::info "Starting the documentation generation of script ${file}..."
+        log::debug "Starting the documentation generation of script ${file}..."
 
         is_shebang=true
         has_constant_section=false
@@ -196,7 +193,7 @@ doc::main() {
 
             line_number=$((line_number + 1))
 
-            log::warn "Line is: $line"
+            log::debug "Line is: $line"
 
             if doc::startswith "$line" "$MARKER_COMMENT_START"; then
                 log::debug "This is an annotation"

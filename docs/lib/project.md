@@ -55,4 +55,4 @@ project::_architecture_print_layers
   * `stdout`: The project architecture layers as a formatted string
 
 ---------------------------------------
-*Generated from [lib/project.sh](../../lib/project.sh) (23.04.2023 11:52:08)*
+*Generated from [lib/project.sh](../../lib/project.sh) (23.04.2023 16:48:37)*

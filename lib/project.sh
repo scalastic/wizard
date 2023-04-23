@@ -29,6 +29,7 @@ project::get_configuration_path() {
     echo "$path"
 }
 
+# LCOV_EXCL_START
 
 #@desc      Print the project configuration.
 #@ex        project::print_configuration
@@ -81,3 +82,5 @@ project::_architecture_print_layers() {
 
     echo "$result"
 }
+
+# LCOV_EXCL_STOP

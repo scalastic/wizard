@@ -20,10 +20,11 @@ declare -r PLATFORM_LOCAL="LOCAL"
 #@return    true if the script is running on jenkins
 #@return    false otherwise
 platform::_is_jenkins() {
-    if [[ -v JENKINS_URL && -v BUILD_ID && -v WORKSPACE ]]; then
+    if [ -v JENKINS_URL ] && [ -v BUILD_ID ] && [ -v WORKSPACE ]; then
         true
+    else
+        false
     fi
-    false
 }
 
 #@desc      Test if the script is running on gitlab.
@@ -38,11 +39,12 @@ platform::_is_gitlab() {
 #@ex        project::_is_local
 #@return    true if the script is running locally
 #@return    false otherwise
-project::_is_local() {
-    if [ "$(_is_jenkins)" = "false" ] && [ "$(_is_gitlab)" = "false" ]; then
+platform::_is_local() {
+    if platform::_is_jenkins || platform::_is_gitlab; then
+        false
+    else
         true
     fi
-    false
 }
 
 #@desc      Get the platform where the script is running.
@@ -52,11 +54,11 @@ project::_is_local() {
 #@const     PLATFORM_LOCAL (read-only)
 #@stdout    The platform where the script is running
 platform::get_platform() {
-    if [ "$(platform::_is_jenkins)" ]; then
+    if platform::_is_jenkins; then
         echo "${PLATFORM_JENKINS}"
-    elif [ "$(platform::_is_gitlab)" ]; then
+    elif platform::_is_gitlab; then
         echo "${PLATFORM_GITLAB}"
-    elif [ "$(platform::_is_local)" ]; then
+    elif platform::_is_local; then
         echo "${PLATFORM_LOCAL}"
     fi
 }
