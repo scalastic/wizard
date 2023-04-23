@@ -1,97 +1,62 @@
 #!/usr/bin/env bash
-#@lib
 #@desc Platform functions for bash scripts
 
 set -euo pipefail
 
-#######################################
-#@const
 #@desc Constant that stores platform jenkins definition.
-#######################################
-PLATFORM_JENKINS="JENKINS"
+declare -r PLATFORM_JENKINS="JENKINS"
 
-#######################################
-#@const
 #@desc Constant that stores platform gitlab definition.
-#######################################
-PLATFORM_GITLAB="GITLAB"
+declare -r PLATFORM_GITLAB="GITLAB"
 
-#######################################
-#@const
 #@desc Constant that stores platform local definition.
-#######################################
-PLATFORM_LOCAL="LOCAL"
+declare -r PLATFORM_LOCAL="LOCAL"
 
-#######################################
-#@desc Test if the script is running on jenkins.
-#@example _is_jenkins
-# Globals:
-#@const JENKINS_URL (read-only)
-#@const BUILD_ID (read-only)
-#@const WORKSPACE (read-only)
-# Arguments:
-#@arg None
-# Outputs:
-#@stdout true if the script is running on jenkins, false otherwise
-#######################################
-_is_jenkins() {
+#@desc      Test if the script is running on jenkins.
+#@ex        platform::_is_jenkins
+#@const     JENKINS_URL (read-only)
+#@const     BUILD_ID (read-only)
+#@const     WORKSPACE (read-only)
+#@return    true if the script is running on jenkins
+#@return    false otherwise
+platform::_is_jenkins() {
     if [[ -v JENKINS_URL && -v BUILD_ID && -v WORKSPACE ]]; then
-        echo true
-        return
+        true
     fi
-    echo false
+    false
 }
 
-#######################################
-#@desc Test if the script is running on gitlab.
-#@example _is_gitlab
-# Globals:
-#@const None
-# Arguments:
-#@arg None
-# Outputs:
-#@stdout true if the script is running on gitlab, false otherwise
-#######################################
-_is_gitlab() {
-    echo false
+#@desc      Test if the script is running on gitlab.
+#@ex        project::_is_local
+#@return    true if the script is running on gitlab
+#@return    false otherwise
+platform::_is_gitlab() {
+    false
 }
 
-#######################################
-#@desc Test if the script is running locally.
-#@example _is_local
-# Globals:
-#@const None
-# Arguments:
-#@arg None
-# Outputs:
-#@stdout true if the script is running locally, false otherwise
-#######################################
-_is_local() {
+#@desc      Test if the script is running locally.
+#@ex        project::_is_local
+#@return    true if the script is running locally
+#@return    false otherwise
+project::_is_local() {
     if [ "$(_is_jenkins)" = "false" ] && [ "$(_is_gitlab)" = "false" ]; then
-        echo true
-        return
+        true
     fi
-    echo false
+    false
 }
 
-#######################################
-#@desc Get the platform where the script is running.
-#@example _get_platform
-# Globals:
-#@const PLATFORM_JENKINS (read-only)
-#@const PLATFORM_GITLAB (read-only)
-#@const PLATFORM_LOCAL (read-only)
-# Arguments:
-#@arg None
-# Outputs:
-#@stdout the platform where the script is running
-#######################################
-get_platform() {
-    if [[ "$(_is_jenkins)" = "true" ]]; then
+#@desc      Get the platform where the script is running.
+#@ex        platform::get_platform
+#@const     PLATFORM_JENKINS (read-only)
+#@const     PLATFORM_GITLAB (read-only)
+#@const     PLATFORM_LOCAL (read-only)
+#@stdout    The platform where the script is running
+platform::get_platform() {
+    if [ "$(platform::_is_jenkins)" ]; then
         echo "${PLATFORM_JENKINS}"
-    elif [[ "$(_is_gitlab)" = "true" ]]; then
+    elif [ "$(platform::_is_gitlab)" ]; then
         echo "${PLATFORM_GITLAB}"
-    elif [[ "$(_is_local)" = "true" ]]; then
+    elif [ "$(platform::_is_local)" ]; then
         echo "${PLATFORM_LOCAL}"
     fi
 }

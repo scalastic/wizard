@@ -1,86 +1,84 @@
-# Library `lib/platform.sh`
+# LIBRARY `lib/platform.sh`
 
 Platform functions for bash scripts
 
-## Constants
+## GLOBAL VARIABLES
 
-#### `PLATFORM_JENKINS`
+### ``PLATFORM_JENKINS``
 
 * *Constant that stores platform jenkins definition.*
 
-#### `PLATFORM_GITLAB`
+### ``PLATFORM_GITLAB``
 
 * *Constant that stores platform gitlab definition.*
 
-#### `PLATFORM_LOCAL`
+### ``PLATFORM_LOCAL``
 
 * *Constant that stores platform local definition.*
 
-## Functions
+## FUNCTIONS
 
-### `_is_jenkins`
+### `platform::_is_jenkins`
 
-* *Test if the script is running on jenkins.*
-* **Example**
+* Test if the script is running on jenkins.
 
-    ```bash
-    _is_jenkins
-    ```
-* **Arguments**
+* Example
 
-    1. `None`: None
-* **Returns**
+```bash
+platform::_is_jenkins
+```
 
-    1. `stdout`: true if the script is running on jenkins, false otherwise
+* Return Code
 
+  * `return`: true if the script is running on jenkins
 
-### `_is_gitlab`
+  * `return`: false otherwise
 
-* *Test if the script is running on gitlab.*
-* **Example**
+### `platform::_is_gitlab`
 
-    ```bash
-    _is_gitlab
-    ```
-* **Arguments**
+* Test if the script is running on gitlab.
 
-    1. `None`: None
-* **Returns**
+* Example
 
-    1. `stdout`: true if the script is running on gitlab, false otherwise
+```bash
+project::_is_local
+```
 
+* Return Code
 
-### `_is_local`
+  * `return`: true if the script is running on gitlab
 
-* *Test if the script is running locally.*
-* **Example**
+  * `return`: false otherwise
 
-    ```bash
-    _is_local
-    ```
-* **Arguments**
+### `project::_is_local`
 
-    1. `None`: None
-* **Returns**
+* Test if the script is running locally.
 
-    1. `stdout`: true if the script is running locally, false otherwise
+* Example
 
+```bash
+project::_is_local
+```
 
-### `get_platform`
+* Return Code
 
-* *Get the platform where the script is running.*
-* **Example**
+  * `return`: true if the script is running locally
 
-    ```bash
-    _get_platform
-    ```
-* **Arguments**
+  * `return`: false otherwise
 
-    1. `None`: None
-* **Returns**
+### `platform::get_platform`
 
-    1. `stdout`: the platform where the script is running
+* Get the platform where the script is running.
 
+* Example
+
+```bash
+platform::get_platform
+```
+
+* Output
+
+  * `stdout`: The platform where the script is running
 
 ---------------------------------------
-*Generated from [lib/platform.sh](../../lib/platform.sh) (18.04.2023 03:37:19)*
+*Generated from [lib/platform.sh](../../lib/platform.sh) (23.04.2023 11:52:07)*

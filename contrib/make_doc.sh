@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #
-# Generate documentation for source for Wild.
+# Generates Wild source code documentation.
 
 set -euo pipefail
 
-export WILD_CWD="${PWD}"
+rm -rf docs/lib
+mkdir -p docs/lib
 
 # shellcheck disable=SC2046 disable=SC2038
-./lib/ext/doc.sh $(find lib -path lib/ext -prune -o -name '*.sh' -print | xargs echo)
+./lib/ext/gendoc.sh $(find lib -path lib/ext -prune -o -name '*.sh' -print | xargs echo)
 
 echo "ok"

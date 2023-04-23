@@ -37,7 +37,7 @@ fi
 source "${WILD_CWD}/lib/log.sh"
 # shellcheck disable=SC1091
 source "${WILD_CWD}/lib/tooling.sh"
-tooling::set_jq_tool
+tooling::set_jq
 
 # shellcheck disable=SC1091
 source "${WILD_CWD}/lib/platform.sh"

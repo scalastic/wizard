@@ -1,121 +1,142 @@
-# Library `lib/sequence.sh`
+# LIBRARY `lib/sequence.sh`
 
 Sequence definition functions for bash scripts
 
-* *Check prerequisites for sequence.*
-* **Example**
-
-    ```bash
-    sequence::_check_prerequisites
-    ```
-## Constants
-
-## Functions
+## FUNCTIONS
 
 ### `sequence::_check_prerequisites`
 
-* **Arguments**
+* Check prerequisites for sequence.
 
-    1. `None`: None
-* **Returns**
+* Example
 
-    1. `stdout`: Writes the fatal message to stdout if prerequisites are not met and exit 255
+```bash
+sequence::_check_prerequisites
+```
 
+* Return Code
+
+  * `return`: 255 if the prerequisites are not met
 
 ### `sequence::_check_sequence_definition_path`
 
-* *Check if the sequence definition file exists.*
-* **Example**
+* Check if the sequence definition file exists.
 
-    ```bash
-    sequence::_check_sequence_definition_path
-    ```
-* **Arguments**
+* Argument
 
-    1. `sequence_definition_path`: path to the sequence definition file
-* **Returns**
+  1. `sequence_definition_path`: path to the sequence definition file
 
-    1. `stdout`: Writes the info message to stdout if the sequence definition file exists
+* Example
 
+```bash
+sequence::_check_sequence_definition_path
+```
+
+* Output
+
+  * `stdout`: Writes the info message to stdout if the sequence definition file exists
+
+* Return Code
+
+  * `return`: sequence_definition_path: path to the sequence definition file
 
 ### `sequence::_load_sequences_id`
 
-* *Load sequences id from a file.*
-* **Example**
+* Load sequences id from a file.
 
-    ```bash
-    sequence::_load_sequences_id "config/sequence-default.json"
-    ```
-* **Returns**
+* Example
 
-    1. `stdout`: Writes debug messages to stdout
+```bash
+sequence::_load_sequences_id "config/sequence-default.json"
+```
 
+* Output
+
+  * `stdout`: Writes debug messages to stdout
+
+* Return Code
+
+  * `return`: id of the sequences as array
 
 ### `sequence::_load_step_definition`
 
-* *Load step definition from an item and the sequence definition file.*
-* **Example**
+* Load step definition from an item and the sequence definition file.
 
-    ```bash
-    sequence::_load_step_definition "step1" "config/sequence-default.json"
-    ```
-* **Arguments**
+* Argument
 
-    1. `item_id`: id of the item to load
-    1. `sequence_definition_path`: path to the sequence definition file
-* **Returns**
+  1. `item_id`: id of the item to load
 
-    1. `stdout`: Writes debug messages to stdout
+  1. `sequence_definition_path`: path to the sequence definition file
 
+* Example
+
+```bash
+sequence::_load_step_definition "step1" "config/sequence-default.json"
+```
+
+* Output
+
+  * `stdout`: Writes debug messages to stdout
+
+* Return Code
+
+  * `return`: Step definition as array
 
 ### `sequence::_load_step_values`
 
-* *Load step values as environment variables from a step definition as JSON.*
-* **Example**
+* Load step values as environment variables from a step definition as JSON.
 
-    ```bash
-    sequence::_load_step_values "[id:step1,name:Step 1,description:Step 1 description,type:command,command:echo 'Step 1']"
-    ```
-* **Arguments**
+* Argument
 
-    1. `step_definition`: step definition to load
-* **Returns**
+  1. `step_definition`: step definition to load
 
-    1. `stdout`: Writes debug messages to stdout
+* Example
 
+```bash
+sequence::_load_step_values "["id":"step1","name":"Step 1","description":"Step 1 description","type":"command","command":"echo Step 1"]"
+```
+
+* Output
+
+  * `stdout`: Writes debug messages to stdout
+
+* Return Code
+
+  * `return`: The step values
 
 ### `sequence::_iterate_over_sequence`
 
-* *Iterate over sequence.*
-* **Example**
+* Iterate over sequence.
 
-    ```bash
-    sequence::_iterate_over_sequence "config/sequence-default.json" "step1 step2 step3"
-    ```
-* **Arguments**
+* Argument
 
-    1. `sequence_definition_path`: path to the sequence definition file
-    1. `sequences_id`: array of sequences id
-* **Returns**
+  1. `sequence_definition_path`: path to the sequence definition file
 
-    1. `stdout`: None
+  1. `sequences_id`: array of sequences id
 
+* Example
+
+```bash
+sequence::_iterate_over_sequence "config/sequence-default.json" "step1 step2 step3"
+```
 
 ### `sequence::load`
 
-* *Load sequence definition from a file.*
-* **Example**
+* Load sequence definition from a file.
 
-    ```bash
-    sequence::load "config/sequence-default.json"
-    ```
-* **Arguments**
+* Argument
 
-    1. `sequence_definition_path`: path to the sequence definition file
-* **Returns**
+  1. `sequence_definition_path`: path to the sequence definition file
 
-    1. `stdout`: Writes the sequence definition details to stdout
+* Example
 
+```bash
+sequence::load "config/sequence-default.json"
+```
+
+* Output
+
+  * `stdout`: Writes the sequence definition details to stdout
 
 ---------------------------------------
-*Generated from [lib/sequence.sh](../../lib/sequence.sh) (18.04.2023 03:37:21)*
+*Generated from [lib/sequence.sh](../../lib/sequence.sh) (23.04.2023 11:52:10)*

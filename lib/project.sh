@@ -1,19 +1,14 @@
 #!/usr/bin/env bash
-#@lib
 #@desc Project definition functions for bash scripts
 
 set -euo pipefail
 
-#######################################
-#desc Get the project configuration path.
-#@example project::get_configuration_path
-# Globals:
-#@const   None
-# Arguments:
-#@arg   path: path to the project configuration file
-# Outputs:
-#@stdout path to the project configuration file (default: config/project.sh)
-#######################################
+
+#@desc      Get the project configuration path.
+#@ex        project::get_configuration_path
+#@arg       path: path to the project configuration file
+#@stdout    path to the project configuration file (default: config/project.sh)
+# shellcheck disable=SC2120
 project::get_configuration_path() {
     local path
 
@@ -34,24 +29,19 @@ project::get_configuration_path() {
     echo "$path"
 }
 
-#######################################
-#@desc Print the project configuration.
-#@example project::print_configuration
-# Globals:
-#@const   name: project name (read-only)
-#@const   version: project version (read-only)
-#@const   description: project description (read-only)
-#@const   project: project configuration (read-only)
-#@const   project_language: project language configuration (read-only)
-#@const   project_build: project build configuration (read-only)
-#@const   project_architecture: project architecture configuration (read-only)
-#@const   project_architecture_layers: project architecture layers configuration (read-only)
-# Arguments:
-#@arg   None
-# Outputs:
-#@stdout   the project configuration
-#@stderr   1 if the project configuration is not defined yet
-#######################################
+
+#@desc      Print the project configuration.
+#@ex        project::print_configuration
+#@const     name: project name (read-only)
+#@const     version: project version (read-only)
+#@const     description: project description (read-only)
+#@const     project: project configuration (read-only)
+#@const     project_language: project language configuration (read-only)
+#@const     project_build: project build configuration (read-only)
+#@const     project_architecture: project architecture configuration (read-only)
+#@const     project_architecture_layers: project architecture layers configuration (read-only)
+#@stdout    The project configuration
+#@return    1 if the project configuration is not defined yet
 project::print_configuration() {
 
     set +u
@@ -70,23 +60,18 @@ project::print_configuration() {
             "Project build: ${project_build[$name]} ${project_build[$version]}\n" \
             "Project architecture: ${project_architecture[$name]} (${project_architecture[$description]})\n" \
             "Project architecture layers:\n" \
-            "$(_architecture_print_layers)"
+            "$(project::_architecture_print_layers)"
     fi
 
     set -u
 }
 
-#######################################
-#@desc Print the project architecture layers.
-#@example _architecture_print_layers
-# Globals:
-#@const   project_architecture_layers: project architecture layers configuration (read-only)
-# Arguments:
-#@arg   None
-# Outputs:
-#stdout   None
-#######################################
-_architecture_print_layers() {
+
+#@desc      Print the project architecture layers.
+#@ex        project::_architecture_print_layers
+#@const     project_architecture_layers: project architecture layers configuration (read-only)
+#@stdout    The project architecture layers as a formatted string
+project::_architecture_print_layers() {
     local result=""
 
     # shellcheck disable=SC2154

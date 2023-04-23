@@ -1,191 +1,212 @@
-# Library `lib/log.sh`
+# LIBRARY `lib/log.sh`
 
 Logger functions for bash scripts
 
-## Constants
+## GLOBAL VARIABLES
 
-#### `LOG_LEVEL_DEBUG`
+### ``LOG_LEVEL_DEBUG``
 
 * *Constant that stores log level debug definition.*
 
-#### `LOG_LEVEL_INFO`
+### ``LOG_LEVEL_INFO``
 
 * *Constant that stores log level info definition.*
 
-#### `LOG_LEVEL_WARN`
+### ``LOG_LEVEL_WARN``
 
 * *Constant that stores log level warn definition.*
 
-#### `LOG_LEVEL_ERROR`
+### ``LOG_LEVEL_ERROR``
 
 * *Constant that stores log level error definition.*
 
-#### `LOG_LEVEL_FATAL`
+### ``LOG_LEVEL_FATAL``
 
 * *Constant that stores log level fatal (bazooka) definition.*
 
-#### `LOG_LEVEL`
+### ``LOG_LEVEL``
 
 * *Constant that stores current log level.*
 
-#### `LOG_LEVELS`
+### ``LOG_LEVELS``
 
 * *Array constant that stores all log level definitions.*
 
-#### `LOG_LEVEL_DEBUG_COLOR`
+### ``LOG_LEVEL_DEBUG_COLOR``
 
 * *Constant that stores log level debug color definition.*
 
-#### `LOG_LEVEL_INFO_COLOR`
+### ``LOG_LEVEL_INFO_COLOR``
 
 * *Constant that stores log level info color definition.*
 
-#### `LOG_LEVEL_WARN_COLOR`
+### ``LOG_LEVEL_WARN_COLOR``
 
 * *Constant that stores log level warn color definition.*
 
-#### `LOG_LEVEL_ERROR_COLOR`
+### ``LOG_LEVEL_ERROR_COLOR``
 
 * *Constant that stores log level error color definition.*
 
-#### `LOG_LEVEL_FATAL_COLOR`
+### ``LOG_LEVEL_FATAL_COLOR``
 
 * *Constant that stores log level fatal color definition.*
 
-#### `LOG_COLOR_OFF`
+### ``LOG_COLOR_OFF``
 
 * *Constant that stores log level color off definition.*
 
-## Functions
+## FUNCTIONS
 
-### `_log`
+### `log::_log`
 
-* *Log a message.*
-* **Example**
+* Log a message.
 
-    ```bash
-    _log "$LOG_LEVEL_DEBUG" "This is a debug message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
-    ```
-* **Arguments**
+* Argument
 
-    1. `level`: log level
-    1. `message`: message to log
-    1. `color`: color to use for the message
-    1. `color_off`: color to use to turn off the color
+  1. `level`: log level
 
-### `_banner`
+  1. `message`: message to log
 
-* **Example**
+  1. `color`: color to use for the message
 
-    ```bash
-    _banner "This is a banner message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
-    ```
-* *Log a banner message.*
-* **Arguments**
+  1. `color_off`: color to use to turn off the color
 
-    1. `message`: message to log
-    1. `color`: color to use for the message
-    1. `color_off`: color to use to turn off the color
-* **Returns**
+* Example
 
-    1. `stdout`: Writes the banner message to stdout
+```bash
+log::_log "$LOG_LEVEL_DEBUG" "This is a debug message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
+```
 
+### `log::_banner`
+
+* Log a banner message.
+
+* Argument
+
+  1. `message`: message to log
+
+  1. `color`: color to use for the message
+
+  1. `color_off`: color to use to turn off the color
+
+* Example
+
+```bash
+log::_banner "This is a banner message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
+```
+
+* Output
+
+  * `stdout`: Writes the banner message to stdout
 
 ### `log::debug`
 
-* *Log a debug message.*
-* **Example**
+* Log a debug message.
 
-    ```bash
-    log::debug "This is a debug message"
-    ```
-* **Arguments**
+* Argument
 
-    1. `message`: message to log
-* **Returns**
+  1. `message`: message to log
 
-    1. `stdout`: Writes the debug message to stdout
+* Example
 
+```bash
+log::debug "This is a debug message"
+```
+
+* Output
+
+  * `stdout`: Writes the debug message to stdout
 
 ### `log::info`
 
-* *Log an info message.*
-* **Example**
+* Log an info message.
 
-    ```bash
-    log::info "This is an info message"
-    ```
-* **Arguments**
+* Argument
 
-    1. `message`: message to log
-* **Returns**
+  1. `message`: message to log
 
-    1. `stdout`: Writes the info message to stdout
+* Example
 
+```bash
+log::info "This is an info message"
+```
+
+* Output
+
+  * `stdout`: Writes the info message to stdout
 
 ### `log::warn`
 
-* *Log a warning message.*
-* **Example**
+* Log a warning message.
 
-    ```bash
-    log::warn "This is a warning message"
-    ```
-* **Arguments**
+* Argument
 
-    1. `message`: message to log
-* **Returns**
+  1. `message`: message to log
 
-    1. `stdout`: Writes the warning message to stdout
+* Example
 
+```bash
+log::warn "This is a warning message"
+```
+
+* Output
+
+  * `stdout`: Writes the warning message to stdout
 
 ### `log::error`
 
-* *Log an error message.*
-* **Example**
+* Log an error message.
 
-    ```bash
-    log::error "This is an error message"
-    ```
-* **Arguments**
+* Argument
 
-    1. `message`: message to log
-* **Returns**
+  1. `message`: message to log
 
-    1. `stdout`: Writes the error message to stdout
+* Example
 
+```bash
+log::error "This is an error message"
+```
+
+* Output
+
+  * `stdout`: Writes the error message to stdout
 
 ### `log::fatal`
 
-* *Log a fatal message.*
-* **Example**
+* Log a fatal message.
 
-    ```bash
-    log::fatal "This is a fatal message"
-    ```
-* **Arguments**
+* Argument
 
-    1. `message`: message to log
-* **Returns**
+  1. `message`: message to log
 
-    1. `stdout`: Writes the fatal message to stdout
+* Example
 
+```bash
+log::fatal "This is a fatal message"
+```
+
+* Output
+
+  * `stdout`: Writes the fatal message to stdout
 
 ### `log::banner`
 
-* *Log a banner message.*
-* **Example**
+* Log a banner message.
 
-    ```bash
-    log::banner "This is a banner message"
-    ```
-* **Arguments**
+* Argument
 
-    1. `message`: message to log
-* **Returns**
+  1. `message`: message to log
 
-    1. `stdout`: Writes the banner message to stdout
+* Example
 
+```bash
+log::banner "This is a banner message"
+```
+
+* Output
+
+  * `stdout`: Writes the banner message to stdout
 
 ---------------------------------------
-*Generated from [lib/log.sh](../../lib/log.sh) (18.04.2023 03:37:20)*
+*Generated from [lib/log.sh](../../lib/log.sh) (23.04.2023 11:52:09)*

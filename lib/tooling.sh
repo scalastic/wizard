@@ -1,48 +1,34 @@
 #!/usr/bin/env bash
+# @desc Tooling library for bash scripts
 
 set -euo pipefail
 
-#######################
-# Check if a command exists
-# Globals:
-#   None
-# Arguments:
-#   The command to check
-# Returns:
-#   true or false
-#######################
+#@desc      Check if a command exists
+#@ex        tooling::_check_command jq
+#@arg       The command to check
+#@stdout    true if the command exists otherwise false
 tooling::_check_command() {
     log::debug "Check command $1"
 
     [ -x "$(command -v "$1")" ] && echo true || echo false
 }
 
-#######################
-# Get the path of a command
-# Globals:
-#   None
-# Arguments:
-#   The command to get the path
-# Returns:
-#   The path of the command
-#######################
+##desc      Get the path of a command
+#@ex        tooling::_get_command jq
+#@arg       The command to get the path
+#@stdout    The path of the command
 tooling::_get_command() {
     log::debug "Get command $1"
 
     command -v "$1"
 }
 
-#######################
-# Set the jq tool
-# Globals:
-#   JQ point to the jq command
-#   IS_DOCKERIZED_JQ true if the jq command is dockerized otherwise false
-# Arguments:
-#   None
-# Returns:
-#   None
-#######################
-tooling::set_jq_tool() {
+#@desc      Set the jq command
+#@ex        tooling::set_jq
+#@const     JQ Set with the jq command if it exists otherwise with the dockerized jq command (write)
+#@const     IS_DOCKERIZED_JQ Set to true if the jq command is dockerized otherwise false (write)
+#@status    1 if no jq command is found
+tooling::set_jq() {
     log::debug "Set jq tool"
 
     if [ "$(tooling::_check_command jq)" = "true" ]; then
@@ -58,7 +44,7 @@ tooling::set_jq_tool() {
         log::info "Using dockerized jq command $JQ"
 
     else
-        log::fatal "Missing minimal required commands for jq"
+        log::fatal "No jq command found! Please install jq or docker."
         exit 1
 
     fi

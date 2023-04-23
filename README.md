@@ -1,5 +1,5 @@
 
-![Wild](./docs/wild.png)
+![Wild](docs/images/wild.png)
 
 [![License](https://img.shields.io/github/license/scalastic/wild.svg?style=flat-square)](https://github.com/scalastic/wild/blob/master/LICENSE)
 [![bash](https://img.shields.io/badge/bash-4.4%2B-brightgreen)](https://www.gnu.org/software/bash/)

@@ -1,53 +1,58 @@
-# Library `lib/project.sh`
+# LIBRARY `lib/project.sh`
 
 Project definition functions for bash scripts
 
-* **Example**
-
-    ```bash
-    project::get_configuration_path
-    ```
-## Constants
-
-## Functions
+## FUNCTIONS
 
 ### `project::get_configuration_path`
 
-* **Arguments**
+* Get the project configuration path.
 
-    1. `path`: path to the project configuration file
-* **Returns**
+* Argument
 
-    1. `stdout`: path to the project configuration file (default: config/project.sh)
+  1. `path`: path to the project configuration file
 
+* Example
+
+```bash
+project::get_configuration_path
+```
+
+* Output
+
+  * `stdout`: path to the project configuration file (default: config/project.sh)
 
 ### `project::print_configuration`
 
-* *Print the project configuration.*
-* **Example**
+* Print the project configuration.
 
-    ```bash
-    project::print_configuration
-    ```
-* **Arguments**
+* Example
 
-    1. `None`: None
-* **Returns**
+```bash
+project::print_configuration
+```
 
-    1. `stdout`: the project configuration
+* Output
 
+  * `stdout`: The project configuration
 
-### `_architecture_print_layers`
+* Return Code
 
-* *Print the project architecture layers.*
-* **Example**
+  * `return`: 1 if the project configuration is not defined yet
 
-    ```bash
-    _architecture_print_layers
-    ```
-* **Arguments**
+### `project::_architecture_print_layers`
 
-    1. `None`: None
+* Print the project architecture layers.
+
+* Example
+
+```bash
+project::_architecture_print_layers
+```
+
+* Output
+
+  * `stdout`: The project architecture layers as a formatted string
 
 ---------------------------------------
-*Generated from [lib/project.sh](../../lib/project.sh) (18.04.2023 03:37:19)*
+*Generated from [lib/project.sh](../../lib/project.sh) (23.04.2023 11:52:08)*
