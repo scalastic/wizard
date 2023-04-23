@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "description": "Wild fills the missing link of the DevOps approach and its shift-left principal herein. With Wild the shifts are so close to the developer that they no longer exist.",
   "homepage": "https://scalastic.io/en/",
-  "scripts": ["bin/wild"],
+  "scripts": ["wild"],
   "license": "MIT",
   "files": [
     "lib/log.sh",
     "lib/platform.sh",
+    "lib/project.sh",
     "lib/sequence.sh",
     "lib/tooling.sh",
     "src/wild.sh"

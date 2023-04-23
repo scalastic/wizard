@@ -25,7 +25,7 @@ jobs:
           echo "--color" > $HOME/.shellspec
       - name: Generate coverage report
         run: |
-          make coverage
+          make all
       - uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # required for private repos
