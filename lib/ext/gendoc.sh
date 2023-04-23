@@ -15,6 +15,9 @@ declare -r MARKER_VARIABLE_DEFINITION='='
 #@desc Constant that marks a function definition.
 declare -r MARKER_FUNCTION_DEFINITION='()'
 
+#@desc Constant that marks a private function definition.
+declare -r MARKER_FUNCTION_PRIVATE='::_'
+
 #@desc Constant that marks the end of a block.
 declare -r MARKER_BLOCK_END='}'
 
@@ -36,10 +39,13 @@ declare -r ANNOTATION_STDOUT='#@stdout'
 #@desc Constant that defines a return annotation.
 declare -r ANNOTATION_RETURN='#@return'
 
+#@desc Constant that defines the library label.
 declare -r LABEL_LIBRARY='LIBRARY'
 
+#@desc Constant that defines the constant label.
 declare -r LABEL_CONSTANT='GLOBAL VARIABLES'
 
+#@desc Constant that defines the function label.
 declare -r LABEL_FUNCTION='FUNCTIONS'
 
 declare -A buffer=()
@@ -76,12 +82,19 @@ doc::buffer_read() {
     fi
 }
 
+#@desc Print the buffer as key, value pairs.
+#@stdout The buffer content
 doc::buffer_print() {
     for key in "${!buffer[@]}"; do
         echo "$key: ${buffer[$key]}"
     done
 }
 
+#@desc Check if a line starts with a pattern.
+#@arg $1 The line to check.
+#@arg $2 The pattern to check.
+#@return 0 if the line starts with the pattern
+#@return 1 otherwise.
 doc::startswith() {
     local line="$1"
     local pattern="$2"
@@ -96,6 +109,11 @@ doc::startswith() {
     esac
 }
 
+#@desc Check if a line contains a pattern.
+#@arg $1 The line to check.
+#@arg $2 The pattern to check.
+#@return 0 if the line contains the pattern
+#@return 1 otherwise.
 doc::contains() {
     local line="$1"
     local pattern="$2"
@@ -106,6 +124,8 @@ doc::contains() {
     esac
 }
 
+#@desc Writes the constant part of the documentation.
+#@stdout The constant part of the documentation.
 doc::_write_constant() {
     constant_name=$(doc::buffer_read "$ANNOTATION_CONSTANT")
     constant_description=$(doc::buffer_read "$ANNOTATION_DESCRIPTION")
@@ -293,10 +313,16 @@ $(echo "${line#$ANNOTATION_EXAMPLE}" | xargs)\n\
                     has_function_section=true
                 fi
 
-                #doc::buffer_print
-
                 function_name=$(echo "$line" | cut -d '(' -f1 | xargs)
-                doc::_write_function "$function_name" "$line_number"
+
+                if doc::contains "$function_name" "$MARKER_FUNCTION_PRIVATE"; then
+                    log::debug "This is a private function definition"
+                    doc::_write_function "$function_name 🚫 (private)" "$line_number"
+                else 
+                    log::debug "This is a public function definition"
+                    doc::_write_function "$function_name ✅ (public)" "$line_number"
+                fi
+                
             fi
 
             ###### Block ######
@@ -312,7 +338,9 @@ $(echo "${line#$ANNOTATION_EXAMPLE}" | xargs)\n\
 
         echo '---------------------------------------' >>"$mardown_file"
         relpath=$(realpath --relative-to="$mardown_file_dir" "$file")
-        echo "*Generated from [$file](${relpath}) ($(date +"%d.%m.%Y %H:%M:%S"))*" >>"$mardown_file"
+        gendoc_relpath=$(realpath --relative-to="$mardown_file_dir" "lib/ext/gendoc.sh")
+        echo "*Generated from [$file](${relpath}) on $(date +"%d.%m.%Y") \
+        (writen with ✨ by [gendoc](${gendoc_relpath}))*" >>"$mardown_file"
 
     done
 }

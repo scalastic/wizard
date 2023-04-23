@@ -58,7 +58,7 @@ Logger functions for bash scripts
 
 ## FUNCTIONS
 
-### `log::_log`
+### `log::_log 🚫 (private)`
 
 * Log a message.
 
@@ -78,7 +78,7 @@ Logger functions for bash scripts
 log::_log "$LOG_LEVEL_DEBUG" "This is a debug message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
 ```
 
-### `log::_banner`
+### `log::_banner 🚫 (private)`
 
 * Log a banner message.
 
@@ -100,7 +100,7 @@ log::_banner "This is a banner message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
 
   * `stdout`: Writes the banner message to stdout
 
-### `log::debug`
+### `log::debug ✅ (public)`
 
 * Log a debug message.
 
@@ -118,7 +118,7 @@ log::debug "This is a debug message"
 
   * `stdout`: Writes the debug message to stdout
 
-### `log::info`
+### `log::info ✅ (public)`
 
 * Log an info message.
 
@@ -136,7 +136,7 @@ log::info "This is an info message"
 
   * `stdout`: Writes the info message to stdout
 
-### `log::warn`
+### `log::warn ✅ (public)`
 
 * Log a warning message.
 
@@ -154,7 +154,7 @@ log::warn "This is a warning message"
 
   * `stdout`: Writes the warning message to stdout
 
-### `log::error`
+### `log::error ✅ (public)`
 
 * Log an error message.
 
@@ -172,7 +172,7 @@ log::error "This is an error message"
 
   * `stdout`: Writes the error message to stdout
 
-### `log::fatal`
+### `log::fatal ✅ (public)`
 
 * Log a fatal message.
 
@@ -190,7 +190,7 @@ log::fatal "This is a fatal message"
 
   * `stdout`: Writes the fatal message to stdout
 
-### `log::banner`
+### `log::banner ✅ (public)`
 
 * Log a banner message.
 
@@ -209,4 +209,4 @@ log::banner "This is a banner message"
   * `stdout`: Writes the banner message to stdout
 
 ---------------------------------------
-*Generated from [lib/log.sh](../../lib/log.sh) (23.04.2023 16:48:37)*
+*Generated from [lib/log.sh](../../lib/log.sh) on 23.04.2023         (writen with ✨ by [gendoc](../../lib/ext/gendoc.sh))*

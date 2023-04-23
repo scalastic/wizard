@@ -18,7 +18,7 @@ Platform functions for bash scripts
 
 ## FUNCTIONS
 
-### `platform::_is_jenkins`
+### `platform::_is_jenkins 🚫 (private)`
 
 * Test if the script is running on jenkins.
 
@@ -34,7 +34,7 @@ platform::_is_jenkins
 
   * `return`: false otherwise
 
-### `platform::_is_gitlab`
+### `platform::_is_gitlab 🚫 (private)`
 
 * Test if the script is running on gitlab.
 
@@ -50,7 +50,7 @@ project::_is_local
 
   * `return`: false otherwise
 
-### `platform::_is_local`
+### `platform::_is_local 🚫 (private)`
 
 * Test if the script is running locally.
 
@@ -66,7 +66,7 @@ project::_is_local
 
   * `return`: false otherwise
 
-### `platform::get_platform`
+### `platform::get_platform ✅ (public)`
 
 * Get the platform where the script is running.
 
@@ -81,4 +81,4 @@ platform::get_platform
   * `stdout`: The platform where the script is running
 
 ---------------------------------------
-*Generated from [lib/platform.sh](../../lib/platform.sh) (23.04.2023 16:48:37)*
+*Generated from [lib/platform.sh](../../lib/platform.sh) on 23.04.2023         (writen with ✨ by [gendoc](../../lib/ext/gendoc.sh))*
