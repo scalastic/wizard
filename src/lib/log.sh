@@ -44,6 +44,19 @@ declare -r LOG_LEVEL_FATAL_COLOR="\e[0;35m"
 #@desc Constant that stores log level color off definition.
 declare -r LOG_COLOR_OFF="\e[0m"
 
+log::_prerequisite() {
+  local status=0
+
+  if [ -z "$LOG_PATH" ]; then
+    status=$((status + 1))
+  fi
+
+  if [ ! -d "$LOG_PATH" ] && ! mkdir -p "$LOG_PATH"; then
+    status=$((status + 1))
+  fi
+
+  return "$status"
+}
 
 #@desc      Log a message.
 #@ex        log::_log \"$LOG_LEVEL_DEBUG\" \"This is a debug message\" \"$LOG_LEVEL_DEBUG_COLOR\" \"$LOG_COLOR_OFF\"
@@ -60,8 +73,13 @@ log::_log() {
     local message=$2
     local color=$3
     local color_off=$4
+
+    if ! log::_prerequisite; then
+      return 2
+    fi
+
     if [ "$LOG_LEVEL" -le "$level" ]; then
-        echo -e "${color}[${LOG_LEVELS[$level]}] $message${color_off}" >&2 | tee -a log/stdout.log >/dev/null
+        echo -e "${color}[${LOG_LEVELS[$level]}] $message${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
     fi
 }
 
@@ -79,9 +97,14 @@ log::_banner() {
     local message=$1
     local color=$2
     local color_off=$3
-    echo -e "${color}################################${color_off}" >&2 | tee -a log/stdout.log >/dev/null
-    echo -e "${color} $message${color_off}" >&2 | tee -a log/stdout.log >/dev/null
-    echo -e "${color}################################${color_off}" >&2 | tee -a log/stdout.log >/dev/null
+
+    if ! log::_prerequisite; then
+      return 2
+    fi
+
+    echo -e "${color}################################${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+    echo -e "${color} $message${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+    echo -e "${color}################################${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
 }
 
 

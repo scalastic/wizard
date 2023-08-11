@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # shellcheck disable=SC1091
-source lib/log.sh
+source ./src/lib/log.sh
 
 #@desc Constant that marks the start of a comment line.
 declare -r MARKER_COMMENT_START='#'
@@ -195,6 +195,7 @@ doc::main() {
 
         mardown_file="docs/${file%.*}.md"
         mardown_file_dir=$(dirname "$mardown_file")
+        mkdir -p "$mardown_file_dir"
 
         line_number=0
         if test ! -f "$file"; then
@@ -338,7 +339,7 @@ $(echo "${line#$ANNOTATION_EXAMPLE}" | xargs)\n\
 
         echo '---------------------------------------' >>"$mardown_file"
         relpath=$(realpath --relative-to="$mardown_file_dir" "$file")
-        gendoc_relpath=$(realpath --relative-to="$mardown_file_dir" "lib/ext/gendoc.sh")
+        gendoc_relpath=$(realpath --relative-to="$mardown_file_dir" "src/lib/ext/gendoc.sh")
         echo "*Generated from [$file](${relpath}) on $(date +"%d.%m.%Y") \
         (writen with ✨ by [gendoc](${gendoc_relpath}))*" >>"$mardown_file"
 

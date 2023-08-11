@@ -7,7 +7,7 @@ export WILD_CWD="${PWD}"
 VERSION="0.0.1"
 
 # shellcheck disable=SC1091
-source "${WILD_CWD}/lib/ext/getoptions.sh"
+source "${WILD_CWD}/src/lib/ext/getoptions.sh"
 
 parser_definition() {
   setup REST help:usage -- "Usage: wild.sh [options]... [arguments]..." ''
@@ -34,17 +34,17 @@ fi
 
 # Import librairies
 # shellcheck disable=SC1091
-source "${WILD_CWD}/lib/log.sh"
+source "${WILD_CWD}/src/lib/log.sh"
 # shellcheck disable=SC1091
-source "${WILD_CWD}/lib/tooling.sh"
+source "${WILD_CWD}/src/lib/tooling.sh"
 tooling::set_jq
 
 # shellcheck disable=SC1091
-source "${WILD_CWD}/lib/platform.sh"
+source "${WILD_CWD}/src/lib/platform.sh"
 # shellcheck disable=SC1091
-source "${WILD_CWD}/lib/sequence.sh"
+source "${WILD_CWD}/src/lib/sequence.sh"
 # shellcheck disable=SC1091
-source "${WILD_CWD}/lib/project.sh"
+source "${WILD_CWD}/src/lib/project.sh"
 
 # shellcheck disable=SC2119
 # sequence::load

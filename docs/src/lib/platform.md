@@ -1,4 +1,4 @@
-# LIBRARY `lib/platform.sh`
+# LIBRARY `src/lib/platform.sh`
 
 Platform functions for bash scripts
 
@@ -81,4 +81,4 @@ platform::get_platform
   * `stdout`: The platform where the script is running
 
 ---------------------------------------
-*Generated from [lib/platform.sh](../../lib/platform.sh) on 23.04.2023         (writen with ✨ by [gendoc](../../lib/ext/gendoc.sh))*
+*Generated from [src/lib/platform.sh](../../../src/lib/platform.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

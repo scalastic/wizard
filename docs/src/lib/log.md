@@ -1,4 +1,4 @@
-# LIBRARY `lib/log.sh`
+# LIBRARY `src/lib/log.sh`
 
 Logger functions for bash scripts
 
@@ -57,6 +57,8 @@ Logger functions for bash scripts
 * *Constant that stores log level color off definition.*
 
 ## FUNCTIONS
+
+### `log::_prerequisite 🚫 (private)`
 
 ### `log::_log 🚫 (private)`
 
@@ -209,4 +211,4 @@ log::banner "This is a banner message"
   * `stdout`: Writes the banner message to stdout
 
 ---------------------------------------
-*Generated from [lib/log.sh](../../lib/log.sh) on 23.04.2023         (writen with ✨ by [gendoc](../../lib/ext/gendoc.sh))*
+*Generated from [src/lib/log.sh](../../../src/lib/log.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

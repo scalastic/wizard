@@ -16,7 +16,7 @@ project::get_configuration_path() {
 
     if [ -z "${1:-}" ]; then
         log::info "No project configuration file specified, use default"
-        path="config/project.sh"
+        path="${CONFIG_PATH}/project.sh"
     else
         path="$1"
     fi

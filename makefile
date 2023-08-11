@@ -11,7 +11,7 @@ build:
 	contrib/build.sh
 
 check:
-	shellcheck -a -s bash src/*.sh lib/*.sh lib/ext/gendoc.sh spec/lib/*.sh
+	shellcheck -a -s bash src/*.sh src/lib/*.sh src/lib/ext/gendoc.sh spec/*.sh spec/**/*.sh
 
 coverage:
 	shellspec -s bash --kcov

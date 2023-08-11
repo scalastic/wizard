@@ -4,7 +4,7 @@
 
 Describe "Test that platform.sh"
 
-    Include "./lib/platform.sh"
+    Include "./src/lib/platform.sh"
 
     Describe "platform::_is_jenkins()"
 

@@ -1,6 +1,7 @@
 /.idea/
 /bin/
 /coverage/
+/gpt/
 /log/stdout.log
 /openssl/
 /report/

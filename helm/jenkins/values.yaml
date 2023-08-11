@@ -1,5 +1,6 @@
 controller:
   serviceType: ClusterIP
+  installPlugins: false
   ingress:
     enabled: true
     ingressClassName: nginx

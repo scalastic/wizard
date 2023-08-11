@@ -1,9 +1,9 @@
 --require spec_helper
 
 ## Default kcov (coverage) options
---kcov-options "--include-path=./src/,./lib/ --path-strip-level=1"
+--kcov-options "--include-path=./src,./src/lib --path-strip-level=1"
 --kcov-options "--include-pattern=.sh"
---kcov-options "--exclude-path=./lib/ext/"
+--kcov-options "--exclude-path=./src/lib/ext/"
 
 ## Example: Include script "myprog" with no extension
 # --kcov-options "--include-pattern=.sh,myprog"
