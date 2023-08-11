@@ -1,4 +1,4 @@
-# LIBRARY `lib/sequence.sh`
+# LIBRARY `src/lib/sequence.sh`
 
 Sequence definition functions for bash scripts
 
@@ -139,4 +139,4 @@ sequence::load "config/sequence-default.json"
   * `stdout`: Writes the sequence definition details to stdout
 
 ---------------------------------------
-*Generated from [lib/sequence.sh](../../lib/sequence.sh) on 23.04.2023         (writen with ✨ by [gendoc](../../lib/ext/gendoc.sh))*
+*Generated from [src/lib/sequence.sh](../../../src/lib/sequence.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

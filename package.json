@@ -6,11 +6,13 @@
   "scripts": ["wild"],
   "license": "MIT",
   "files": [
-    "lib/log.sh",
-    "lib/platform.sh",
-    "lib/project.sh",
-    "lib/sequence.sh",
-    "lib/tooling.sh",
+    "src/action/build/build.sh",
+    "src/lib/common.sh",
+    "src/lib/log.sh",
+    "src/lib/platform.sh",
+    "src/lib/project.sh",
+    "src/lib/sequence.sh",
+    "src/lib/tooling.sh",
     "src/wild.sh"
   ],
   "install": "make install"

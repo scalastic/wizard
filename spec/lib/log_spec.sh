@@ -4,12 +4,14 @@
 
 Describe "Test that log.sh"
 
-    Include "./lib/log.sh"
+    Include "./src/lib/log.sh"
 
-    setup() { 
-        export LOG_LEVEL="${LOG_LEVEL_INFO}"
+    setup() {
         export WILD_CWD="${PWD}"
+        export LOG_PATH="${WILD_CWD}/../tmp/log"
+        export LOG_LEVEL="${LOG_LEVEL_INFO}"
     }
+
     BeforeAll 'setup'
 
     Describe "log::_log"
@@ -107,4 +109,5 @@ Describe "Test that log.sh"
         End
 
     End
+
 End

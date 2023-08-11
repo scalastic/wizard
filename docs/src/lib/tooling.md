@@ -1,4 +1,4 @@
-# LIBRARY `lib/tooling.sh`
+# LIBRARY `src/lib/tooling.sh`
 
 Check if a command exists
 
@@ -47,4 +47,4 @@ tooling::set_jq
 ```
 
 ---------------------------------------
-*Generated from [lib/tooling.sh](../../lib/tooling.sh) on 23.04.2023         (writen with ✨ by [gendoc](../../lib/ext/gendoc.sh))*
+*Generated from [src/lib/tooling.sh](../../../src/lib/tooling.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

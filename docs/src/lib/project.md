@@ -1,4 +1,4 @@
-# LIBRARY `lib/project.sh`
+# LIBRARY `src/lib/project.sh`
 
 Project definition functions for bash scripts
 
@@ -55,4 +55,4 @@ project::_architecture_print_layers
   * `stdout`: The project architecture layers as a formatted string
 
 ---------------------------------------
-*Generated from [lib/project.sh](../../lib/project.sh) on 23.04.2023         (writen with ✨ by [gendoc](../../lib/ext/gendoc.sh))*
+*Generated from [src/lib/project.sh](../../../src/lib/project.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

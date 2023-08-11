@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scalastic.io/action.schema.json",
+  "title": "Wild Action",
+  "description": "An action definition in Wild",
+  "type": "object",
+  "properties": {
+    "actionId": {
+      "description": "Id of the action",
+      "type": "string"
+    },
+    "actionName": {
+      "description": "The name of the action",
+      "type": "string"
+    },
+    "condition": {
+      "description": "The value of the condition for that action to be executed",
+      "type": "boolean"
+    },
+    "pre_action": {
+      "description": "An action to be executed before this action",
+      "type": "string",
+      "items": {
+        "action": {
+          "description": "Action definition",
+          "$ref": "https://scalastic.io/action.schema.json"
+        }
+      }
+    },
+    "action": {
+      "description": "The action to be executed",
+      "type": "string"
+    },
+    "post_action": {
+      "description": "An action to be executed after this action",
+      "type": "string",
+      "items": {
+        "action": {
+          "description": "Action definition",
+          "$ref": "https://scalastic.io/action.schema.json"
+        }
+      }
+    },
+    "resume": {
+      "description": "",
+      "type": "boolean"
+    },
+    "log": {
+      "description": "",
+      "type": "boolean"
+    },
+    "log_level": {
+      "description": "Level of the log",
+      "type": "string",
+      "enum": ["debug", "info", "warn", "error", "fatal"]
+    }
+  },
+  "required": ["actionId", "actionName"]
+}

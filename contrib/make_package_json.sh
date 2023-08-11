@@ -10,7 +10,7 @@ version() {
 
 files() {
   echo "["
-  files="$(find src lib -not -path "*lib/ext*" \( -type f -o -type l \) -exec echo "    \"{}\"," \; | sort)"
+  files="$(find src -not -path "*lib/ext*" \( -type f -o -type l \) -exec echo "    \"{}\"," \; | sort)"
   echo "${files%,}"
   echo "  ]"
 }

@@ -4,15 +4,17 @@
 
 Describe "Test that sequence.sh"
 
-    Include "./lib/log.sh"
+    Include "./src/lib/log.sh"
 
-    setup() { 
-        export LOG_LEVEL="${LOG_LEVEL_INFO}"
+    setup() {
         export WILD_CWD="${PWD}"
+        export LOG_PATH="${WILD_CWD}/tmp/log"
+        export LOG_LEVEL="${LOG_LEVEL_INFO}"
+        export CONFIG_PATH="${WILD_CWD}/config"
     }
     BeforeAll 'setup'
 
-    Include "./lib/sequence.sh"
+    Include "./src/lib/sequence.sh"
 
     Describe "sequence::_check_prerequisites"
 
@@ -83,7 +85,7 @@ Describe "Test that sequence.sh"
 
     Describe "sequence::_load_sequences_id"
 
-        Include "./lib/tooling.sh"
+        Include "./src/lib/tooling.sh"
 
         It "returns a sequence of ids from a sequence definition file"
 
@@ -104,7 +106,7 @@ Describe "Test that sequence.sh"
 
     Describe "sequence::_load_step_definition"
 
-        Include "./lib/tooling.sh"
+        Include "./src/lib/tooling.sh"
 
         It "returns a step definition from a sequence definition file"
 
@@ -128,7 +130,7 @@ Describe "Test that sequence.sh"
 
     Describe "sequence::_load_step_values"
 
-        Include "./lib/tooling.sh"
+        Include "./src/lib/tooling.sh"
 
         It "returns a step values from a sequence definition file"
 
@@ -149,7 +151,7 @@ Describe "Test that sequence.sh"
 
     Describe "sequence::_iterate_over_sequence"
 
-        Include "./lib/tooling.sh"
+        Include "./src/lib/tooling.sh"
 
         It "returns a status success when all steps are executed"
 
@@ -177,7 +179,7 @@ Describe "Test that sequence.sh"
 
     Describe "sequence::load"
     
-        Include "./lib/tooling.sh"
+        Include "./src/lib/tooling.sh"
 
         It "returns a status success when all steps are executed"
 

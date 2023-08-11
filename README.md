@@ -9,11 +9,11 @@
 [![GitHub stars](https://img.shields.io/github/stars/scalastic/wild?style=social)](https://img.shields.io/github/stars/scalastic/wild?style=social)
 [![GitHub forks](https://img.shields.io/github/forks/scalastic/wild?style=social)](https://img.shields.io/github/forks/scalastic/wild?style=social)
 
-# Wide Integration Locally with Delivery
+# Wide Integration with Lightweight Delivery
 
 `Wild` is a framework that allows you to run the same integration scripts locally and on the server. It is designed to be used by developers and CI/CD platforms.
 
-`Wild` stands for **Wide Integration Locally with Delivery**. Due to its ***Wild*** nature, it fills the gap between the developer and the CI/CD platform by allowing to run the exact same integration and deployment scripts locally and on the server.
+`Wild` stands for **Wide Integration with Lightweight Delivery**. Due to its ***Wild*** nature, it fills the gap between the developer and the CI/CD platform by allowing to run the exact same integration and deployment scripts locally and on the server.
 
 Developers can test the operation of the CI/CD chain on their local station and no longer have to wait and wonder what will happen once their code is pushed on the integration servers.
 

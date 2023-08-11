@@ -4,15 +4,16 @@
 
 Describe "Test that tooling.sh"
 
-    Include "./lib/log.sh"
+    Include "./src/lib/log.sh"
 
-    setup() { 
+    setup() {
+        export LOG_PATH="${PWD}/log"
         export LOG_LEVEL="${LOG_LEVEL_INFO}"
         export WILD_CWD="${PWD}"
     }
     BeforeAll 'setup'
 
-    Include "./lib/tooling.sh"
+    Include "./src/lib/tooling.sh"
 
     Describe "tooling::_check_command"
 

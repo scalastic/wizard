@@ -7,7 +7,7 @@ set -eu
 
 sources() {
 
-  find src lib -type f -not -path "*lib/ext*" -name '*.sh'
+  find src -type f -not -path "*lib/ext*" -name '*.sh'
 }
 
-lib/ext/shellmetrics -s bash --color $(sources)
+src/lib/ext/shellmetrics -s bash --color $(sources)
