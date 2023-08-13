@@ -1,0 +1,53 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - string:
+              description: "kubernetes-jenkins-token"
+              id: "kubernetes-jenkins-token"
+              scope: GLOBAL
+              secret: ${JENKINS_KUBERNETES_TOKEN}
+jenkins:
+  systemMessage: "Automating Jenkins Setup using Docker and Jenkins Configuration as Code\n\n"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${JENKINS_ADMIN_ID}
+          password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
+  agentProtocols:
+    - "JNLP4-connect"
+    - "Ping"
+  clouds:
+    - kubernetes:
+        containerCap: 10
+        containerCapStr: "10"
+        credentialsId: "kubernetes-jenkins-token"
+        jenkinsUrl: "http://192.168.1.18:8080"
+        name: "kubernetes"
+        namespace: "jenkins"
+        serverUrl: "https://kubernetes.docker.internal:6443"
+        skipTlsVerify: true
+        webSocket: true
+  labelAtoms:
+    - name: "built-in"
+    - name: "removed-master"
+  labelString: "removed-master"
+  markupFormatter: "plainText"
+  mode: EXCLUSIVE
+  myViewsTabBar: "standard"
+  numExecutors: 0
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+unclassified:
+  location:
+    url: http://192.168.1.18:8080/
