@@ -6,14 +6,15 @@ set -euo pipefail
 install::_configure_kubernetes() {
   declare -r name="jenkins"
 
-  kubectl delete namespace "${name}"
+  kubectl delete namespace "${name}" || true
 
   kubectl create namespace "${name}"
   kubectl create serviceaccount "${name}" --namespace="${name}"
   kubectl create token "${name}" --namespace="${name}"
   kubectl create rolebinding "${name}"-admin-binding --clusterrole=admin --serviceaccount="${name}":"${name}" --namespace="${name}"
 
-  local TOKEN=$(kubectl create token "${name}" --namespace="${name}")
+  local TOKEN
+  TOKEN=$(kubectl create token "${name}" --namespace="${name}")
   sed "s/<SERVICE_ACCOUNT_TOKEN>/${TOKEN}/g" "${JENKINS_INSTALLATION_CONFIG}/secrets-template.properties" > "${JENKINS_INSTALLATION_CONFIG}/secrets.properties"
 }
 
