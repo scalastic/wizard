@@ -4,3 +4,4 @@
 set -euo pipefail
 
 source "./src/lib/log.sh"
+source "./src/lib/tooling.sh"

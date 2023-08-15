@@ -5,3 +5,6 @@ matrix-auth:latest
 pipeline-stage-view:latest
 workflow-aggregator:latest
 kubernetes:latest
+job-dsl:latest
+ansicolor:latest
+pipeline-utility-steps:latest

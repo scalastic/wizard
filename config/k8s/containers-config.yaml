@@ -1,0 +1,29 @@
+container:
+  - name: "bash"
+    image: "redhat/ubi9"
+    command: "cat"
+    tty: true
+    resources:
+      cpu:
+        limit: "500m"
+        request: "100m"
+      memory:
+        limit: "512Mi"
+        request: "128Mi"
+    securityContext:
+      runAsUser: 1000
+      runAsNonRoot: true
+  - name: "maven"
+    image: "maven:3"
+    command: "cat"
+    tty: true
+    resources:
+      cpu:
+        limit: "1"
+        request: "500m"
+      memory:
+        limit: "1Gi"
+        request: "512Mi"
+    securityContext:
+      runAsUser: 1000
+      runAsNonRoot: true

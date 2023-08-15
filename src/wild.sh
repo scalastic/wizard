@@ -3,6 +3,8 @@
 set -euo pipefail
 
 export WILD_CWD="${PWD}"
+export LOG_PATH="${WILD_CWD}/tmp" && mkdir -p "${LOG_PATH}"
+export CONFIG_PATH="./config"
 # shellcheck disable=SC2034
 VERSION="0.0.1"
 
@@ -35,6 +37,7 @@ fi
 # Import librairies
 # shellcheck disable=SC1091
 source "${WILD_CWD}/src/lib/log.sh"
+export LOG_LEVEL="$LOG_LEVEL_DEBUG"
 # shellcheck disable=SC1091
 source "${WILD_CWD}/src/lib/tooling.sh"
 tooling::set_jq
@@ -42,16 +45,10 @@ tooling::set_jq
 # shellcheck disable=SC1091
 source "${WILD_CWD}/src/lib/platform.sh"
 # shellcheck disable=SC1091
-source "${WILD_CWD}/src/lib/sequence.sh"
-# shellcheck disable=SC1091
 source "${WILD_CWD}/src/lib/project.sh"
+# shellcheck disable=SC1091
+source "${WILD_CWD}/src/lib/workflow.sh"
 
-# shellcheck disable=SC2119
-# sequence::load
 
-project_configuration=$(project::get_configuration_path)
-# inline skip
-# shellcheck source=/dev/null
-source "$project_configuration"
-
-project::print_configuration
+workflow_configuration_path=$(project::get_configuration_path)
+used_containers_names=$(workflow::_get_workflows_containers_names "$workflow_configuration_path")

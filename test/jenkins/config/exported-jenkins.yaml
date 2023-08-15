@@ -6,7 +6,13 @@ credentials:
               description: "kubernetes-jenkins-token"
               id: "kubernetes-jenkins-token"
               scope: GLOBAL
-              secret: "{AQAAABAAAANwgclBPnSE2pIvdJO04PLBeEs2itKli42DUiG3U5M+3eXxMntvHzQPznpGcRyt9EVUi303a3UUZjitVEOGVxO9aa4uVlHvnJTP5b+wGHrl7qNo3zokS6EvS7dEEcNvDG1WvGUSe94fs73NFqfxrNggFJe7b9PGvO11qqWOdM3m7uPaz3/S149tMblInsyjGWhTS4eJTAt+0Eq+RViE1dxZDd6H3rGpJO+BqdZGyG8yFf7tpAYvrkowenmN/19dL1ct3dl4r461RHDBwbEjUHKTtK52dYsff81htKSjN5f+5dBiTByBQsxDf0IkKYQHeVK35bJG6IM7DzVGnpf8CjR3ScOeomCttqIfF+uFTeaRuPXVHGla4ZxlqtRELk+VeU52bGbM9Mn4uPIj8gML+AGXxf9w3jvTw6ZzBLbw889M+JJEORGcwPwjzmKy3QEc2+IMq8Wo2uugjvuovPFmysdEltD2HIGW10+BSWQo2KtSQoY/0sseuTSldr6xrit1tzeJGg0ZxA9aO/XMcxcHC3d/PCCUATO9jomJcTcXy6NocHPVRg9JXp7ALpXgHUmcr/DVQNuHi6c9DcA5BrgKuiynCFmR6XX8gDAS4TRL0NrN0OdHF5G9KSL+gtMCYZKLQzRuguQ2MK039E0MVSYxv5xYThctJG0GLU5droxddw6khTgm8htDP8EuCVfcu677GmGK0puAYJW7+BjYzAjKtfSPHT0gB96gjydcrcP8/CKFF/GuvOuPYl8pjsfl8q4FkXruCit5FYoUGcsEFEnKLywgwRi6qDT5kGpy27Vnj/e67CzcrtE/peKu1tNl6znH2VRKKNwvz72COvZACSlXaOlCxUqy1j+75tEW1lZb8aAieJ0fIMvH5ELkzmOwRz1OrYeu1ENxQRYP0CIfqTR1z8on/Qc8jNZLK/HVQbZ4AVcvPd2Xf0DrxnAn9/4c/Ar2re3tI5diysTfta6IZL4pV+qOHJMcF5bzzntDTq85plfrg6Evg/nXTSM3VOdS4wcJHOaAcqfEaqNHrqihdYu4I3+N2dLoua1F5xwguvVhvsXNMsMGD4tC02o/hcEDbMExwI8QEuRtUYdzrovgQlPupyghIpISlL/RmisECHbJfQv7vPVzbydDrXN73o5KzoVzsTzhmhKg2MOHQFq/jeO4jWsMLRripGHqNRlnJIHCFg/qJMk=}"
+              secret: "{AQAAABAAAAOwXX63gVCVOwTvhbYt1LPl8FQ5DprGNEsgYmLkMRLlZ6SUzz5Glo8C86jBRDcQqnWBTAOCZkg3s09XUHAeCFvKBP+n4yymIBNXwD1kg5IM+tsM1Me+cxGWfwdA3mHC81TQX0CAskbKL0LUC4G9SYm93G90tHEX7QpxczFWbGFVrdWdTDn1xuEMBBOTeObSx60mKY8g0HOqzy06ct2V/RmWIaO/j00ByztNZBdhoZe87+tFJ0Fox8yqKITZF7aQkbvpXIM0xH2qtWR2Zw5BAIFOSAXjCOO5YJ+v7hyFEFpYgMacFSIrJLOel5kqHY9Tupb5/0znKZit7uVI5JOzNGGJzqVVkt4HQk0WnNd/Fss8vyi4surN53eqbhudvu2KXIDK3IW3JajVGYGGZNLDnQcvY37pLLec1uZrtiQKYeK3YPcP/GTDEXkKYR4iYv9l0xiwBd4oZlXsU/S1aLSRcOaNwnh7t03b2USXIS6bfcPIGNGPEqIq9pkNQ6FIdhWKXsJsC3R0aTk0F0bJF7q/MmYAqux3HUovv5eeD7mwLs9qhO0t32aphQfO/0IQCsFroIm2I4S35tDvqGuOmCDXfxYA823zLFq01y408TRi9BRQT+c/eKVGNbdE/NqxJaQvZng1nwQMBFhgzePmtuZbwtH9rxYBNsda6/X1v9tl6mcDBCivxjfMcR1/jSA0l7wWAnBe8Ud+KTiOogyHS50TMmrZdneqs2sm3z21iwb0hmGykMPjJKO7B7OPAt1SyGWSo5Ao4MXKYweR+l1wXWCD27d/1g2+cmcohM06Xq7IJuAIk4UjsygEsR9qG6YGcpI61QhnXEGdP9Uaemn1Atz2jixg+oTlboWT9O2TLBpfCqtqVskkTY9ntX+Cq/M+Xj8GoMCQy2dc+2kqbD9CW3tG3OYTIz0QETt9Ka161Xfk3R4XuSV9T3vK8hRvBc4e0vJltwLx9agSuFY/Wf63QN4ib9n9RGAjslrqC+7QSJ3eJ1DjhmkgN6EuHT2edtfjPOHiuvPnsIVi0xQ+V9aFNobQmrsumaeTOwtthSuCknaQ4Rd2lYM2H/UhE7jfvQpSX1EN2ngRzVuWLmrp7JqnUL/B2636eYDACl8uNtt5kbvOAYvd+wCqeG2Nk3BcZsPiygEkSycBX/I9pW2s2PdOm+6NDjbwptrMUvEMvDJRm0zuzOo8fxdwbqhMf3m+Kh0p5s5rM9lsISjOy/1gEwr5yQjJFEHmZk1AseyTXnYyL6SqS9p1RDCzzgcm2gylbU4NWJm5gAIx}"
+          - usernamePassword:
+              description: "wild-github-token"
+              id: "wild-github-token"
+              password: "{AQAAABAAAABgMBbHt+2lG9HjgZyFFlI6kIhkBgUPO2z+zXWwddZJTSa34qiQYuxYwaNzJhpZaGxnnhViqzYWKfVAn5DJRXhSN7Rgo2zZC+0flYKZq3Adf68/HHcdoqVnHHaYZOMebuEwPKVYn0UR7FVgZfIVYFEgsA==}"
+              scope: GLOBAL
+              username: "oauth2"
 jenkins:
   agentProtocols:
     - "JNLP4-connect"
@@ -31,8 +37,6 @@ jenkins:
     standard:
       excludeClientIPFromCrumb: false
   disableRememberMe: false
-  disabledAdministrativeMonitors:
-    - "hudson.util.DoubleLaunchChecker"
   labelAtoms:
     - name: "built-in"
     - name: "removed-master"
@@ -65,9 +69,8 @@ jenkins:
             - "timezone"
             - "experimentalFlags"
   slaveAgentPort: 50000
-  systemMessage: |+
-    Automating Jenkins Setup using Docker and Jenkins Configuration as Code
-
+  systemMessage: "Automated Jenkins Setup using Docker and Jenkins Configuration as\
+    \ Code"
   updateCenter:
     sites:
       - id: "default"
@@ -78,25 +81,8 @@ jenkins:
   viewsTabBar: "standard"
 globalCredentialsConfiguration:
   configuration:
-    providerFilter:
-      includes:
-        classNames:
-          - "com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider"
-          - "com.cloudbees.plugins.credentials.SystemCredentialsProvider$ProviderImpl"
-          - "com.cloudbees.jenkins.plugins.kubernetes_credentials_provider.KubernetesCredentialProvider"
-          - "com.cloudbees.plugins.credentials.UserCredentialsProvider"
-    typeFilter:
-      includes:
-        classNames:
-          - "com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl"
-          - "org.jenkinsci.plugins.github_branch_source.GitHubAppCredentials"
-          - "org.jenkinsci.plugins.kubernetes.credentials.FileSystemServiceAccountCredential"
-          - "org.csanchez.jenkins.plugins.kubernetes.OpenShiftTokenCredentialImpl"
-          - "org.jenkinsci.plugins.kubernetes.credentials.OpenShiftBearerTokenCredentialImpl"
-          - "com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey"
-          - "org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl"
-          - "org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl"
-          - "com.cloudbees.plugins.credentials.impl.CertificateCredentialsImpl"
+    providerFilter: "none"
+    typeFilter: "none"
 security:
   apiToken:
     creationOfLegacyTokenEnabled: false
@@ -107,53 +93,14 @@ security:
     allowedOnController: false
   gitHostKeyVerificationConfiguration:
     sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
 unclassified:
   buildDiscarders:
     configuredBuildDiscarders:
       - "jobBuildDiscarder"
-  buildStepOperation:
-    enabled: false
-  email-ext:
-    adminRequiredForTemplateTesting: false
-    allowUnregisteredEnabled: false
-    charset: "UTF-8"
-    debugMode: false
-    defaultBody: |-
-      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
-
-      Check console output at $BUILD_URL to view the results.
-    defaultContentType: "text/plain"
-    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
-    defaultTriggerIds:
-      - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
-    maxAttachmentSize: -1
-    maxAttachmentSizeMb: -1
-    precedenceBulk: false
-    watchingEnabled: false
-  enrichedSummaryConfig:
-    enrichedSummaryEnabled: false
-    httpClientDelayBetweenRetriesInSeconds: 1
-    httpClientMaxRetries: 3
-    httpClientTimeoutInSeconds: 1
   fingerprints:
     fingerprintCleanupDisabled: false
-    storage: "file"
-  gitHubConfiguration:
-    apiRateLimitChecker: ThrottleForNormalize
-  gitHubPluginConfig:
-    hookUrl: "http://192.168.1.18:8080/github-webhook/"
-  globalTimeOutConfiguration:
-    operations:
-      - "abortOperation"
-    overwriteable: false
-  injectionConfig:
-    allowUntrusted: false
-    checkForBuildAgentErrors: false
-    enabled: false
-    enforceUrl: false
-    injectCcudExtension: false
-    injectMavenExtension: false
-  junitTestResultStorage:
     storage: "file"
   location:
     adminAddress: "Adresse pas encore configurée <nobody@nowhere>"
@@ -172,10 +119,6 @@ unclassified:
     hideCredentials: false
     showEntireCommitSummaryInChanges: false
     useExistingAccountWithSameEmail: false
-  timestamper:
-    allPipelines: false
-    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
-    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
 tool:
   git:
     installations:
