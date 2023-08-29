@@ -6,7 +6,10 @@
 /openssl/
 /report/
 /run/
+/test/gitlab/home/
+/test/jenkins/home/
+/test/jenkins/config/secrets.properties
+/test/jenkins/config/exported-jenkins.yaml
 /tmp/
 .DS_Store
 .env
-/test/jenkins/home/

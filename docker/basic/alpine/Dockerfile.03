@@ -1,12 +1,12 @@
-FROM alpine:3.17
+FROM alpine:latest
 
-LABEL Author="wid.sh"
+LABEL Author="wild by scalastic"
 
 # make sure the package repository is up to date
 RUN set -ex \
     # Create a non-root user
     && addgroup --system --gid 1001 appgroup \
-    && adduser --system --uid 1001 -G appgroup --no-create-home appuser \
+    && adduser --system --uid 1000 -G appgroup --shell /bin/bash appuser \
     # Upgrade the package index and install security upgrades
     && apk update \
     && apk upgrade \

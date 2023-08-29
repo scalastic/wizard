@@ -44,7 +44,7 @@ declare -r LOG_LEVEL_FATAL_COLOR="\e[0;35m"
 #@desc Constant that stores log level color off definition.
 declare -r LOG_COLOR_OFF="\e[0m"
 
-log::_prerequisite() {
+log__prerequisite() {
   local status=0
 
   if [ -z "$LOG_PATH" ]; then
@@ -59,7 +59,7 @@ log::_prerequisite() {
 }
 
 #@desc      Log a message.
-#@ex        log::_log \"$LOG_LEVEL_DEBUG\" \"This is a debug message\" \"$LOG_LEVEL_DEBUG_COLOR\" \"$LOG_COLOR_OFF\"
+#@ex        log__log \"$LOG_LEVEL_DEBUG\" \"This is a debug message\" \"$LOG_LEVEL_DEBUG_COLOR\" \"$LOG_COLOR_OFF\"
 #@const     LOG_LEVEL (read-only)
 #@const     LOG_LEVELS (read-only)
 #@const     LOG_LEVEL_DEBUG_COLOR (read-only)
@@ -68,13 +68,13 @@ log::_prerequisite() {
 #@arg       color: color to use for the message
 #@arg       color_off: color to use to turn off the color
 #@sdtout    Redirects and writes the message to stderr and file log/stdout.log
-log::_log() {
+log__log() {
     local level=$1
     local message=$2
     local color=$3
     local color_off=$4
 
-    if ! log::_prerequisite; then
+    if ! log__prerequisite; then
       return 2
     fi
 
@@ -85,7 +85,7 @@ log::_log() {
 
 
 #@desc      Log a banner message.
-#@ex        log::_banner \"This is a banner message\" \"$LOG_LEVEL_INFO_COLOR\" \"$LOG_COLOR_OFF\"
+#@ex        log__banner \"This is a banner message\" \"$LOG_LEVEL_INFO_COLOR\" \"$LOG_COLOR_OFF\"
 #@const     LOG_LEVEL_INFO (read-only)
 #@const     LOG_LEVEL_INFO_COLOR (read-only)
 #@const     LOG_COLOR_OFF (read-only)
@@ -93,12 +93,12 @@ log::_log() {
 #@arg       color: color to use for the message
 #@arg       color_off: color to use to turn off the color
 #@stdout    Writes the banner message to stdout
-log::_banner() {
+log__banner() {
     local message=$1
     local color=$2
     local color_off=$3
 
-    if ! log::_prerequisite; then
+    if ! log__prerequisite; then
       return 2
     fi
 
@@ -109,77 +109,77 @@ log::_banner() {
 
 
 #@desc      Log a debug message.
-#@ex        log::debug \"This is a debug message\"
+#@ex        log_debug \"This is a debug message\"
 #@const     LOG_LEVEL_DEBUG (read-only)
 #@const     LOG_LEVEL_DEBUG_COLOR (read-only)
 #@const     LOG_COLOR_OFF (read-only)
 #@arg       message: message to log
 #@stdout    Writes the debug message to stdout
-log::debug() {
+log_debug() {
     local function_name
 
     [ -v FUNCNAME ] && [ "${#FUNCNAME[@]}" -gt 1 ] && \
         function_name="${FUNCNAME[1]}" || \
         function_name="unknown function"
 
-    log::_log "$LOG_LEVEL_DEBUG" "[${function_name}] $1" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
+    log__log "$LOG_LEVEL_DEBUG" "[${function_name}] $1" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
 }
 
 
 #@desc      Log an info message.
-#@ex        log::info \"This is an info message\" 
+#@ex        log_info \"This is an info message\"
 #@const     LOG_LEVEL_INFO (read-only)
 #@const     LOG_LEVEL_INFO_COLOR (read-only)
 #@const     LOG_COLOR_OFF (read-only)
 #@arg       message: message to log
 #@stdout    Writes the info message to stdout
-log::info() {
-    log::_log "$LOG_LEVEL_INFO" "$1" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
+log_info() {
+    log__log "$LOG_LEVEL_INFO" "$1" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
 }
 
 
 #@desc      Log a warning message.
-#@ex        log::warn \"This is a warning message\"
+#@ex        log_warn \"This is a warning message\"
 #@const     LOG_LEVEL_WARN (read-only)
 #@const     LOG_LEVEL_WARN_COLOR (read-only)
 #@const     LOG_COLOR_OFF (read-only)
 #@arg       message: message to log
 #@stdout    Writes the warning message to stdout
-log::warn() {
-    log::_log "$LOG_LEVEL_WARN" "$1" "$LOG_LEVEL_WARN_COLOR" "$LOG_COLOR_OFF"
+log_warn() {
+    log__log "$LOG_LEVEL_WARN" "$1" "$LOG_LEVEL_WARN_COLOR" "$LOG_COLOR_OFF"
 }
 
 
 #@desc      Log an error message.
-#@ex        log::error \"This is an error message\"
+#@ex        log_error \"This is an error message\"
 #@const     LOG_LEVEL_ERROR (read-only)
 #@const     LOG_LEVEL_ERROR_COLOR (read-only)
 #@const     LOG_COLOR_OFF (read-only)
 #@arg       message: message to log
 #@stdout    Writes the error message to stdout
-log::error() {
-    log::_log "$LOG_LEVEL_ERROR" "$1" "$LOG_LEVEL_ERROR_COLOR" "$LOG_COLOR_OFF" >&2
+log_error() {
+    log__log "$LOG_LEVEL_ERROR" "$1" "$LOG_LEVEL_ERROR_COLOR" "$LOG_COLOR_OFF" >&2
 }
 
 
 #@desc      Log a fatal message.
-#@ex        log::fatal \"This is a fatal message\"
+#@ex        log_fatal \"This is a fatal message\"
 #@const     LOG_LEVEL_FATAL (read-only)
 #@const     LOG_LEVEL_FATAL_COLOR (read-only)
 #@const     LOG_COLOR_OFF (read-only)
 #@arg       message: message to log
 #@stdout    Writes the fatal message to stdout
-log::fatal() {
-    log::_log "$LOG_LEVEL_FATAL" "$1" "$LOG_LEVEL_FATAL_COLOR" "$LOG_COLOR_OFF" >&2
+log_fatal() {
+    log__log "$LOG_LEVEL_FATAL" "$1" "$LOG_LEVEL_FATAL_COLOR" "$LOG_COLOR_OFF" >&2
 }
 
 
 #@desc      Log a banner message.
-#@ex        log::banner \"This is a banner message\"
+#@ex        log_banner \"This is a banner message\"
 #@const     LOG_LEVEL_INFO_COLOR (read-only)
 #@const     LOG_COLOR_OFF (read-only)
 #@arg       message: message to log
 #@stdout    Writes the banner message to stdout
-log::banner() {
-    log::_banner "$*" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
+log_banner() {
+    log__banner "$*" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
 }

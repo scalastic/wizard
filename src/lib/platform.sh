@@ -13,13 +13,13 @@ declare -r PLATFORM_GITLAB="GITLAB"
 declare -r PLATFORM_LOCAL="LOCAL"
 
 #@desc      Test if the script is running on jenkins.
-#@ex        platform::_is_jenkins
+#@ex        platform__is_jenkins
 #@const     JENKINS_URL (read-only)
 #@const     BUILD_ID (read-only)
 #@const     WORKSPACE (read-only)
 #@return    true if the script is running on jenkins
 #@return    false otherwise
-platform::_is_jenkins() {
+platform__is_jenkins() {
     if [ -v JENKINS_URL ] && [ -v BUILD_ID ] && [ -v WORKSPACE ]; then
         true
     else
@@ -28,37 +28,41 @@ platform::_is_jenkins() {
 }
 
 #@desc      Test if the script is running on gitlab.
-#@ex        project::_is_local
+#@ex        project__is_local
 #@return    true if the script is running on gitlab
 #@return    false otherwise
-platform::_is_gitlab() {
+platform__is_gitlab() {
     false
 }
 
 #@desc      Test if the script is running locally.
-#@ex        project::_is_local
+#@ex        project__is_local
 #@return    true if the script is running locally
 #@return    false otherwise
-platform::_is_local() {
-    if platform::_is_jenkins || platform::_is_gitlab; then
+platform__is_local() {
+    if platform__is_jenkins || platform__is_gitlab; then
         false
     else
         true
     fi
 }
 
+platform_is_macos() {
+  :
+}
+
 #@desc      Get the platform where the script is running.
-#@ex        platform::get_platform
+#@ex        platform_get_platform
 #@const     PLATFORM_JENKINS (read-only)
 #@const     PLATFORM_GITLAB (read-only)
 #@const     PLATFORM_LOCAL (read-only)
 #@stdout    The platform where the script is running
-platform::get_platform() {
-    if platform::_is_jenkins; then
+platform_get_platform() {
+    if platform__is_jenkins; then
         echo "${PLATFORM_JENKINS}"
-    elif platform::_is_gitlab; then
+    elif platform__is_gitlab; then
         echo "${PLATFORM_GITLAB}"
-    elif platform::_is_local; then
+    elif platform__is_local; then
         echo "${PLATFORM_LOCAL}"
     fi
 }

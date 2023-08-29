@@ -3,12 +3,18 @@ credentials:
     domainCredentials:
       - credentials:
           - string:
-              description: "kubernetes-jenkins-token"
-              id: "kubernetes-jenkins-token"
+              description: kubernetes-jenkins-token
+              id: kubernetes-jenkins-token
               scope: GLOBAL
               secret: ${JENKINS_KUBERNETES_TOKEN}
+          - usernamePassword:
+              description: wild-github-token
+              scope: GLOBAL
+              id: wild-github-token
+              username: oauth2
+              password: ${WILD_GITHUB_TOKEN}
 jenkins:
-  systemMessage: "Automating Jenkins Setup using Docker and Jenkins Configuration as Code\n\n"
+  systemMessage: "Automated Jenkins Setup using Docker and Jenkins Configuration as Code"
   securityRealm:
     local:
       allowsSignup: false
@@ -28,7 +34,7 @@ jenkins:
         containerCap: 10
         containerCapStr: "10"
         credentialsId: "kubernetes-jenkins-token"
-        jenkinsUrl: "http://192.168.1.18:8080"
+        jenkinsUrl: http://${LOCAL_IP_ADDRESS}:8080
         name: "kubernetes"
         namespace: "jenkins"
         serverUrl: "https://kubernetes.docker.internal:6443"
@@ -48,6 +54,26 @@ jenkins:
   projectNamingStrategy: "standard"
   quietPeriod: 5
   scmCheckoutRetryCount: 0
+jobs:
+  - script: >
+      pipelineJob('test-kubernetes-agent') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/scalastic/wild.git')
+                  credentials('wild-github-token')
+                }
+                branch('*/15-test-wild-on-jenkins')
+              }
+            }
+            lightweight()
+          }
+        }
+      }
 unclassified:
   location:
-    url: http://192.168.1.18:8080/
+    url: http://${LOCAL_IP_ADDRESS}:8080/
+  ansiColorBuildWrapper:
+    globalColorMapName: "xterm"

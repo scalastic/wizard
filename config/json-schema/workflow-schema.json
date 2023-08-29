@@ -18,10 +18,10 @@
       "description": "Version of the workflow, following the SemVer format",
       "type": "string"
     },
-    "workflow": {
+    "actions": {
       "description": "The sequence of consecutive actions",
       "type": "array",
-      "items": {
+      "actions": {
         "type": "object",
         "properties": {
           "action": {
@@ -32,7 +32,7 @@
       }
     }
   },
-  "required": ["id", "name", "workflow"],
+  "required": ["id", "name", "version", "actions"],
   "definitions": {
     "action": {
       "type": "object",
@@ -45,12 +45,16 @@
           "description": "Name of the action",
           "type": "string"
         },
-        "action": {
-          "description": "The action defined in a Bash script file",
+        "container": {
+          "description": "Container where to execute the action",
+          "type": "string"
+        },
+        "script": {
+          "description": "The Bash script filename defining the action",
           "type": "string"
         }
       },
-      "required": ["id", "name", "action"]
+      "required": ["id", "name", "container", "script"]
     }
   }
 }
