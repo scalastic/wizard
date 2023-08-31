@@ -32,4 +32,4 @@ test:
 	shellspec -s bash
 
 dev:
-	shellspec -s bash spec/**/workflow_spec.sh
+	shellspec -s bash spec/**/**/gendoc_spec.sh

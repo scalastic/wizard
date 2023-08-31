@@ -6,8 +6,14 @@
     {
       "id": "action1",
       "name": "Action 1",
-      "container": "bash",
+      "container": "wild",
       "script": "test/action/bash-version.sh"
-    }
+    },
+    {
+      "id": "action2",
+      "name": "Action 2",
+      "container": "maven",
+      "script": "test/action/maven-version.sh"
+      }
   ]
 }

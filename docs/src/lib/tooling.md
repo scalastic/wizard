@@ -4,7 +4,7 @@ Check if a command exists
 
 ## FUNCTIONS
 
-### `tooling::_check_command 🚫 (private)`
+### `tooling__check_command 🚫 (private)`
 
 * Argument
 
@@ -13,14 +13,14 @@ Check if a command exists
 * Example
 
 ```bash
-tooling::_check_command jq
+tooling__check_command jq
 ```
 
 * Output
 
   * `stdout`: true if the command exists otherwise false
 
-### `tooling::_get_command 🚫 (private)`
+### `tooling__get_command 🚫 (private)`
 
 * Argument
 
@@ -29,22 +29,24 @@ tooling::_check_command jq
 * Example
 
 ```bash
-tooling::_get_command jq
+tooling__get_command jq
 ```
 
 * Output
 
   * `stdout`: The path of the command
 
-### `tooling::set_jq ✅ (public)`
+### `tooling_set_jq ✅ (public)`
 
 * Set the jq command
 
 * Example
 
 ```bash
-tooling::set_jq
+tooling_set_jq
 ```
 
+### `tooling_get_ip ✅ (public)`
+
 ---------------------------------------
-*Generated from [src/lib/tooling.sh](../../../src/lib/tooling.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/tooling.sh](../../../src/lib/tooling.sh) on 08.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

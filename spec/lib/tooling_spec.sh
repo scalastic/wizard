@@ -15,11 +15,11 @@ Describe "Test that tooling.sh"
 
     Include "./src/lib/tooling.sh"
 
-    Describe "tooling::_check_command"
+    Describe "tooling__check_command"
 
         It "returns true when the command is available on the system"
 
-            When call tooling::_check_command "ls"
+            When call tooling__check_command "ls"
 
             The status should be success
             The status should eq 0
@@ -27,7 +27,7 @@ Describe "Test that tooling.sh"
 
         It "returns false when the command is not available on the system"
 
-            When call tooling::_check_command "FAKE_COMMAND"
+            When call tooling__check_command "FAKE_COMMAND"
 
             The status should be failure
             The status should eq 1
@@ -35,11 +35,11 @@ Describe "Test that tooling.sh"
 
     End
 
-    Describe "tooling::_get_command"
+    Describe "tooling__get_command"
 
         It "returns the command when the command is available on the system"
 
-            When call tooling::_get_command "ls"
+            When call tooling__get_command "ls"
 
             The status should be success
             The output should eq "$(command -v ls)"
@@ -47,7 +47,7 @@ Describe "Test that tooling.sh"
 
         It "returns an empty string when the command is not available on the system"
 
-            When call tooling::_get_command "FAKE_COMMAND"
+            When call tooling__get_command "FAKE_COMMAND"
 
             The status should be failure
             The output should eq ""
@@ -55,16 +55,16 @@ Describe "Test that tooling.sh"
 
     End
 
-    Describe "tooling::set_jq"
+    Describe "tooling_set_jq"
 
         # shellcheck disable=SC2317
-        tooling::_check_command() { if [ "$1" = "jq" ]; then { true; } else { false;} fi }
+        tooling__check_command() { if [ "$1" = "jq" ]; then { true; } else { false;} fi }
         # shellcheck disable=SC2317
-        tooling::_get_command() { echo "FAKE_JQ"; }
+        tooling__get_command() { echo "FAKE_JQ"; }
 
         It "returns a status success when jq is available on the system"
 
-            When call tooling::set_jq
+            When call tooling_set_jq
 
             The status should be success
             The variable JQ should eq "FAKE_JQ"
@@ -73,12 +73,12 @@ Describe "Test that tooling.sh"
         End
 
         # shellcheck disable=SC2317
-        tooling::_check_command() { if [ "$1" = "docker" ]; then { true; } else { false;} fi }
-        tooling::_get_command() { echo "FAKE_DOCKER"; }
+        tooling__check_command() { if [ "$1" = "docker" ]; then { true; } else { false;} fi }
+        tooling__get_command() { echo "FAKE_DOCKER"; }
 
         It "returns a status success when docker is available on the system"
 
-            When call tooling::set_jq
+            When call tooling_set_jq
 
             The status should be success
             The variable JQ should eq "FAKE_DOCKER run -i scalastic/wild:latest"
@@ -86,11 +86,11 @@ Describe "Test that tooling.sh"
             The stderr should be present # for logs redirected into stderr
         End
 
-        tooling::_check_command() { false; }
+        tooling__check_command() { false; }
 
         It "returns a status failure when jq and docker are not available on the system"
 
-            When run tooling::set_jq
+            When run tooling_set_jq
 
             The status should be failure
             The stderr should be present

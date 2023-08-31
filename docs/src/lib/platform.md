@@ -18,14 +18,14 @@ Platform functions for bash scripts
 
 ## FUNCTIONS
 
-### `platform::_is_jenkins 🚫 (private)`
+### `platform__is_jenkins 🚫 (private)`
 
 * Test if the script is running on jenkins.
 
 * Example
 
 ```bash
-platform::_is_jenkins
+platform__is_jenkins
 ```
 
 * Return Code
@@ -34,14 +34,14 @@ platform::_is_jenkins
 
   * `return`: false otherwise
 
-### `platform::_is_gitlab 🚫 (private)`
+### `platform__is_gitlab 🚫 (private)`
 
 * Test if the script is running on gitlab.
 
 * Example
 
 ```bash
-project::_is_local
+project__is_local
 ```
 
 * Return Code
@@ -50,14 +50,14 @@ project::_is_local
 
   * `return`: false otherwise
 
-### `platform::_is_local 🚫 (private)`
+### `platform__is_local 🚫 (private)`
 
 * Test if the script is running locally.
 
 * Example
 
 ```bash
-project::_is_local
+project__is_local
 ```
 
 * Return Code
@@ -66,14 +66,16 @@ project::_is_local
 
   * `return`: false otherwise
 
-### `platform::get_platform ✅ (public)`
+### `platform_is_macos ✅ (public)`
+
+### `platform_get_platform ✅ (public)`
 
 * Get the platform where the script is running.
 
 * Example
 
 ```bash
-platform::get_platform
+platform_get_platform
 ```
 
 * Output
@@ -81,4 +83,4 @@ platform::get_platform
   * `stdout`: The platform where the script is running
 
 ---------------------------------------
-*Generated from [src/lib/platform.sh](../../../src/lib/platform.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/platform.sh](../../../src/lib/platform.sh) on 08.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

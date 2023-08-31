@@ -58,9 +58,9 @@ Logger functions for bash scripts
 
 ## FUNCTIONS
 
-### `log::_prerequisite 🚫 (private)`
+### `log__prerequisite 🚫 (private)`
 
-### `log::_log 🚫 (private)`
+### `log__log 🚫 (private)`
 
 * Log a message.
 
@@ -77,10 +77,10 @@ Logger functions for bash scripts
 * Example
 
 ```bash
-log::_log "$LOG_LEVEL_DEBUG" "This is a debug message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
+log__log "$LOG_LEVEL_DEBUG" "This is a debug message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
 ```
 
-### `log::_banner 🚫 (private)`
+### `log__banner 🚫 (private)`
 
 * Log a banner message.
 
@@ -95,14 +95,14 @@ log::_log "$LOG_LEVEL_DEBUG" "This is a debug message" "$LOG_LEVEL_DEBUG_COLOR" 
 * Example
 
 ```bash
-log::_banner "This is a banner message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
+log__banner "This is a banner message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
 ```
 
 * Output
 
   * `stdout`: Writes the banner message to stdout
 
-### `log::debug ✅ (public)`
+### `log_debug ✅ (public)`
 
 * Log a debug message.
 
@@ -113,14 +113,14 @@ log::_banner "This is a banner message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
 * Example
 
 ```bash
-log::debug "This is a debug message"
+log_debug "This is a debug message"
 ```
 
 * Output
 
   * `stdout`: Writes the debug message to stdout
 
-### `log::info ✅ (public)`
+### `log_info ✅ (public)`
 
 * Log an info message.
 
@@ -131,14 +131,14 @@ log::debug "This is a debug message"
 * Example
 
 ```bash
-log::info "This is an info message"
+log_info "This is an info message"
 ```
 
 * Output
 
   * `stdout`: Writes the info message to stdout
 
-### `log::warn ✅ (public)`
+### `log_warn ✅ (public)`
 
 * Log a warning message.
 
@@ -149,14 +149,14 @@ log::info "This is an info message"
 * Example
 
 ```bash
-log::warn "This is a warning message"
+log_warn "This is a warning message"
 ```
 
 * Output
 
   * `stdout`: Writes the warning message to stdout
 
-### `log::error ✅ (public)`
+### `log_error ✅ (public)`
 
 * Log an error message.
 
@@ -167,14 +167,14 @@ log::warn "This is a warning message"
 * Example
 
 ```bash
-log::error "This is an error message"
+log_error "This is an error message"
 ```
 
 * Output
 
   * `stdout`: Writes the error message to stdout
 
-### `log::fatal ✅ (public)`
+### `log_fatal ✅ (public)`
 
 * Log a fatal message.
 
@@ -185,14 +185,14 @@ log::error "This is an error message"
 * Example
 
 ```bash
-log::fatal "This is a fatal message"
+log_fatal "This is a fatal message"
 ```
 
 * Output
 
   * `stdout`: Writes the fatal message to stdout
 
-### `log::banner ✅ (public)`
+### `log_banner ✅ (public)`
 
 * Log a banner message.
 
@@ -203,7 +203,7 @@ log::fatal "This is a fatal message"
 * Example
 
 ```bash
-log::banner "This is a banner message"
+log_banner "This is a banner message"
 ```
 
 * Output
@@ -211,4 +211,4 @@ log::banner "This is a banner message"
   * `stdout`: Writes the banner message to stdout
 
 ---------------------------------------
-*Generated from [src/lib/log.sh](../../../src/lib/log.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/log.sh](../../../src/lib/log.sh) on 08.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

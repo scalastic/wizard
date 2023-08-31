@@ -11,8 +11,8 @@
     "src/lib/log.sh",
     "src/lib/platform.sh",
     "src/lib/project.sh",
-    "src/lib/sequence.sh",
     "src/lib/tooling.sh",
+    "src/lib/workflow.sh",
     "src/wild.sh"
   ],
   "install": "make install"

@@ -7,7 +7,10 @@
       "id": "action1",
       "name": "Action 1",
       "container": "bash",
-      "script": "test/action/bash-version.sh"
+      "pre_script": "test/action/bash-version.sh",
+      "script": "test/action/bash-version.sh",
+      "post_script": "test/action/bash-version.sh",
+      "log_level": "DEBUG"
     },
     {
       "id": "action2",

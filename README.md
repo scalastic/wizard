@@ -1,5 +1,5 @@
 
-![Wild](docs/images/wild.png)
+![Wizard](docs/images/wizard.png)
 
 [![License](https://img.shields.io/github/license/scalastic/wild.svg?style=flat-square)](https://github.com/scalastic/wild/blob/master/LICENSE)
 [![bash](https://img.shields.io/badge/bash-4.4%2B-brightgreen)](https://www.gnu.org/software/bash/)
@@ -9,15 +9,15 @@
 [![GitHub stars](https://img.shields.io/github/stars/scalastic/wild?style=social)](https://img.shields.io/github/stars/scalastic/wild?style=social)
 [![GitHub forks](https://img.shields.io/github/forks/scalastic/wild?style=social)](https://img.shields.io/github/forks/scalastic/wild?style=social)
 
-# Wide Integration with Lightweight Delivery
+# Wizard - The Magical Integration Framework
 
-`Wild` is a framework that allows you to run the same integration scripts locally and on the server. It is designed to be used by developers and CI/CD platforms.
+Welcome to Wizard, a versatile and magical framework that empowers you to effortlessly execute uniform integration scripts both locally and on your server. It caters to the needs of both developers and CI/CD platforms, weaving a touch of magic into your workflow.
 
-`Wild` stands for **Wide Integration with Lightweight Delivery**. Due to its ***Wild*** nature, it fills the gap between the developer and the CI/CD platform by allowing to run the exact same integration and deployment scripts locally and on the server.
+The acronym `WIZARD` represents its essence: **Wide Integration Zone And Runner Deployment**. Thanks to its unconventional and almost mystical nature, `Wizard` bridges the gap between developers and CI/CD platforms, enabling the seamless execution of identical integration and deployment scripts, whether on your local machine or the server.
 
-Developers can test the operation of the CI/CD chain on their local station and no longer have to wait and wonder what will happen once their code is pushed on the integration servers.
+With `Wizard`, developers gain the magical ability to thoroughly test their CI/CD pipeline's functionality directly on their local workstations, eliminating the need to speculate about the outcomes once their code is pushed to the integration servers.
 
-`Wild` fills the missing link of the DevOps approach and its *shift-left* principal herein.
+Embrace the enchantment of Wizard to fill the void in the DevOps approach and embody the "shift-left" principle with a sprinkle of magic.
 
 ----
 
@@ -28,7 +28,7 @@ Developers can test the operation of the CI/CD chain on their local station and 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Tutorial](#tutorial)
-- [Wild CLI](#wild-cli)
+- [Wizard CLI](#wizard-cli)
   - [Command options](#command-options)
 - [Project directory](#project-directory)
   - [Typical directory structure](#typical-directory-structure)
@@ -39,21 +39,23 @@ Developers can test the operation of the CI/CD chain on their local station and 
 
 ## Supported platforms
 
-Actualy `Wild` is designed to be used on the following platforms:
+## Compatible Platforms
 
-- Local
+Currently, `Wizard` is tailored for seamless use on the following platforms:
+
+- Your local environment (Unix-based systems)
 - Jenkins
 - GitLab-CI
 
-## Supported technologies and extensibility
+Please note that our magical integration framework may expand its compatibility with more platforms in the future. Stay tuned for updates!
 
-## Requirements
+## Prerequisites
 
-To use `Wild` on your local station you need:
+In order to utilize `Wizard` on your local machine, the following prerequisites must be met:
 
-- [Bash](https://www.gnu.org/software/bash/) 4.4 or higher
-- [Git](https://git-scm.com/) 2.0 or higher
-- [Docker](https://www.docker.com/) 19.03 or higher
+- [Bash](https://www.gnu.org/software/bash/) version 4.4 or newer
+- [Git](https://git-scm.com/) version 2.0 or higher
+- [Docker](https://www.docker.com/) version 19.03 or later
 
 ## Installation
 
@@ -61,7 +63,7 @@ To use `Wild` on your local station you need:
 
 ```bash
 brew tap scalastic/tap
-brew install wild
+brew install wizard
 ```
 
 ### Install with Git
@@ -72,12 +74,12 @@ git clone
 
 ## Tutorial
 
-## Wild CLI
+## Wizard CLI
 
 ### Usage
 
 ```bash
-wild [options] [command]
+wizard [options] [command]
 ```
 
 ### Command options
