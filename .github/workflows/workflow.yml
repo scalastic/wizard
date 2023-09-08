@@ -31,6 +31,6 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }} # required for private repos
           directory: coverage
           flags: unittests # optional
-          name: codecov-wild # optional
+          name: codecov-wizard # optional
           fail_ci_if_error: false # optional (default = false)
           verbose: true # optional (default = false)
