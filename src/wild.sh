@@ -51,4 +51,5 @@ source "${WILD_CWD}/src/lib/workflow.sh"
 
 
 workflow_configuration_path=$(project::get_configuration_path)
+# shellcheck disable=SC2034
 used_containers_names=$(workflow::_get_workflows_containers_names "$workflow_configuration_path")

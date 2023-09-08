@@ -65,7 +65,7 @@ jobs:
                   url('https://github.com/scalastic/wild.git')
                   credentials('wild-github-token')
                 }
-                branch('*/15-test-wild-on-jenkins')
+                branch('*/17-add-more-configurations-on-workflow-pipeline')
               }
             }
             lightweight()
@@ -77,3 +77,6 @@ unclassified:
     url: http://${LOCAL_IP_ADDRESS}:8080/
   ansiColorBuildWrapper:
     globalColorMapName: "xterm"
+  themeManager:
+    disableUserThemes: true
+    theme: "darkSystem"

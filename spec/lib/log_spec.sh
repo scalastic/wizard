@@ -14,17 +14,17 @@ Describe "Test that log.sh"
 
     BeforeAll 'setup'
 
-    Describe "log::_log"
+    Describe "log__log"
 
         It "logs a message at the specified level"
-            When call log::_log "${LOG_LEVEL_INFO}" "Test message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
+            When call log__log "${LOG_LEVEL_INFO}" "Test message" "$LOG_LEVEL_INFO_COLOR" "$LOG_COLOR_OFF"
             The status should be success
             The output should eq ""
             The error should include "[INFO] Test message"
         End
 
         It "does not log a message at a lower level"
-            When call log::_log "${LOG_LEVEL_DEBUG}" "Test message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
+            When call log__log "${LOG_LEVEL_DEBUG}" "Test message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
             The status should be success
             The output should eq ""
             The error should not include "[INFO] Test message"
@@ -32,12 +32,12 @@ Describe "Test that log.sh"
 
     End
 
-    Describe "log::debug"
+    Describe "log_debug"
 
         BeforeCall LOG_LEVEL="${LOG_LEVEL_DEBUG}"
 
         It "logs a message at the debug level"
-            When call log::debug "Test message"
+            When call log_debug "Test message"
             The status should be success
             The output should eq ""
             The error should include "[DEBUG] [shellspec_evaluation_call_function] Test message"
@@ -46,7 +46,7 @@ Describe "Test that log.sh"
         BeforeCall LOG_LEVEL="${LOG_LEVEL_INFO}"
 
         It "does not log a message at a lower level"
-            When call log::debug "Test message"
+            When call log_debug "Test message"
             The status should be success
             The output should eq ""
             The error should not include "[DEBUG] [shellspec_evaluation_call_function] Test message"
@@ -54,10 +54,10 @@ Describe "Test that log.sh"
 
     End
 
-    Describe "log::info"
+    Describe "log_info"
 
         It "logs a message at the info level"
-            When call log::info "Test message"
+            When call log_info "Test message"
             The status should be success
             The output should eq ""
             The error should include "[INFO] Test message"
@@ -65,10 +65,10 @@ Describe "Test that log.sh"
 
     End
 
-    Describe "log::warn"
+    Describe "log_warn"
 
         It "logs a message at the warn level"
-            When call log::warn "Test message"
+            When call log_warn "Test message"
             The status should be success
             The output should eq ""
             The error should include "[WARN] Test message"
@@ -76,10 +76,10 @@ Describe "Test that log.sh"
 
     End
 
-    Describe "log::error"
+    Describe "log_error"
 
         It "logs a message at the error level"
-            When call log::error "Test message"
+            When call log_error "Test message"
             The status should be success
             The output should eq ""
             The error should include "[ERROR] Test message"
@@ -87,10 +87,10 @@ Describe "Test that log.sh"
 
     End
 
-    Describe "log::fatal"
+    Describe "log_fatal"
 
         It "logs a message at the fatal level"
-            When call log::fatal "Test message"
+            When call log_fatal "Test message"
             The status should be success
             The output should eq ""
             The error should include "[FATAL] Test message"
@@ -98,10 +98,10 @@ Describe "Test that log.sh"
 
     End
 
-    Describe "log::banner"
+    Describe "log_banner"
 
         It "logs a message as a banner"
-            When call log::banner "Test message"
+            When call log_banner "Test message"
             The status should be success
             The output should eq ""
             The error should include "################################"

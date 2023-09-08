@@ -16,7 +16,7 @@ declare -r MARKER_VARIABLE_DEFINITION='='
 declare -r MARKER_FUNCTION_DEFINITION='()'
 
 #@desc Constant that marks a private function definition.
-declare -r MARKER_FUNCTION_PRIVATE='::_'
+declare -r MARKER_FUNCTION_PRIVATE='__'
 
 #@desc Constant that marks the end of a block.
 declare -r MARKER_BLOCK_END='}'
@@ -51,14 +51,14 @@ declare -r LABEL_FUNCTION='FUNCTIONS'
 declare -A buffer=()
 
 #@desc Reset the buffer.
-doc::_buffer_reset() {
+doc__buffer_reset() {
     buffer=()
 }
 
 #@desc Write a value to the buffer by key.
 #@arg $1 The key to write.
 #@arg $2 The value to write.
-doc::_buffer_write() {
+doc__buffer_write() {
     local key="$1"
     local value="$2"
 
@@ -72,7 +72,7 @@ doc::_buffer_write() {
 #@desc Read a value from the buffer by key.
 #@arg $1 The key to read.
 #@return The value of the key.
-doc::buffer_read() {
+doc_buffer_read() {
     local key="$1"
 
     if [ ${buffer[$key]+_} ]; then
@@ -84,7 +84,7 @@ doc::buffer_read() {
 
 #@desc Print the buffer as key, value pairs.
 #@stdout The buffer content
-doc::buffer_print() {
+doc_buffer_print() {
     for key in "${!buffer[@]}"; do
         echo "$key: ${buffer[$key]}"
     done
@@ -95,7 +95,7 @@ doc::buffer_print() {
 #@arg $2 The pattern to check.
 #@return 0 if the line starts with the pattern
 #@return 1 otherwise.
-doc::startswith() {
+doc_startswith() {
     local line="$1"
     local pattern="$2"
 
@@ -114,7 +114,7 @@ doc::startswith() {
 #@arg $2 The pattern to check.
 #@return 0 if the line contains the pattern
 #@return 1 otherwise.
-doc::contains() {
+doc_contains() {
     local line="$1"
     local pattern="$2"
 
@@ -126,19 +126,19 @@ doc::contains() {
 
 #@desc Writes the constant part of the documentation.
 #@stdout The constant part of the documentation.
-doc::_write_constant() {
-    constant_name=$(doc::buffer_read "$ANNOTATION_CONSTANT")
-    constant_description=$(doc::buffer_read "$ANNOTATION_DESCRIPTION")
+doc__write_constant() {
+    constant_name=$(doc_buffer_read "$ANNOTATION_CONSTANT")
+    constant_description=$(doc_buffer_read "$ANNOTATION_DESCRIPTION")
 
     {
         echo -e "### \`${constant_name}\`\n"
         echo -e "* *${constant_description}*\n"
     } 
 
-    doc::_buffer_reset
+    doc__buffer_reset
 }
 
-doc::_write_multiple_annotation() {
+doc__write_multiple_annotation() {
     local label="$1"
     local ordered_values="$2"
     local separated_values="$3"
@@ -152,44 +152,44 @@ doc::_write_multiple_annotation() {
     fi
 }
 
-doc::_write_function() {
+doc__write_function() {
     local function_name="$1"
     local line_number="$2"
 
     local function_description
-    function_description=$(doc::buffer_read "$ANNOTATION_DESCRIPTION")
+    function_description=$(doc_buffer_read "$ANNOTATION_DESCRIPTION")
     local function_arguments
-    function_arguments=$(doc::buffer_read "$ANNOTATION_ARGUMENT")
+    function_arguments=$(doc_buffer_read "$ANNOTATION_ARGUMENT")
     local function_example
-    function_example=$(doc::buffer_read "$ANNOTATION_EXAMPLE")
+    function_example=$(doc_buffer_read "$ANNOTATION_EXAMPLE")
     local function_stdout
-    function_stdout=$(doc::buffer_read "$ANNOTATION_STDOUT")
+    function_stdout=$(doc_buffer_read "$ANNOTATION_STDOUT")
     local function_return
-    function_return=$(doc::buffer_read "$ANNOTATION_RETURN")
+    function_return=$(doc_buffer_read "$ANNOTATION_RETURN")
 
     {
         echo -e "### \`$function_name\`\n"
 
         [ -n "${function_description}" ] && echo -e "* $function_description\n"
 
-        doc::_write_multiple_annotation "Argument" true "${function_arguments}"
+        doc__write_multiple_annotation "Argument" true "${function_arguments}"
         [ -n "${function_example}" ] && echo -e "* Example\n"
         [ -n "${function_example}" ] && echo -e "$function_example\n"
-        doc::_write_multiple_annotation "Output" false "${function_stdout}"
-        doc::_write_multiple_annotation "Return Code" false "${function_return}"
+        doc__write_multiple_annotation "Output" false "${function_stdout}"
+        doc__write_multiple_annotation "Return Code" false "${function_return}"
     } 
 
-    doc::_buffer_reset
+    doc__buffer_reset
 }
 
-doc::main() {
+doc_main() {
 
     if test "$*" = ""; then
         echo "Usage: $0 <space separated list of bash scripts>"
         exit 1
     fi
 
-    log::debug "Starting the documentation generation..."
+    log_debug "Starting the documentation generation..."
 
     for file in "$@"; do
 
@@ -199,11 +199,11 @@ doc::main() {
 
         line_number=0
         if test ! -f "$file"; then
-            log::fatal "Fatal bazooka: ${file} does not exist"
+            log_fatal "Fatal bazooka: ${file} does not exist"
             exit 2
         fi
 
-        log::debug "Starting the documentation generation of script ${file}..."
+        log_debug "Starting the documentation generation of script ${file}..."
 
         is_shebang=true
         has_constant_section=false
@@ -214,82 +214,82 @@ doc::main() {
 
             line_number=$((line_number + 1))
 
-            log::debug "Line is: $line"
+            log_debug "Line is: $line"
 
-            if doc::startswith "$line" "$MARKER_COMMENT_START"; then
-                log::debug "This is an annotation"
+            if doc_startswith "$line" "$MARKER_COMMENT_START"; then
+                log_debug "This is an annotation"
 
                 ###### Description ######
-                if doc::contains "$line" "$ANNOTATION_DESCRIPTION"; then
-                    log::debug "This is a description annotation"
+                if doc_contains "$line" "$ANNOTATION_DESCRIPTION"; then
+                    log_debug "This is a description annotation"
 
                     # shellcheck disable=SC2154 disable=SC2295
                     description=$(echo "${line#$ANNOTATION_DESCRIPTION}" | xargs)
 
                     if "$is_shebang"; then
-                        log::debug "This is a shebang"
+                        log_debug "This is a shebang"
                         echo -e "# ${LABEL_LIBRARY} \`$file\`\n"
                         echo -e "${description}\n"
                         is_shebang=false
                     else
-                        doc::_buffer_write "$ANNOTATION_DESCRIPTION" "$description"
+                        doc__buffer_write "$ANNOTATION_DESCRIPTION" "$description"
                     fi
 
-                    log::debug "Description: $description"
+                    log_debug "Description: $description"
 
                 ###### Constant ######
-                elif doc::contains "$line" "$ANNOTATION_CONSTANT"; then
-                    log::debug "This is a constant annotation"
+                elif doc_contains "$line" "$ANNOTATION_CONSTANT"; then
+                    log_debug "This is a constant annotation"
 
                 ###### Argument ######
-                elif doc::contains "$line" "$ANNOTATION_ARGUMENT"; then
-                    log::debug "This is an argument annotation"
+                elif doc_contains "$line" "$ANNOTATION_ARGUMENT"; then
+                    log_debug "This is an argument annotation"
 
                     # shellcheck disable=SC2295
                     argument=$(echo "${line#$ANNOTATION_ARGUMENT}" | xargs)
                     argument_name=$(echo "$argument" | cut -d ':' -f1 | xargs)
                     argument_description=$(echo "$argument" | cut -d ':' -f2 | xargs)
-                    log::debug "Argument name: $argument_name, description: $argument_description"
-                    doc::_buffer_write "$ANNOTATION_ARGUMENT" "\`${argument_name}\`: ${argument_description}"
+                    log_debug "Argument name: $argument_name, description: $argument_description"
+                    doc__buffer_write "$ANNOTATION_ARGUMENT" "\`${argument_name}\`: ${argument_description}"
 
                 ###### Example ######
-                elif doc::contains "$line" "$ANNOTATION_EXAMPLE"; then
-                    log::debug "This is an example annotation"
+                elif doc_contains "$line" "$ANNOTATION_EXAMPLE"; then
+                    log_debug "This is an example annotation"
 
                     # shellcheck disable=SC2295
                     example="\
 \`\`\`bash\n\
 $(echo "${line#$ANNOTATION_EXAMPLE}" | xargs)\n\
 \`\`\`"
-                    log::debug "Example: $example"
-                    doc::_buffer_write "$ANNOTATION_EXAMPLE" "$example"
+                    log_debug "Example: $example"
+                    doc__buffer_write "$ANNOTATION_EXAMPLE" "$example"
 
                 ###### Stdout ######
-                elif doc::contains "$line" "$ANNOTATION_STDOUT"; then
-                    log::debug "This is a stdout annotation"
+                elif doc_contains "$line" "$ANNOTATION_STDOUT"; then
+                    log_debug "This is a stdout annotation"
 
                     # shellcheck disable=SC2154 disable=SC2295
                     stdout=$(echo "${line#$ANNOTATION_STDOUT}" | xargs)
-                    log::debug "Stdout: $stdout"
-                    doc::_buffer_write "$ANNOTATION_STDOUT" "\`stdout\`: ${stdout}"
+                    log_debug "Stdout: $stdout"
+                    doc__buffer_write "$ANNOTATION_STDOUT" "\`stdout\`: ${stdout}"
 
                 ###### Return ######
-                elif doc::contains "$line" "$ANNOTATION_RETURN"; then
-                    log::debug "This is a return annotation"    
+                elif doc_contains "$line" "$ANNOTATION_RETURN"; then
+                    log_debug "This is a return annotation"
 
                     # shellcheck disable=SC2154 disable=SC2295
                     return=$(echo "${line#$ANNOTATION_RETURN}" | xargs)
-                    log::debug "Return: $return"
-                    doc::_buffer_write "$ANNOTATION_RETURN" "\`return\`: ${return}"
+                    log_debug "Return: $return"
+                    doc__buffer_write "$ANNOTATION_RETURN" "\`return\`: ${return}"
                 fi
 
             ###### starts with blank ######
-            elif doc::startswith "$line" " "; then
+            elif doc_startswith "$line" " "; then
                 continue
 
             ###### Variable ######
-            elif doc::contains "$line" "$MARKER_VARIABLE_DEFINITION"; then
-                log::debug "This is a variable definition"
+            elif doc_contains "$line" "$MARKER_VARIABLE_DEFINITION"; then
+                log_debug "This is a variable definition"
 
                 if ! "$has_constant_section" && ! "$is_function"; then
                     echo -e "## ${LABEL_CONSTANT}\n"
@@ -300,13 +300,13 @@ $(echo "${line#$ANNOTATION_EXAMPLE}" | xargs)\n\
                     # shellcheck disable=SC2295
                     variable=$(echo "$line" | cut -d "$MARKER_VARIABLE_DEFINITION" -f1 | xargs)
                     name=${variable##* }
-                    doc::_buffer_write "$ANNOTATION_CONSTANT" "\`${name}\`"
-                    doc::_write_constant
+                    doc__buffer_write "$ANNOTATION_CONSTANT" "\`${name}\`"
+                    doc__write_constant
                 fi
                 
             ###### Function ######
-            elif doc::contains "$line" "$MARKER_FUNCTION_DEFINITION"; then
-                log::debug "This is a function definition"
+            elif doc_contains "$line" "$MARKER_FUNCTION_DEFINITION"; then
+                log_debug "This is a function definition"
                 is_function=true
 
                 if ! "$has_function_section"; then
@@ -316,22 +316,22 @@ $(echo "${line#$ANNOTATION_EXAMPLE}" | xargs)\n\
 
                 function_name=$(echo "$line" | cut -d '(' -f1 | xargs)
 
-                if doc::contains "$function_name" "$MARKER_FUNCTION_PRIVATE"; then
-                    log::debug "This is a private function definition"
-                    doc::_write_function "$function_name 🚫 (private)" "$line_number"
+                if doc_contains "$function_name" "$MARKER_FUNCTION_PRIVATE"; then
+                    log_debug "This is a private function definition"
+                    doc__write_function "$function_name 🚫 (private)" "$line_number"
                 else 
-                    log::debug "This is a public function definition"
-                    doc::_write_function "$function_name ✅ (public)" "$line_number"
+                    log_debug "This is a public function definition"
+                    doc__write_function "$function_name ✅ (public)" "$line_number"
                 fi
                 
             fi
 
             ###### Block ######
-            if doc::startswith "$line" "$MARKER_BLOCK_END"; then
-                log::debug "This is a block end"
+            if doc_startswith "$line" "$MARKER_BLOCK_END"; then
+                log_debug "This is a block end"
                 
                 is_function=false
-                doc::_buffer_reset
+                doc__buffer_reset
             fi
 
 
@@ -346,4 +346,8 @@ $(echo "${line#$ANNOTATION_EXAMPLE}" | xargs)\n\
     done
 }
 
-doc::main "$@"
+# Check if the script is being executed directly
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+    doc_main "$@"
+fi
+

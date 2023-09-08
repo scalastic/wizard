@@ -4,7 +4,7 @@ Project definition functions for bash scripts
 
 ## FUNCTIONS
 
-### `project::get_configuration_path ✅ (public)`
+### `project_get_configuration_path ✅ (public)`
 
 * Get the project configuration path.
 
@@ -15,21 +15,21 @@ Project definition functions for bash scripts
 * Example
 
 ```bash
-project::get_configuration_path
+project_get_configuration_path
 ```
 
 * Output
 
   * `stdout`: path to the project configuration file (default: config/project.sh)
 
-### `project::print_configuration ✅ (public)`
+### `project_print_configuration ✅ (public)`
 
 * Print the project configuration.
 
 * Example
 
 ```bash
-project::print_configuration
+project_print_configuration
 ```
 
 * Output
@@ -40,14 +40,14 @@ project::print_configuration
 
   * `return`: 1 if the project configuration is not defined yet
 
-### `project::_architecture_print_layers 🚫 (private)`
+### `project__architecture_print_layers 🚫 (private)`
 
 * Print the project architecture layers.
 
 * Example
 
 ```bash
-project::_architecture_print_layers
+project__architecture_print_layers
 ```
 
 * Output
@@ -55,4 +55,4 @@ project::_architecture_print_layers
   * `stdout`: The project architecture layers as a formatted string
 
 ---------------------------------------
-*Generated from [src/lib/project.sh](../../../src/lib/project.sh) on 11.08.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/project.sh](../../../src/lib/project.sh) on 08.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

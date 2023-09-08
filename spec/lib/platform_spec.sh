@@ -6,7 +6,7 @@ Describe "Test that platform.sh"
 
     Include "./src/lib/platform.sh"
 
-    Describe "platform::_is_jenkins()"
+    Describe "platform__is_jenkins()"
 
         It "should success when all Jenkins env variables are set"
 
@@ -14,7 +14,7 @@ Describe "Test that platform.sh"
             BeforeCall 'BUILD_ID=FAKE_ID'
             BeforeCall 'WORKSPACE=FAKE_WORKSPACE'
 
-            When call platform::_is_jenkins
+            When call platform__is_jenkins
             The status should be success
         End
 
@@ -23,36 +23,36 @@ Describe "Test that platform.sh"
             BeforeCall 'JENKINS_URL=FAKE_URL'
             BeforeCall 'BUILD_ID=FAKE_ID'
 
-            When call platform::_is_jenkins
+            When call platform__is_jenkins
             The status should be failure
             The status should eq 1
         End
 
         It "returns false when no Jenkins env variables are set"
 
-            When call platform::_is_jenkins
+            When call platform__is_jenkins
             The status should be failure
             The status should eq 1
         End
 
     End
 
-    Describe "platform::_is_gitlab()"
+    Describe "platform__is_gitlab()"
 
         It "returns false when no Gitlab env variables are set"
 
-            When call platform::_is_gitlab
+            When call platform__is_gitlab
             The status should be failure
             The status should eq 1
         End
 
     End
 
-    Describe "platform::_is_local()"
+    Describe "platform__is_local()"
 
         It "returns true when no Jenkins nor Gitlab env variables are set"
 
-            When call platform::_is_local
+            When call platform__is_local
             The status should be success
         End
 
@@ -62,14 +62,14 @@ Describe "Test that platform.sh"
             BeforeCall 'BUILD_ID=FAKE_ID'
             BeforeCall 'WORKSPACE=FAKE_WORKSPACE'
 
-            When call platform::_is_local
+            When call platform__is_local
             The status should be failure
             The status should eq 1
         End
 
     End
 
-    Describe "platform::get_platform()"
+    Describe "platform_get_platform()"
 
         It "returns 'JENKINS' when all Jenkins env variables are set"
 
@@ -77,13 +77,13 @@ Describe "Test that platform.sh"
             BeforeCall 'BUILD_ID=FAKE_ID'
             BeforeCall 'WORKSPACE=FAKE_WORKSPACE'
 
-            When call platform::get_platform
+            When call platform_get_platform
             The stdout should eq "JENKINS"
         End
 
         It "returns 'LOCAL' when no Jenkins nor Gitlab env variables are set"
 
-            When call platform::get_platform
+            When call platform_get_platform
             The stdout should eq "LOCAL"
         End
 

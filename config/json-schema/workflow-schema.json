@@ -49,8 +49,28 @@
           "description": "Container where to execute the action",
           "type": "string"
         },
+        "pre_script": {
+          "description": "The Bash script filename defining the pre-action",
+          "type": "string"
+        },
         "script": {
           "description": "The Bash script filename defining the action",
+          "type": "string"
+        },
+        "post_script": {
+          "description": "The Bash script filename defining the post-action",
+          "type": "string"
+        },
+        "condition": {
+          "description": "Condition to execute this action",
+          "type": "string"
+        },
+        "resume": {
+          "description": "Resume this action at the end",
+          "type": "boolean"
+        },
+        "log_level": {
+          "description": "The log level to log",
           "type": "string"
         }
       },
