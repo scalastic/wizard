@@ -5,7 +5,7 @@ SHELL=bash
 
 .PHONY: all build check metrics test coverage dev
 
-all: package check metrics coverage doc
+all: build package check metrics coverage doc
 
 build:
 	contrib/build.sh

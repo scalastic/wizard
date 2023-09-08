@@ -9,7 +9,7 @@ Describe "Test that tooling.sh"
     setup() {
         export LOG_PATH="${PWD}/log"
         export LOG_LEVEL="${LOG_LEVEL_INFO}"
-        export WILD_CWD="${PWD}"
+        export WIZARD_CWD="${PWD}"
     }
     BeforeAll 'setup'
 
@@ -81,7 +81,7 @@ Describe "Test that tooling.sh"
             When call tooling_set_jq
 
             The status should be success
-            The variable JQ should eq "FAKE_DOCKER run -i scalastic/wild:latest"
+            The variable JQ should eq "FAKE_DOCKER run -i scalastic/wizard:latest"
             The variable IS_DOCKERIZED_JQ should eq "true"
             The stderr should be present # for logs redirected into stderr
         End

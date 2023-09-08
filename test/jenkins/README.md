@@ -7,7 +7,7 @@
 
 ## Installation
 
-1. Start by copying the contents of `.env.template` into a new file named `.env`. In this newly created file, provide your GitHub Token. This token is necessary to access the Git repository where the "wild" application is installed.
+1. Start by copying the contents of `.env.template` into a new file named `.env`. In this newly created file, provide your GitHub Token. This token is necessary to access the Git repository where the "wizard" application is installed.
 
 2. To set up a fresh Jenkins instance, execute the following command:
 ```bash

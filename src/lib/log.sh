@@ -67,7 +67,7 @@ log__prerequisite() {
 #@arg       message: message to log
 #@arg       color: color to use for the message
 #@arg       color_off: color to use to turn off the color
-#@sdtout    Redirects and writes the message to stderr and file log/stdout.log
+#@stdout    Redirects and writes the message to stderr and file log/stdout.log
 log__log() {
     local level=$1
     local message=$2

@@ -80,6 +80,10 @@ Logger functions for bash scripts
 log__log "$LOG_LEVEL_DEBUG" "This is a debug message" "$LOG_LEVEL_DEBUG_COLOR" "$LOG_COLOR_OFF"
 ```
 
+* Output
+
+  * `stdout`: Redirects and writes the message to stderr and file log/stdout.log
+
 ### `log__banner 🚫 (private)`
 
 * Log a banner message.
@@ -211,4 +215,4 @@ log_banner "This is a banner message"
   * `stdout`: Writes the banner message to stdout
 
 ---------------------------------------
-*Generated from [src/lib/log.sh](../../../src/lib/log.sh) on 08.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/log.sh](../../../src/lib/log.sh) on 10.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

@@ -1,6 +1,6 @@
 FROM bash:latest
 
-LABEL Author="wild by scalastic"
+LABEL Author="wizard by scalastic"
 
 RUN apk update \
  && apk add --no-cache curl jq \
