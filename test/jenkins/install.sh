@@ -56,6 +56,8 @@ docker build \
 docker run \
   --rm \
   --name jenkins \
+  --hostname jenkins.scalastic.local \
+  --add-host=jenkins.scalastic.local:"${LOCAL_IP_ADDRESS}" \
   -p 8080:8080 -p 50000:50000 \
   -v "${JENKINS_VOLUME_HOME}:/var/jenkins_home" \
   --env "LOCAL_IP_ADDRESS=${LOCAL_IP_ADDRESS}" \

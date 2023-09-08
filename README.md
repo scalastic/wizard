@@ -1,13 +1,13 @@
 
 ![Wizard](docs/images/wizard.png)
 
-[![License](https://img.shields.io/github/license/scalastic/wild.svg?style=flat-square)](https://github.com/scalastic/wild/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/scalastic/wizard.svg?style=flat-square)](https://github.com/scalastic/wizard/blob/master/LICENSE)
 [![bash](https://img.shields.io/badge/bash-4.4%2B-brightgreen)](https://www.gnu.org/software/bash/)
-[![Test and Code Coverage](https://github.com/scalastic/wild/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/scalastic/wild/actions/workflows/workflow.yml)
-[![codecov](https://codecov.io/gh/scalastic/wild/branch/main/graph/badge.svg?token=KO9TRVNQWE)](https://codecov.io/gh/scalastic/wild)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/scalastic/wild)](https://img.shields.io/github/v/release/scalastic/wild)
-[![GitHub stars](https://img.shields.io/github/stars/scalastic/wild?style=social)](https://img.shields.io/github/stars/scalastic/wild?style=social)
-[![GitHub forks](https://img.shields.io/github/forks/scalastic/wild?style=social)](https://img.shields.io/github/forks/scalastic/wild?style=social)
+[![Test and Code Coverage](https://github.com/scalastic/wizard/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/scalastic/wizard/actions/workflows/workflow.yml)
+[![codecov](https://codecov.io/gh/scalastic/wizard/branch/main/graph/badge.svg?token=KO9TRVNQWE)](https://codecov.io/gh/scalastic/wizard)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/scalastic/wizard)](https://img.shields.io/github/v/release/scalastic/wizard)
+[![GitHub stars](https://img.shields.io/github/stars/scalastic/wizard?style=social)](https://img.shields.io/github/stars/scalastic/wizard?style=social)
+[![GitHub forks](https://img.shields.io/github/forks/scalastic/wizard?style=social)](https://img.shields.io/github/forks/scalastic/wizard?style=social)
 
 # Wizard - The Magical Integration Framework
 
@@ -84,18 +84,18 @@ wizard [options] [command]
 
 ### Command options
 
-| Option | Description |
-| --- | --- |
-| -h, --help | Display help for command |
-| -v, --version | Display version of Wild |
-| -d, --debug | Display debug information |
-| -q, --quiet | Do not display any output |
+| Option | Description                           |
+| --- |---------------------------------------|
+| -h, --help | Display help for command              |
+| -v, --version | Display version of Wizard             |
+| -d, --debug | Display debug information             |
+| -q, --quiet | Do not display any output             |
 | -c, --config | Specify the configuration file to use |
-| -p, --project | Specify the project directory to use |
-| -l, --log | Specify the log file to use |
-| -t, --trace | Specify the trace file to use |
-| -e, --env | Specify the environment file to use |
-| -i, --input | Specify the input file to use |
+| -p, --project | Specify the project directory to use  |
+| -l, --log | Specify the log file to use           |
+| -t, --trace | Specify the trace file to use         |
+| -e, --env | Specify the environment file to use   |
+| -i, --input | Specify the input file to use         |
 
 ## Project directory
 

@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://scalastic.io/workflow.schema.json",
-  "title": "Wild",
-  "description": "A workflow definition in Wild",
+  "title": "Wizard",
+  "description": "A workflow definition in Wizard",
   "version": "0.0.1",
   "type": "object",
   "properties": {

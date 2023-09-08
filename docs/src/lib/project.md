@@ -55,4 +55,4 @@ project__architecture_print_layers
   * `stdout`: The project architecture layers as a formatted string
 
 ---------------------------------------
-*Generated from [src/lib/project.sh](../../../src/lib/project.sh) on 08.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/project.sh](../../../src/lib/project.sh) on 10.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

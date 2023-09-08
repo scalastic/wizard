@@ -1,9 +1,9 @@
 {
-  "name": "Wild",
+  "name": "Wizard",
   "version": "0.0.1",
-  "description": "Wild fills the missing link of the DevOps approach and its shift-left principal herein. With Wild the shifts are so close to the developer that they no longer exist.",
+  "description": "Welcome to Wizard, a versatile and magical framework that empowers you to effortlessly execute uniform integration scripts both locally and on your server.",
   "homepage": "https://scalastic.io/en/",
-  "scripts": ["wild"],
+  "scripts": ["wizard"],
   "license": "MIT",
   "files": [
     "src/action/build/build.sh",
@@ -13,7 +13,7 @@
     "src/lib/project.sh",
     "src/lib/tooling.sh",
     "src/lib/workflow.sh",
-    "src/wild.sh"
+    "src/wizard.sh"
   ],
   "install": "make install"
 }

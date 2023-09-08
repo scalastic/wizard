@@ -1,27 +1,27 @@
 #!/usr/bin/env bash
 #
-# Creates a package.json file for Wild
+# Creates a package.json file for Wizard
 
 export LANG=C
 
 version() {
-  ./bin/wild --version
+  ./bin/wizard --version
 }
 
 files() {
   echo "["
-  files="$(find src -not -path "*lib/ext*" \( -type f -o -type l \) -exec echo "    \"{}\"," \; | sort)"
+  files="$(find src -not -path "*lib/ext*" -not -name ".DS_Store" \( -type f -o -type l \) -exec echo "    \"{}\"," \; | sort)"
   echo "${files%,}"
   echo "  ]"
 }
 
 cat<<JSON
 {
-  "name": "Wild",
+  "name": "Wizard",
   "version": "$(version)",
-  "description": "Wild fills the missing link of the DevOps approach and its shift-left principal herein. With Wild the shifts are so close to the developer that they no longer exist.",
+  "description": "Welcome to Wizard, a versatile and magical framework that empowers you to effortlessly execute uniform integration scripts both locally and on your server.",
   "homepage": "https://scalastic.io/en/",
-  "scripts": ["wild"],
+  "scripts": ["wizard"],
   "license": "MIT",
   "files": $(files),
   "install": "make install"

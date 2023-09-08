@@ -5,12 +5,12 @@
 Describe "Test that workflow.sh"
 
     setup() {
-        export WILD_CWD="${PWD}"
-        export LOG_PATH="${WILD_CWD}/tmp/log"
+        export WIZARD_CWD="${PWD}"
+        export LOG_PATH="${WIZARD_CWD}/tmp/log"
         export LOG_LEVEL="${LOG_LEVEL_DEBUG}"
-        export CONFIG_PATH="${WILD_CWD}/config"
+        export CONFIG_PATH="${WIZARD_CWD}/config"
 
-        mkdir -p "${WILD_CWD}/tmp/config"
+        mkdir -p "${WIZARD_CWD}/tmp/config"
     }
 
     BeforeAll 'setup'
@@ -29,9 +29,9 @@ Describe "Test that workflow.sh"
             The stderr should be present # for logs redirected into stderr
         End
 
-        It "returns a status failure when WILD_CWD is not set"
+        It "returns a status failure when WIZARD_CWD is not set"
 
-            BeforeRun 'unset WILD_CWD'
+            BeforeRun 'unset WIZARD_CWD'
             BeforeRun 'JQ=FAKE_JQ'
 
             When run workflow_check_prerequisites
@@ -98,7 +98,7 @@ Describe "Test that workflow.sh"
             When run workflow_get_workflows_containers_names "${TEST_WORKFLOW_DEFINITION_FILENAME}"
 
             The status should be success
-            The output should eq "wild maven"
+            The output should eq "wizard maven"
             The stderr should be present # for logs redirected into stderr
         End
 
@@ -117,7 +117,7 @@ Describe "Test that workflow.sh"
             When run workflow_load_action_definition "action1" "${TEST_WORKFLOW_DEFINITION_FILENAME}"
 
             The status should be success
-            The output should eq "{\"id\":\"action1\",\"name\":\"Action 1\",\"container\":\"wild\",\"script\":\"test/action/bash-version.sh\"}"
+            The output should eq "{\"id\":\"action1\",\"name\":\"Action 1\",\"container\":\"wizard\",\"script\":\"test/action/bash-version.sh\"}"
             The stderr should be present # for logs redirected into stderr
         End
 

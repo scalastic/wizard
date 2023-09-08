@@ -3,8 +3,8 @@ metadata:
     pipeline: jenkinsfile
 spec:
   containers:
-    - name: 'wild'
-      image: scalastic/wild
+    - name: 'wizard'
+      image: scalastic/wizard
       command:
         - cat
       tty: true
