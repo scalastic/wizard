@@ -3,4 +3,4 @@ library identifier: "wizard@14-redesign-gitlab-ci-platform-for-testing", retriev
    remote: 'https://github.com/scalastic/wizard.git',
    credentialsId: 'wizard-github-token']) _
 
-wildPipeline()
+wizardPipeline()

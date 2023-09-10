@@ -8,10 +8,10 @@ Describe "Test that project.sh"
     Include "./src/lib/project.sh"
 
     setup() { 
-        export WILD_CWD="${PWD}"
-        export LOG_PATH="${WILD_CWD}/tmp/log"
+        export WIZARD_CWD="${PWD}"
+        export LOG_PATH="${WIZARD_CWD}/tmp/log"
         export LOG_LEVEL="${LOG_LEVEL_INFO}"
-        export CONFIG_PATH="${WILD_CWD}/test/config"
+        export CONFIG_PATH="${WIZARD_CWD}/test/config"
     }
 
     BeforeAll 'setup'
@@ -19,7 +19,7 @@ Describe "Test that project.sh"
     Describe "project_get_configuration_path"
 
         It "returns the default configuration path if no path is specified"
-            export CONFIG_PATH="${WILD_CWD}/config"
+            export CONFIG_PATH="${WIZARD_CWD}/config"
             When call project_get_configuration_path
             The status should be success
             The output should include "config/workflow-default.json"
@@ -27,7 +27,7 @@ Describe "Test that project.sh"
         End
 
         It "returns the specified configuration path if a path is specified"
-            export CONFIG_PATH="${WILD_CWD}/test/config"
+            export CONFIG_PATH="${WIZARD_CWD}/test/config"
             When call project_get_configuration_path "${CONFIG_PATH}/workflow-action.json"
             The status should be success
             The output should include "${CONFIG_PATH}/workflow-action.json"

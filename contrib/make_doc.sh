@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Generates Wild source code documentation.
+# Generates Wizard source code documentation.
 
 set -euo pipefail
 

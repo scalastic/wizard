@@ -84,18 +84,18 @@ wizard [options] [command]
 
 ### Command options
 
-| Option | Description |
-| --- | --- |
-| -h, --help | Display help for command |
-| -v, --version | Display version of Wild |
-| -d, --debug | Display debug information |
-| -q, --quiet | Do not display any output |
+| Option | Description                           |
+| --- |---------------------------------------|
+| -h, --help | Display help for command              |
+| -v, --version | Display version of Wizard             |
+| -d, --debug | Display debug information             |
+| -q, --quiet | Do not display any output             |
 | -c, --config | Specify the configuration file to use |
-| -p, --project | Specify the project directory to use |
-| -l, --log | Specify the log file to use |
-| -t, --trace | Specify the trace file to use |
-| -e, --env | Specify the environment file to use |
-| -i, --input | Specify the input file to use |
+| -p, --project | Specify the project directory to use  |
+| -l, --log | Specify the log file to use           |
+| -t, --trace | Specify the trace file to use         |
+| -e, --env | Specify the environment file to use   |
+| -i, --input | Specify the input file to use         |
 
 ## Project directory
 

@@ -14,8 +14,8 @@ workflow_check_prerequisites () {
 
     local status=0
 
-    if [ -z "${WILD_CWD:-}" ]; then
-        log_error "Missing WILD_CWD environment variable"
+    if [ -z "${WIZARD_CWD:-}" ]; then
+        log_error "Missing WIZARD_CWD environment variable"
         status=1
     fi
 
@@ -29,7 +29,7 @@ workflow_check_prerequisites () {
         return 1
     fi
 
-    log_debug "WILD_CWD is ${WILD_CWD}"
+    log_debug "WIZARD_CWD is ${WIZARD_CWD}"
     log_debug "jq command is ${JQ}"
 }
 
@@ -49,7 +49,7 @@ workflow_check_workflow_definition_path() {
         path="config/workflow-default.json"
     fi
 
-    if [ ! -f "${WILD_CWD}/${path}" ]; then
+    if [ ! -f "${WIZARD_CWD}/${path}" ]; then
         log_fatal "Workflow definition file in ${path} does not exist"
         exit 1
     fi
@@ -96,7 +96,7 @@ workflow_load_action_definition() {
 
     local action_definition
     # shellcheck disable=SC2207
-    action_definition=($("$JQ" <"${WILD_CWD}/${workflow_definition_path}" -rc ".actions[] | select(.id == \"${action_id}\")"))
+    action_definition=($("$JQ" <"${WIZARD_CWD}/${workflow_definition_path}" -rc ".actions[] | select(.id == \"${action_id}\")"))
 
     # shellcheck disable=SC2145
     log_debug "Action definition is: ${action_definition[@]}"

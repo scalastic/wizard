@@ -21,7 +21,7 @@ is_prerelease() {
   return 1
 }
 
-version=$(bin/wild --version)
+version=$(bin/wizard --version)
 
 confirm "Release $version?" || exit 0
 run git tag -s -a "$version" -m "$version"

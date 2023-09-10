@@ -7,8 +7,8 @@ Describe "Test that log.sh"
     Include "./src/lib/log.sh"
 
     setup() {
-        export WILD_CWD="${PWD}"
-        export LOG_PATH="${WILD_CWD}/../tmp/log"
+        export WIZARD_CWD="${PWD}"
+        export LOG_PATH="${WIZARD_CWD}/../tmp/log"
         export LOG_LEVEL="${LOG_LEVEL_INFO}"
     }
 

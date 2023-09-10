@@ -9,7 +9,7 @@ Describe "Test that tooling.sh"
     setup() {
         export LOG_PATH="${PWD}/log"
         export LOG_LEVEL="${LOG_LEVEL_INFO}"
-        export WILD_CWD="${PWD}"
+        export WIZARD_CWD="${PWD}"
     }
     BeforeAll 'setup'
 

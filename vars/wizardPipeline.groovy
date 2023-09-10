@@ -7,7 +7,7 @@ def call() {
 
     def colored_xterm = isColoredXterm()
     def env_variables_list = [
-        "wild_path=./wizard-workdir",
+        "wizard_path=./wizard-workdir",
         "log_path=${env.WORKSPACE}/log",
         "current_git_branch=${env.BRANCH_NAME}",
         "colored_xterm=${colored_xterm}",
@@ -46,17 +46,17 @@ def call() {
                         ]
                     ])
 
-                    def config_containers = readYaml(file: "${wild_path}/config/k8s/containers-config.yaml")
+                    def config_containers = readYaml(file: "${wizard_path}/config/k8s/containers-config.yaml")
                     def names_containers_run = []
-                    container('wild') {
+                    container('wizard') {
                         names_containers_run = sh(
                             script: '''
                             export JQ=$(which jq)
-                            export WILD_CWD=${wild_path}
+                            export WIZARD_CWD=${wizard_path}
                             export LOG_PATH=${log_path}
                             bash --version
-                            source ${wild_path}/src/lib/workflow.sh
-                            workflow_get_workflows_containers_names ${wild_path}/config/workflow-default.json
+                            source ${wizard_path}/src/lib/workflow.sh
+                            workflow_get_workflows_containers_names ${wizard_path}/config/workflow-default.json
                             ''',
                             returnStdout: true)
                     }
@@ -81,7 +81,7 @@ def call() {
 
                 unstash "init"
 
-                def workflow = readJSON(file: "${wild_path}/config/workflow-default.json")
+                def workflow = readJSON(file: "${wizard_path}/config/workflow-default.json")
                 logger.info("Processing workflow '${workflow.name}', version '${workflow.version}'...")
 
                 workflow.actions.each { action ->

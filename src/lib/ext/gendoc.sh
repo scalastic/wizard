@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#@desc This script is used to generate documentation for bash scripts used in Wild.
+#@desc This script is used to generate documentation for bash scripts used in Wizard.
 
 set -euo pipefail
 

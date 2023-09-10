@@ -5,12 +5,12 @@
 Describe "Test that workflow.sh"
 
     setup() {
-        export WILD_CWD="${PWD}"
-        export LOG_PATH="${WILD_CWD}/tmp/log"
+        export WIZARD_CWD="${PWD}"
+        export LOG_PATH="${WIZARD_CWD}/tmp/log"
         export LOG_LEVEL="${LOG_LEVEL_DEBUG}"
-        export CONFIG_PATH="${WILD_CWD}/config"
+        export CONFIG_PATH="${WIZARD_CWD}/config"
 
-        mkdir -p "${WILD_CWD}/tmp/config"
+        mkdir -p "${WIZARD_CWD}/tmp/config"
     }
 
     BeforeAll 'setup'
@@ -29,9 +29,9 @@ Describe "Test that workflow.sh"
             The stderr should be present # for logs redirected into stderr
         End
 
-        It "returns a status failure when WILD_CWD is not set"
+        It "returns a status failure when WIZARD_CWD is not set"
 
-            BeforeRun 'unset WILD_CWD'
+            BeforeRun 'unset WIZARD_CWD'
             BeforeRun 'JQ=FAKE_JQ'
 
             When run workflow_check_prerequisites
