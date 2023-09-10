@@ -65,7 +65,7 @@ jobs:
                   url('https://github.com/scalastic/wild.git')
                   credentials('wild-github-token')
                 }
-                branch('*/17-add-more-configurations-on-workflow-pipeline')
+                branch('*/14-redesign-gitlab-ci-platform-for-testing')
               }
             }
             lightweight()
