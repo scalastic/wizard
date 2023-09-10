@@ -1,13 +1,13 @@
 def call() {
 
-    string pod_init_label = "wild-init-1"
-    string pod_run_label = "wild-run-1"
+    string pod_init_label = "wizard-init-1"
+    string pod_run_label = "wizard-run-1"
     def k8s_containers_init = libraryResource('config/k8s/containers-init.yaml')
     def k8s_containers_run
 
     def colored_xterm = isColoredXterm()
     def env_variables_list = [
-        "wild_path=./wild-workdir",
+        "wild_path=./wizard-workdir",
         "log_path=${env.WORKSPACE}/log",
         "current_git_branch=${env.BRANCH_NAME}",
         "colored_xterm=${colored_xterm}",
@@ -20,7 +20,7 @@ def call() {
     ) {
         node(pod_init_label) {
 
-            logger.bannerLogo(libraryResource('config/banner/wild.txt'))
+            logger.bannerLogo(libraryResource('config/banner/wizard.txt'))
 
             stage('init') {
 
@@ -33,16 +33,16 @@ def call() {
 
                     checkout([
                         $class                           : 'GitSCM',
-                        branches                         : [[name: env."library.wild.version"]],
+                        branches                         : [[name: env."library.wizard.version"]],
                         doGenerateSubmoduleConfigurations: false,
                         extensions                       : [
                             [$class: 'CleanBeforeCheckout'],
-                            [$class: 'RelativeTargetDirectory', relativeTargetDir: './wild-workdir']
+                            [$class: 'RelativeTargetDirectory', relativeTargetDir: './wizard-workdir']
                         ],
                         submoduleCfg                     : [],
                         userRemoteConfigs                : [
-                            [credentialsId: 'wild-github-token',
-                             url          : 'https://github.com/scalastic/wild.git']
+                            [credentialsId: 'wizard-github-token',
+                             url          : 'https://github.com/scalastic/wizard.git']
                         ]
                     ])
 

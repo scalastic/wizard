@@ -12,7 +12,7 @@ VERSION="0.0.1"
 source "${WILD_CWD}/src/lib/ext/getoptions.sh"
 
 parser_definition() {
-  setup REST help:usage -- "Usage: wild.sh [options]... [arguments]..." ''
+  setup REST help:usage -- "Usage: wizard.sh [options]... [arguments]..." ''
   msg -- 'Options:'
   flag PARAM_DOCKER -d -- "executes on docker images"
   disp :usage -h --help
@@ -29,8 +29,8 @@ if [ -n "${PARAM_DOCKER}" ] && [ "${PARAM_DOCKER}" -eq "1" ]; then
   # Start containers
   #docker container run \
   #  --mount type=bind,source="$WILD_CWD/config",target="/app/config"\
-  #  -td --name basic-wild \
-  #  scalastic/wild:latest \
+  #  -td --name basic-wizard \
+  #  scalastic/wizard:latest \
   #  /bin/bash
 fi
 

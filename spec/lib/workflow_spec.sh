@@ -98,7 +98,7 @@ Describe "Test that workflow.sh"
             When run workflow_get_workflows_containers_names "${TEST_WORKFLOW_DEFINITION_FILENAME}"
 
             The status should be success
-            The output should eq "wild maven"
+            The output should eq "wizard maven"
             The stderr should be present # for logs redirected into stderr
         End
 
@@ -117,7 +117,7 @@ Describe "Test that workflow.sh"
             When run workflow_load_action_definition "action1" "${TEST_WORKFLOW_DEFINITION_FILENAME}"
 
             The status should be success
-            The output should eq "{\"id\":\"action1\",\"name\":\"Action 1\",\"container\":\"wild\",\"script\":\"test/action/bash-version.sh\"}"
+            The output should eq "{\"id\":\"action1\",\"name\":\"Action 1\",\"container\":\"wizard\",\"script\":\"test/action/bash-version.sh\"}"
             The stderr should be present # for logs redirected into stderr
         End
 

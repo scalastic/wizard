@@ -8,8 +8,8 @@ set -euo pipefail
 export WILD_CWD="${PWD}"
 
 mkdir -p ./bin
-rm -f ./bin/wild
-./src/lib/ext/inline.sh --in-file ./src/wild.sh --out-file ./bin/wild
+rm -f ./bin/wizard
+./src/lib/ext/inline.sh --in-file ./src/wizard.sh --out-file ./bin/wizard
 grep -Ev "^[[:blank:]]*#[^!]|^[[:blank:]]*$" ./bin/wild > ./bin/wild.tmp
 mv ./bin/wild.tmp ./bin/wild
 chmod u+x ./bin/wild

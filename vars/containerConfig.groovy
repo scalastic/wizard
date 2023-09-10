@@ -1,6 +1,6 @@
 
     def getContainerConfig(appConfig, selectedContainerNames = null) {
-        //def appConfig = readYaml(file: "./wild-workdir/config/containers-config.yaml")
+        //def appConfig = readYaml(file: "./wizard-workdir/config/containers-config.yaml")
 
         if (selectedContainerNames) {
             appConfig.container = appConfig.container.findAll { container ->

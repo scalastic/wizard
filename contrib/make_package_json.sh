@@ -5,7 +5,7 @@
 export LANG=C
 
 version() {
-  ./bin/wild --version
+  ./bin/wizard --version
 }
 
 files() {
@@ -21,7 +21,7 @@ cat<<JSON
   "version": "$(version)",
   "description": "Wild fills the missing link of the DevOps approach and its shift-left principal herein. With Wild the shifts are so close to the developer that they no longer exist.",
   "homepage": "https://scalastic.io/en/",
-  "scripts": ["wild"],
+  "scripts": ["wizard"],
   "license": "MIT",
   "files": $(files),
   "install": "make install"

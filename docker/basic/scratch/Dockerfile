@@ -1,7 +1,7 @@
 FROM alpine:latest as downloader
 
 ENV JQ_VERSION jq-1.6/jq-linux64
-LABEL Author="wild by scalastic"
+LABEL Author="wizard by scalastic"
 
 RUN apk add --no-cache curl ca-certificates
 

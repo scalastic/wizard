@@ -41,7 +41,7 @@ tooling_set_jq() {
 
     elif tooling__check_command docker; then
         # shellcheck disable=SC2155
-        export JQ="$(tooling__get_command docker) run -i scalastic/wild:latest"
+        export JQ="$(tooling__get_command docker) run -i scalastic/wizard:latest"
         export IS_DOCKERIZED_JQ=true
         log_info "Using dockerized jq command $JQ"
 

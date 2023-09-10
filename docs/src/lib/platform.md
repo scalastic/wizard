@@ -83,4 +83,4 @@ platform_get_platform
   * `stdout`: The platform where the script is running
 
 ---------------------------------------
-*Generated from [src/lib/platform.sh](../../../src/lib/platform.sh) on 08.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/platform.sh](../../../src/lib/platform.sh) on 10.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

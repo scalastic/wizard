@@ -8,8 +8,8 @@ credentials:
               scope: GLOBAL
               secret: "{AQAAABAAAAOwXX63gVCVOwTvhbYt1LPl8FQ5DprGNEsgYmLkMRLlZ6SUzz5Glo8C86jBRDcQqnWBTAOCZkg3s09XUHAeCFvKBP+n4yymIBNXwD1kg5IM+tsM1Me+cxGWfwdA3mHC81TQX0CAskbKL0LUC4G9SYm93G90tHEX7QpxczFWbGFVrdWdTDn1xuEMBBOTeObSx60mKY8g0HOqzy06ct2V/RmWIaO/j00ByztNZBdhoZe87+tFJ0Fox8yqKITZF7aQkbvpXIM0xH2qtWR2Zw5BAIFOSAXjCOO5YJ+v7hyFEFpYgMacFSIrJLOel5kqHY9Tupb5/0znKZit7uVI5JOzNGGJzqVVkt4HQk0WnNd/Fss8vyi4surN53eqbhudvu2KXIDK3IW3JajVGYGGZNLDnQcvY37pLLec1uZrtiQKYeK3YPcP/GTDEXkKYR4iYv9l0xiwBd4oZlXsU/S1aLSRcOaNwnh7t03b2USXIS6bfcPIGNGPEqIq9pkNQ6FIdhWKXsJsC3R0aTk0F0bJF7q/MmYAqux3HUovv5eeD7mwLs9qhO0t32aphQfO/0IQCsFroIm2I4S35tDvqGuOmCDXfxYA823zLFq01y408TRi9BRQT+c/eKVGNbdE/NqxJaQvZng1nwQMBFhgzePmtuZbwtH9rxYBNsda6/X1v9tl6mcDBCivxjfMcR1/jSA0l7wWAnBe8Ud+KTiOogyHS50TMmrZdneqs2sm3z21iwb0hmGykMPjJKO7B7OPAt1SyGWSo5Ao4MXKYweR+l1wXWCD27d/1g2+cmcohM06Xq7IJuAIk4UjsygEsR9qG6YGcpI61QhnXEGdP9Uaemn1Atz2jixg+oTlboWT9O2TLBpfCqtqVskkTY9ntX+Cq/M+Xj8GoMCQy2dc+2kqbD9CW3tG3OYTIz0QETt9Ka161Xfk3R4XuSV9T3vK8hRvBc4e0vJltwLx9agSuFY/Wf63QN4ib9n9RGAjslrqC+7QSJ3eJ1DjhmkgN6EuHT2edtfjPOHiuvPnsIVi0xQ+V9aFNobQmrsumaeTOwtthSuCknaQ4Rd2lYM2H/UhE7jfvQpSX1EN2ngRzVuWLmrp7JqnUL/B2636eYDACl8uNtt5kbvOAYvd+wCqeG2Nk3BcZsPiygEkSycBX/I9pW2s2PdOm+6NDjbwptrMUvEMvDJRm0zuzOo8fxdwbqhMf3m+Kh0p5s5rM9lsISjOy/1gEwr5yQjJFEHmZk1AseyTXnYyL6SqS9p1RDCzzgcm2gylbU4NWJm5gAIx}"
           - usernamePassword:
-              description: "wild-github-token"
-              id: "wild-github-token"
+              description: "wizard-github-token"
+              id: "wizard-github-token"
               password: "{AQAAABAAAABgMBbHt+2lG9HjgZyFFlI6kIhkBgUPO2z+zXWwddZJTSa34qiQYuxYwaNzJhpZaGxnnhViqzYWKfVAn5DJRXhSN7Rgo2zZC+0flYKZq3Adf68/HHcdoqVnHHaYZOMebuEwPKVYn0UR7FVgZfIVYFEgsA==}"
               scope: GLOBAL
               username: "oauth2"

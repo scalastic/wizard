@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-docker build -t scalastic/wild:latest "./docker/basic/ubi/"
+docker build -t scalastic/wizard:latest "./docker/basic/ubi/"
 
-docker push scalastic/wild:latest
+docker push scalastic/wizard:latest
