@@ -12,7 +12,7 @@ credentials:
               scope: GLOBAL
               id: wizard-github-token
               username: oauth2
-              password: ${WILD_GITHUB_TOKEN}
+              password: ${WIZARD_GITHUB_TOKEN}
 jenkins:
   systemMessage: "Automated Jenkins Setup using Docker and Jenkins Configuration as Code"
   securityRealm:
