@@ -8,4 +8,3 @@ kubernetes:latest
 job-dsl:latest
 ansicolor:latest
 pipeline-utility-steps:latest
-dark-theme:latest

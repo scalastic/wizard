@@ -34,7 +34,8 @@ jenkins:
         containerCap: 10
         containerCapStr: "10"
         credentialsId: "kubernetes-jenkins-token"
-        jenkinsUrl: http://${LOCAL_IP_ADDRESS}:8080
+        # jenkinsUrl: http://${LOCAL_IP_ADDRESS}:8080
+        jenkinsUrl: http://jenkins.scalastic.local:8080
         name: "kubernetes"
         namespace: "jenkins"
         serverUrl: "https://kubernetes.docker.internal:6443"
@@ -74,9 +75,7 @@ jobs:
       }
 unclassified:
   location:
-    url: http://${LOCAL_IP_ADDRESS}:8080/
+    # url: http://${LOCAL_IP_ADDRESS}:8080/
+    url: http://jenkins.scalastic.local:8080/
   ansiColorBuildWrapper:
     globalColorMapName: "xterm"
-  themeManager:
-    disableUserThemes: true
-    theme: "darkSystem"
