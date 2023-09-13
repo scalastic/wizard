@@ -3,16 +3,32 @@
 
 set -euo pipefail
 
+source .env
+export LOG_PATH="./log"
+source ./src/lib/common.sh
+
+install__configure_kubernetes() {
+  declare -r name="gitlab"
+
+  kubectl delete namespace "${name}" || true
+  kubectl create namespace "${name}"
+
+  helm repo add gitlab https://charts.gitlab.io
+  helm repo update gitlab
+
+
+}
+
 GITLAB_PATH="${PWD}/test/gitlab"
 GITLAB_VOLUME_HOME="${GITLAB_PATH}/home"
 GITLAB_INSTALLATION_CONFIG="${GITLAB_PATH}/config"
+LOCAL_IP_ADDRESS=$(tooling_get_ip)
 
 export GITLAB_HOME="${GITLAB_VOLUME_HOME}"
 
 docker run --detach \
   --hostname gitlab.scalastic.local \
-  --add-host=gitlab.scalastic.local:192.168.0.100 \
-  --publish 127.0.0.1:4443:443 --publish 127.0.0.1:4080:80 --publish 127.0.0.1:4022:22 \
+  --publish 127.0.0.1:4443:443 --publish 127.0.0.1:4000:80 \
   --name gitlab \
   --restart always \
   --volume "${GITLAB_VOLUME_HOME}/config:/etc/gitlab" \

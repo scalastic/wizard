@@ -57,10 +57,10 @@ docker run \
   --rm \
   --name jenkins \
   --hostname jenkins.scalastic.local \
-  --add-host=jenkins.scalastic.local:"${LOCAL_IP_ADDRESS}" \
   -p 8080:8080 -p 50000:50000 \
   -v "${JENKINS_VOLUME_HOME}:/var/jenkins_home" \
-  --env "LOCAL_IP_ADDRESS=${LOCAL_IP_ADDRESS}" \
   --env "JENKINS_INSTALLATION_CONFIG=${JENKINS_INSTALLATION_CONFIG}" \
   --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password \
   jenkins:jcasc
+  # --env "LOCAL_IP_ADDRESS=${LOCAL_IP_ADDRESS}" \
+  # --add-host=jenkins.scalastic.local:"${LOCAL_IP_ADDRESS}" \
