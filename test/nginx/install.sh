@@ -41,7 +41,6 @@ if [ ! "$(docker ps | grep ${DOCKER_NETWORK})" ]; then
        -p 80:80 \
        -p 443:443 \
        --network="${DOCKER_NETWORK}" \
-       -v "${NGINX_INSTALLATION_CONFIG}/default.conf":/etc/nginx/conf.d/default.conf \
        nginx:test
 else
   log_info "nginx Proxy already running."
