@@ -3,4 +3,7 @@
 
 set -euo pipefail
 
+source ./src/lib/log.sh
+
+log_info "Running mvn --version..."
 mvn --version
