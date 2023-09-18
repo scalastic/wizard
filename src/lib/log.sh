@@ -79,7 +79,8 @@ log__log() {
     fi
 
     if [ "$LOG_LEVEL" -le "$level" ]; then
-        echo -e "${color}[${LOG_LEVELS[$level]}] $message${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+        #echo -e "${color}[${LOG_LEVELS[$level]}] $message${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+        printf "%b[%s] %s%b\n" "$color" "${LOG_LEVELS[$level]}" "$message" "$color_off" | tee -a "${LOG_PATH}/stdout.log" >&2
     fi
 }
 
@@ -102,9 +103,14 @@ log__banner() {
       return 2
     fi
 
-    echo -e "${color}################################${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
-    echo -e "${color} $message${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
-    echo -e "${color}################################${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+    #echo -e "${color}################################${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+    #echo -e "${color} $message${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+    #echo -e "${color}################################${color_off}" | tee -a "${LOG_PATH}/stdout.log" >&2
+
+    printf "%b################################%b\n" "$color" "$color_off" | tee -a "${LOG_PATH}/stdout.log" >&2
+    printf "%b %s%b\n" "$color" "$message" "$color_off" | tee -a "${LOG_PATH}/stdout.log" >&2
+    printf "%b################################%b\n" "$color" "$color_off" | tee -a "${LOG_PATH}/stdout.log" >&2
+
 }
 
 
