@@ -3,6 +3,7 @@
 
 set -euo pipefail
 
+LOG_PATH="./log"
 source ./src/lib/log.sh
 
 log_info "Running mvn --version..."
