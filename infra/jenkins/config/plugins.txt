@@ -1,0 +1,10 @@
+cloudbees-folder:latest
+configuration-as-code:latest
+git:latest
+matrix-auth:latest
+pipeline-stage-view:latest
+workflow-aggregator:latest
+kubernetes:latest
+job-dsl:latest
+ansicolor:latest
+pipeline-utility-steps:latest

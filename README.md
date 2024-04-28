@@ -43,9 +43,9 @@ Embrace the enchantment of Wizard to fill the void in the DevOps approach and em
 
 Currently, `Wizard` is tailored for seamless use on the following platforms:
 
-- Your local environment (Unix-based systems)
-- Jenkins
-- GitLab-CI
+- [ ] Your local environment (Unix-based systems)
+- [x] Jenkins
+- [ ] GitLab-CI (_WIP_)
 
 Please note that our magical integration framework may expand its compatibility with more platforms in the future. Stay tuned for updates!
 
@@ -59,7 +59,7 @@ In order to utilize `Wizard` on your local machine, the following prerequisites 
 
 ## Installation
 
-### Install with Homebrew
+### Install with Homebrew (_WIP_)
 
 ```bash
 brew tap scalastic/tap
@@ -76,7 +76,7 @@ git clone
 
 ## Wizard CLI
 
-### Usage
+### Usage (_WIP_)
 
 ```bash
 wizard [options] [command]
@@ -148,7 +148,7 @@ wizard [options] [command]
 
 - [Semantic Versioning](https://semver.org/) - Semantic Versioning 2.0.0.
 
-### Contributions
+### Contributions (_WIP_)
 
 All contributions are welcome!
 

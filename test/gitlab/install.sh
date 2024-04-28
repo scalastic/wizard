@@ -15,26 +15,26 @@ install__configure_kubernetes() {
 
   helm repo add gitlab https://charts.gitlab.io
   helm repo update gitlab
-
-
 }
 
 GITLAB_PATH="${PWD}/test/gitlab"
 GITLAB_VOLUME_HOME="${GITLAB_PATH}/home"
-GITLAB_INSTALLATION_CONFIG="${GITLAB_PATH}/config"
 LOCAL_IP_ADDRESS=$(tooling_get_ip)
 
 export GITLAB_HOME="${GITLAB_VOLUME_HOME}"
+export GITLAB_INSTALLATION_CONFIG="${GITLAB_PATH}/config"
 
-docker run --detach \
-  --hostname gitlab.scalastic.local \
-  --publish 127.0.0.1:4443:443 --publish 127.0.0.1:4000:80 \
+docker run \
   --name gitlab \
-  --restart always \
+  --network wizard-network \
+  --hostname gitlab.scalastic.local \
+  --publish 4000:80 \
   --volume "${GITLAB_VOLUME_HOME}/config:/etc/gitlab" \
   --volume "${GITLAB_VOLUME_HOME}/logs:/var/log/gitlab" \
   --volume "${GITLAB_VOLUME_HOME}/data:/var/opt/gitlab" \
   --env GITLAB_ROOT_PASSWORD=p@ssw0rd \
+  --env GITLAB_HOME="${GITLAB_VOLUME_HOME}" \
+  --env GITLAB_INSTALLATION_CONFIG="${GITLAB_PATH}/config" \
   --shm-size 256m \
   gitlab/gitlab-ce:latest
 
@@ -52,4 +52,4 @@ docker run --detach \
 
 docker logs -f gitlab
 
-docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
+#docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password

@@ -43,9 +43,6 @@ EOF
 JENKINS_PATH="${PWD}/test/jenkins"
 JENKINS_INSTALLATION_CONFIG="${JENKINS_PATH}/config"
 JENKINS_VOLUME_HOME="${JENKINS_PATH}/home"
-LOCAL_IP_ADDRESS=$(tooling_get_ip)
-
-log_info "Local IP address is: ${LOCAL_IP_ADDRESS}"
 
 install__configure_kubernetes
 
@@ -56,11 +53,10 @@ docker build \
 docker run \
   --rm \
   --name jenkins \
+  --network wizard-network \
   --hostname jenkins.scalastic.local \
   -p 8080:8080 -p 50000:50000 \
   -v "${JENKINS_VOLUME_HOME}:/var/jenkins_home" \
   --env "JENKINS_INSTALLATION_CONFIG=${JENKINS_INSTALLATION_CONFIG}" \
   --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password \
   jenkins:jcasc
-  # --env "LOCAL_IP_ADDRESS=${LOCAL_IP_ADDRESS}" \
-  # --add-host=jenkins.scalastic.local:"${LOCAL_IP_ADDRESS}" \

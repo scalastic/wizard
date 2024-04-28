@@ -23,7 +23,7 @@
 
 set -euo pipefail
 
-COMPANY_NAME=${1:-scalastic}
+COMPANY_NAME=${1:-macompanie}
 CERT_CA_PATH="${CERT_CA_PATH:=openssl/ca}"
 
 echo "Creating CA certificate..."
