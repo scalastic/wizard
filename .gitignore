@@ -9,6 +9,8 @@
 /test/gitlab/home/
 /test/jenkins/home/
 /test/jenkins/config/secrets.properties
+/infra/jenkins/config/secrets.properties
+/test/jenkins/config/secrets.yaml
 /test/jenkins/config/exported-jenkins.yaml
 /tmp/
 .DS_Store

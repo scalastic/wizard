@@ -83,4 +83,4 @@ workflow_load_action_definition "action1" "config/workflow-default.json"
   * `return`: Action definition as an array
 
 ---------------------------------------
-*Generated from [src/lib/workflow.sh](../../../src/lib/workflow.sh) on 10.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/workflow.sh](../../../src/lib/workflow.sh) on 18.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*

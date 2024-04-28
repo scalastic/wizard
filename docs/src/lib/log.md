@@ -215,4 +215,4 @@ log_banner "This is a banner message"
   * `stdout`: Writes the banner message to stdout
 
 ---------------------------------------
-*Generated from [src/lib/log.sh](../../../src/lib/log.sh) on 10.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
+*Generated from [src/lib/log.sh](../../../src/lib/log.sh) on 18.09.2023         (writen with ✨ by [gendoc](../../../src/lib/ext/gendoc.sh))*
