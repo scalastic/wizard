@@ -16,6 +16,8 @@ source ./shell/gitlab.sh
 gitlab.start
 ```
 
+After the container is started, you can access GitLab-CI at http://gitlab.scalastic.local:4000.
+
 ## Install GitLab-CI Runner
 
 ### Create a Personal Access Token
@@ -29,6 +31,8 @@ gitlab.start
 - Click on "Create personal access token".
 
 Copy the token (this is your Personal Acces Token) and save it in a safe place. It should start with `glpat-` and contain a long string of letters and numbers.
+
+![GitLab Personal Access Token](images/gitlab-personal_access-token.png)
 
 ### Create a GitLab-CI Runner
 
